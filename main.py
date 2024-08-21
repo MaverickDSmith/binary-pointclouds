@@ -32,9 +32,6 @@ def binary_your_pointcloud(points, slices, max_bound, min_bound):
     # Compute the bounding box
     min_bound = np.min(points, axis=0)
     max_bound = np.max(points, axis=0)
-
-    print("Min Bound: ", min_bound)
-    print("Max Bound: ", max_bound)
     size = max_bound - min_bound
 
     # Calculate step sizes
@@ -78,7 +75,7 @@ def binary_your_pointcloud(points, slices, max_bound, min_bound):
 
     return bar
 
-def decode_binary(points, slices, size):
+def decode_binary(points, slices, size, min_bound):
     # Reshape the binary vector into a 3D grid
     grid = points.reshape((slices, slices, slices))
 
@@ -100,60 +97,64 @@ def decode_binary(points, slices, size):
 
     # Convert to NumPy array
     grid_points = np.array(grid_points)
-    print("Binary Shape: ", np.shape(grid_points))
 
     return grid_points
 
 
 def normalize(points):
-
     # Compute the bounding box
     min_bound = np.min(points, axis=0)
     max_bound = np.max(points, axis=0)
     center = (min_bound + max_bound) / 2
     scale = max(max_bound - min_bound)
     size = max_bound - min_bound
-    print("Min Bound: ", min_bound)
-    print("Max Bound: ", max_bound)
     pointcloud = (points - center) / scale
 
-    return pointcloud, min_bound, max_bound, scale, center, size
+    return pointcloud, min_bound, max_bound, size
 
-## Load and Display Initial Point Cloud
-slices = 64
 
-mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
-point_cloud = o3d.geometry.PointCloud(mesh.vertices)
 
-## Normalize
-points = np.asarray(mesh.vertices)
-print("Original Shape: ", np.shape(points))
-points_normalized, min_bound, max_bound, scale, center, size = normalize(points)
+def main():
+    ## Load and Display Initial Point Cloud
+    slices = 64
 
-# Create a point cloud from the normalized points
-point_cloud_normalized = o3d.geometry.PointCloud()
-point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
-o3d.visualization.draw_geometries([point_cloud_normalized])
+    mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
 
-# Convert point cloud to a binary point cloud
-bar = binary_your_pointcloud(points, slices, max_bound, min_bound)
-numpy_array_loaded = np.array(bar.tolist(), dtype=np.uint8)
+    #Optionally visualize it as a Point Cloud
+    #point_cloud = o3d.geometry.PointCloud(mesh.vertices)
+    #o3d.visualization.draw_geometries([point_cloud])
 
-# Decode it
-grid_points = decode_binary(numpy_array_loaded, slices, size)
+    ## Normalize
+    points = np.asarray(mesh.vertices)
+    points_normalized, min_bound, max_bound, size = normalize(points)
 
-# Create a point cloud from the grid points
-point_cloud_reconstructed = o3d.geometry.PointCloud()
-point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
+    # Create a point cloud from the normalized points
+    point_cloud_normalized = o3d.geometry.PointCloud()
+    point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
+    o3d.visualization.draw_geometries([point_cloud_normalized])
 
-o3d.io.write_point_cloud("data/binary_pcd.pcd", point_cloud_reconstructed)
+    # Convert point cloud to a binary point cloud
+    bar = binary_your_pointcloud(points, slices, max_bound, min_bound)
+    numpy_array_loaded = np.array(bar.tolist(), dtype=np.uint8)
 
-# Visualize the point cloud
-o3d.visualization.draw_geometries([point_cloud_reconstructed])
+    # Decode it
+    grid_points = decode_binary(numpy_array_loaded, slices, size, min_bound)
 
-# Voxel Approach for Comparison
-voxel_cloud = point_cloud_normalized.voxel_down_sample(0.025)
-downsample_cloud = density_aware_downsampling(voxel_cloud, 5763)
+    # Create a point cloud from the grid points
+    point_cloud_reconstructed = o3d.geometry.PointCloud()
+    point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
 
-o3d.visualization.draw_geometries([downsample_cloud])
-o3d.io.write_point_cloud("data/voxel.pcd", downsample_cloud, write_ascii=False)
+    o3d.io.write_point_cloud("data/binary_pcd.pcd", point_cloud_reconstructed)
+
+    # Visualize the point cloud
+    o3d.visualization.draw_geometries([point_cloud_reconstructed])
+
+    # Voxel Approach for Comparison
+    voxel_cloud = point_cloud_normalized.voxel_down_sample(0.025)
+    downsample_cloud = density_aware_downsampling(voxel_cloud, 5763)
+
+    o3d.visualization.draw_geometries([downsample_cloud])
+    o3d.io.write_point_cloud("data/voxel.pcd", downsample_cloud, write_ascii=False)
+
+if __name__ == '__main__':
+    main()
