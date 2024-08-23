@@ -45,13 +45,13 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
 
         # Update specific x, y, and z counts
         x_count = x_count + 1
-        if x_count == slices:
+        if x_count == slices - 1:
             x_count = 0
             y_count = y_count + 1
-            if y_count == slices:
+            if y_count == slices - 1:
                 y_count = 0
                 z_count = z_count + 1
-                if z_count == slices:
+                if z_count == slices - 1:
                     z_count = 0
 
         if condition:
@@ -116,13 +116,13 @@ def decode_binary(points, slices, size, min_bound):
         
         # Update specific x, y, and z counts
         x_count = x_count + 1
-        if x_count == slices:
+        if x_count == slices - 1:
             x_count = 0
             y_count = y_count + 1
-            if y_count == slices:
+            if y_count == slices - 1:
                 y_count = 0
                 z_count = z_count + 1
-                if z_count == slices:
+                if z_count == slices - 1:
                     z_count = 0
         # Error checking
         if x_count >= slices:
