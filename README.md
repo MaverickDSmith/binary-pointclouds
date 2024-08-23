@@ -29,8 +29,9 @@ With higher number of slices, the voxelization technique outperforms the binary 
 
 I am currently working on another implementation and will update here when I make progress.
 
-Here is an extremely detailed and awesome graphic that explains how my method differs from voxelization from a 2D perspective
-![Voxel techniques look inside the cube and make the cube a 1, whereas our method looks at an intersection and places a 1 in that position if it is within a close enough distance](assets/voxel_vs_binary.png)
+Here is an extremely detailed and awesome graphic that explains how my method differs from voxelization from a 2D perspective:
+
+![Voxel techniques look inside the cube and makes the cube a 1, whereas our method looks at an intersection and places a 1 in that position if it is within a close enough distance](assets/voxel_vs_binary.png)
 
 ## Experiments
 
