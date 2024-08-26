@@ -39,7 +39,7 @@ def main():
     point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
 
     #Optionally visualize the normalized point cloud
-    #o3d.visualization.draw_geometries([point_cloud_normalized])
+    o3d.visualization.draw_geometries([point_cloud_normalized])
 
     # Convert point cloud to a binary point cloud
     bar = binary_your_pointcloud(points, slices, max_bound, min_bound)

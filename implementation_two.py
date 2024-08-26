@@ -6,12 +6,14 @@ from tqdm import tqdm
 from utils import normalize, visualize_grid
 
 # Mostly works, weird effect at edges
+#TODO: Test o3d.geometry.PointCloud.nearest_neighbor_distance
 def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
 
-    points = np.asarray(mesh.vertices)
+    #points = np.asarray(mesh.vertex.positions)
     scene = o3d.t.geometry.RaycastingScene()
     mesh = o3d.t.geometry.TriangleMesh.from_legacy(mesh)
     scene.add_triangles(mesh)
+
 
     # Calculate step sizes for X and Y axes
     size = max_bound - min_bound
@@ -31,7 +33,6 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
     z_count = 0
 
     for i in tqdm(range(len(grid))):
-
         x_pos = min_bound[0] + step_x * x_count
         y_pos = min_bound[1] + step_y * y_count
         z_pos = min_bound[2] + step_z * z_count
@@ -45,16 +46,19 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
 
         # Update specific x, y, and z counts
         x_count = x_count + 1
-        if x_count == slices - 1:
+        if x_count == slices + 1:
             x_count = 0
             y_count = y_count + 1
-            if y_count == slices - 1:
+            if y_count == slices + 1:
                 y_count = 0
                 z_count = z_count + 1
-                if z_count == slices - 1:
+                if z_count == slices + 1:
                     z_count = 0
 
         if condition:
+            # print(f"Point: {query_point.numpy()}")
+            # print(f"Closest Point: {closest_point}")
+            # print(f"Distance: {distance}\n")
             grid[i] = 1
         else:
             grid[i] = 0
@@ -109,27 +113,27 @@ def decode_binary(points, slices, size, min_bound):
     for i in range(len(grid.flatten())):
         # If 1, point is there. Place point based on index.
         if points[i] == 1:
-            x_pos = x_count * (step_x)
-            y_pos = y_count * (step_y)
-            z_pos = z_count * (step_z)
+            x_pos = min_bound[0] + x_count * (step_x)
+            y_pos = min_bound[1] + y_count * (step_y)
+            z_pos = min_bound[2] + z_count * (step_z)
             grid_points.append([x_pos, y_pos, z_pos])
         
         # Update specific x, y, and z counts
         x_count = x_count + 1
-        if x_count == slices - 1:
+        if x_count == slices + 1:
             x_count = 0
             y_count = y_count + 1
-            if y_count == slices - 1:
+            if y_count == slices + 1:
                 y_count = 0
                 z_count = z_count + 1
-                if z_count == slices - 1:
+                if z_count == slices + 1:
                     z_count = 0
         # Error checking
-        if x_count >= slices:
+        if x_count >= slices + 1:
             print(f"Error in counting logic at count {i} for x_count")
-        if y_count >= slices:
+        if y_count >= slices + 1:
             print(f"Error in counting logic at count {i} for y_count")
-        if z_count >= slices:
+        if z_count >= slices + 1:
             print(f"Error in counting logic at count {i} for z_count")
 
     # Convert to NumPy array
@@ -141,13 +145,14 @@ if __name__ == '__main__':
     ## Variables and Initial Object loading
     slices = 64
     mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
+    
 
     points_normalized, min_bound, max_bound, size = normalize(np.asarray(mesh.vertices))
 
     # Optionally visualize the normalized point cloud
-    # point_cloud_normalized = o3d.geometry.PointCloud()
-    # point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
-    # o3d.visualization.draw_geometries([point_cloud_normalized])
+    point_cloud_normalized = o3d.geometry.PointCloud()
+    point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
+    o3d.visualization.draw_geometries([point_cloud_normalized])
 
     ba = binary_your_pointcloud(mesh, slices, max_bound, min_bound)
     # with open('data/bitarray_2d.bin', 'rb') as f:
