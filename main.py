@@ -2,7 +2,7 @@ import open3d as o3d
 import numpy as np
 
 from utils import normalize, visualize_grid
-from implementation_one import binary_your_pointcloud, decode_binary
+from implementation_two import binary_your_pointcloud, decode_binary
 from voxel_downsample import density_aware_downsampling
 
 # Encoding Experiments to try
@@ -20,7 +20,7 @@ from voxel_downsample import density_aware_downsampling
 def main():
 
     ## Variables and Initial Object loading
-    slices = 64
+    slices = 128
     mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
 
 
@@ -30,7 +30,10 @@ def main():
 
     ## Normalize
     points = np.asarray(mesh.vertices)
-    points_normalized, min_bound, max_bound, size = normalize(points)
+    points_normalized = normalize(points)
+    min_bound = np.min(points_normalized, axis=0)
+    max_bound = np.max(points_normalized, axis=0)
+    size = max_bound - min_bound
 
     ## Create grid
     #grid = visualize_grid(min_bound, max_bound, slices)
@@ -39,11 +42,11 @@ def main():
     point_cloud_normalized = o3d.geometry.PointCloud()
     point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
 
-    #Optionally visualize the normalized point cloud
-    o3d.visualization.draw_geometries([point_cloud_normalized])
+    # Optionally visualize the normalized point cloud
+    # o3d.visualization.draw_geometries([point_cloud_normalized])
 
     # Convert point cloud to a binary point cloud
-    bar = binary_your_pointcloud(points, slices, max_bound, min_bound)
+    bar = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
     numpy_array_loaded = np.array(bar.tolist(), dtype=np.uint8)
 
     # Decode it
