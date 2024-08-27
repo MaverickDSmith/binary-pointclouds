@@ -23,6 +23,7 @@ def main():
     slices = 64
     mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
 
+
     #Optionally visualize it as a Point Cloud
     #point_cloud = o3d.geometry.PointCloud(mesh.vertices)
     #o3d.visualization.draw_geometries([point_cloud])

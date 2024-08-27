@@ -3,17 +3,12 @@ import numpy as np
 from bitarray import bitarray
 from tqdm import tqdm
 
-from utils import normalize, visualize_grid
+from utils import normalize, visualize_grid, create_xyz_line, create_box
 
-# Mostly works, weird effect at edges
-#TODO: Test o3d.geometry.PointCloud.nearest_neighbor_distance
-def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
+# Works, needs fine-tuning
+def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
 
-    #points = np.asarray(mesh.vertex.positions)
-    scene = o3d.t.geometry.RaycastingScene()
-    mesh = o3d.t.geometry.TriangleMesh.from_legacy(mesh)
-    scene.add_triangles(mesh)
-
+    pcd_tree = o3d.geometry.KDTreeFlann(pcd)
 
     # Calculate step sizes for X and Y axes
     size = max_bound - min_bound
@@ -22,9 +17,11 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
     step_z = size[2] / slices
 
     # Determine threshold value
-    x_thresh = step_x / 16
-    y_thresh = step_y / 16
-    z_thresh = step_z / 16
+    # This should be configurable
+    x_thresh = step_x / 2
+    y_thresh = step_y / 2
+    z_thresh = step_z / 2
+    threshold = np.max([x_thresh, y_thresh, z_thresh], axis=0)
 
     # Initialize the grid as a 1D binary array
     grid = np.zeros((slices * slices * slices), dtype=int)
@@ -37,12 +34,8 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
         y_pos = min_bound[1] + step_y * y_count
         z_pos = min_bound[2] + step_z * z_count
 
-        query_point = o3d.core.Tensor([[x_pos, y_pos, z_pos]], dtype=o3d.core.Dtype.Float32)
-        ans = scene.compute_closest_points(query_point)
-        closest_point = ans['points'].numpy()[0]
-
-        distance = query_point.numpy() - closest_point
-        condition = (abs(distance) < np.array([x_thresh, y_thresh, z_thresh])).all()
+        query_point = np.asarray([x_pos, y_pos, z_pos])
+        [k, _, _] = pcd_tree.search_radius_vector_3d(query_point, threshold)
 
         # Update specific x, y, and z counts
         x_count = x_count + 1
@@ -55,35 +48,10 @@ def binary_your_pointcloud(mesh, slices, max_bound, min_bound):
                 if z_count == slices + 1:
                     z_count = 0
 
-        if condition:
-            # print(f"Point: {query_point.numpy()}")
-            # print(f"Closest Point: {closest_point}")
-            # print(f"Distance: {distance}\n")
+        if k > 0:
             grid[i] = 1
         else:
             grid[i] = 0
-
-
-    # Iterate through points and mark the grid
-    # for x in tqdm(range(slices)):
-    #     x_pos = min_bound[0] + step_x * x
-    #     for y in range(slices):
-    #         y_pos = min_bound[1] + step_y * y
-    #         for z in range(slices):
-    #             z_pos = min_bound[2] + step_z * z
-
-    #             query_point = o3d.core.Tensor([[x_pos, y_pos, z_pos]], dtype=o3d.core.Dtype.Float32)
-    #             ans = scene.compute_closest_points(query_point)
-    #             closest_point = ans['points'].numpy()[0]
-
-    #             distance = query_point.numpy() - closest_point
-    #             condition = (abs(distance) < np.array([x_thresh, y_thresh, z_thresh])).all()
-
-    #             index = x * slices * slices + y * slices + z
-    #             if condition:
-    #                 grid[index] = 1
-    #             else:
-    #                 grid[index] = 0
 
     # Compresses as a bitarray and save
     ba = bitarray(grid.tolist())
@@ -128,6 +96,7 @@ def decode_binary(points, slices, size, min_bound):
                 z_count = z_count + 1
                 if z_count == slices + 1:
                     z_count = 0
+
         # Error checking
         if x_count >= slices + 1:
             print(f"Error in counting logic at count {i} for x_count")
@@ -143,18 +112,28 @@ def decode_binary(points, slices, size, min_bound):
 
 if __name__ == '__main__':
     ## Variables and Initial Object loading
-    slices = 64
+    slices = 128
     mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
+
+    points_normalized = normalize(np.asarray(mesh.vertices))
+    min_bound = np.min(points_normalized, axis=0)
+    max_bound = np.max(points_normalized, axis=0)
+    size = max_bound - min_bound
+    mesh.vertices = o3d.utility.Vector3dVector(points_normalized)
+    print(f"Max Bound: {max_bound}")
+    print(f"Min Bound: {min_bound}")
+    print(f"Size: {size}")
+
+    # Lineset
+    grid_lines = visualize_grid(min_bound, max_bound, slices)
+    xyz_lines = create_xyz_line(min_bound, max_bound, slices)
     
-
-    points_normalized, min_bound, max_bound, size = normalize(np.asarray(mesh.vertices))
-
     # Optionally visualize the normalized point cloud
     point_cloud_normalized = o3d.geometry.PointCloud()
-    point_cloud_normalized.points = o3d.utility.Vector3dVector(points_normalized)
-    o3d.visualization.draw_geometries([point_cloud_normalized])
+    point_cloud_normalized.points = o3d.utility.Vector3dVector(mesh.vertices)
+    o3d.visualization.draw_geometries([point_cloud_normalized, xyz_lines])
 
-    ba = binary_your_pointcloud(mesh, slices, max_bound, min_bound)
+    ba = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
     # with open('data/bitarray_2d.bin', 'rb') as f:
     #     ba = bitarray()
     #     ba.fromfile(f)
@@ -166,13 +145,10 @@ if __name__ == '__main__':
     print(grid_points)
     print(np.shape(grid_points))
 
-    # Lineset
-    # grid_lines = visualize_grid(min_bound, max_bound, slices)
-
     # Create a point cloud from the grid points
     point_cloud_reconstructed = o3d.geometry.PointCloud()
     point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
 
     # Visualize the point cloud
-    o3d.visualization.draw_geometries([point_cloud_reconstructed])
+    o3d.visualization.draw_geometries([point_cloud_reconstructed, xyz_lines, grid_lines])
 
