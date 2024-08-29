@@ -44,6 +44,30 @@ We also find that with our current test target of the sofa, assuming the point c
 
 ## Experiments
 
+### Storage Size Comparison Against Open3D Voxelization Technique
+
+For this test, we converted the entirety of ModelNet40 into four separate downsampled point cloud versions. Two of these datasets were made with the technique in Implementation Two, and the other two datasets were made using Open3D's Voxelization technique. The following table shows the results in the Size Comparison test, with notes below:
+
+| Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
+|----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
+| Slice64  |                 |        32KB       |           N/A              |             N/A            |           N/A           |
+| Voxel64  |                 |                   |                            |                            |                         |
+| Slice128 |                 |       256KB       |           N/A              |             N/A            |           N/A           |
+| Voxel128 |                 |                   |                            |                            |                         |
+
+**Slice64** and **Slice128** are the datasets created by the binary technique. We differentiate between the two with their relevant number by how many slices there are on each axis. With the current technique, we are storing the data as one long bitarray with no extra compression. This means that each point is equivalent to 1 bit of space, and each point cloud is storing every single possible point in the point cloud as a 1 or a 0. Therefore, each object has the same storage size in their respective data sets. **Slice64** has 32KB for every point cloud, and **Slice128** has 256KB for every point cloud.
+
+**Voxel64** and **Voxel128** are the datasets created using Open3D's Voxelization technique. Some miscallaneous notes about the way this is implemented:
+* Each point cloud was downsampled with the open3d.geometry.voxel_down_sample() function, and the voxel size was set to 0.001 for each point cloud. The number is this low because we normalized each point cloud prior to downsampling. 
+* To make things fair, I decided to also apply a density aware downsampling technique to the voxelization technique when the overall points of the point cloud after voxelization was higher than the number of 1s in the corresponding binary point cloud. The density aware downsampling ensures that no voxelized point cloud has more points than its binary point cloud counterpart. This technique was not applied to any point clouds with equal or lower number of points than the binary point cloud counterpart. I believe this makes the comparison fair, as I find that density aware downsampling is an easy to implement addition to voxelization when you're trying to perform data preprocessing, and most Deep Learning tasks find their job easier when the number of points is homogenous across the entire dataset. I did not pad points when the total points were lower, as this is ultimately a test of which technique stores in a more compact form.
+* The threshold for "larger / smaller / equal to" is based on the storage size of the binary. So for **Voxel64**, the threshold is 32KB, and for **Voxel128**, the threshold is 256KB.
+
+The rough average speed for an operation on the data sets were as follows:
+**Slice64:** ~0.3-0.4 seconds
+**Slice128:** ~2.6-2.8 seconds
+**Voxel64:** less than 0.1 seconds
+**Voxel128:** less than 0.1 seconds
+
 
 ## Results
 

@@ -24,12 +24,15 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
     threshold = np.max([x_thresh, y_thresh, z_thresh], axis=0)
 
     # Initialize the grid as a 1D binary array
-    grid = np.zeros((slices * slices * slices), dtype=int)
+    # grid = np.zeros((slices * slices * slices), dtype=int)
+    grid = bitarray(slices * slices * slices)
+    grid.setall(0)  # Initialize all bits to 0
     x_count = 0
     y_count = 0
     z_count = 0
+    num_of_ones = 0
 
-    for i in tqdm(range(len(grid))):
+    for i in range(len(grid)):
         x_pos = min_bound[0] + step_x * x_count
         y_pos = min_bound[1] + step_y * y_count
         z_pos = min_bound[2] + step_z * z_count
@@ -50,19 +53,20 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
 
         if k > 0:
             grid[i] = 1
+            num_of_ones = num_of_ones + 1
         else:
             grid[i] = 0
 
     # Compresses as a bitarray and save
-    ba = bitarray(grid.tolist())
-    with open('data/bitarray_2d.bin', 'wb') as f:
-        ba.tofile(f)
+    # ba = bitarray(grid.tolist())
+    # with open('data/bitarray_2d.bin', 'wb') as f:
+    #     ba.tofile(f)
 
-    with open('data/bitarray_2d.bin', 'rb') as f:
-        bar = bitarray()
-        bar.fromfile(f)
+    # with open('data/bitarray_2d.bin', 'rb') as f:
+    #     bar = bitarray()
+    #     bar.fromfile(f)
 
-    return bar
+    return grid, num_of_ones
 
 def decode_binary(points, slices, size, min_bound):
     # Reshape the binary vector into a 3D grid
@@ -133,8 +137,8 @@ if __name__ == '__main__':
     point_cloud_normalized.points = o3d.utility.Vector3dVector(mesh.vertices)
     o3d.visualization.draw_geometries([point_cloud_normalized, xyz_lines])
 
-    ba = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
-    # with open('data/bitarray_2d.bin', 'rb') as f:
+    ba, _ = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
+    # with open('data/bitarray_3d.bin', 'rb') as f:
     #     ba = bitarray()
     #     ba.fromfile(f)
     numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
@@ -150,5 +154,5 @@ if __name__ == '__main__':
     point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
 
     # Visualize the point cloud
-    o3d.visualization.draw_geometries([point_cloud_reconstructed, xyz_lines, grid_lines])
+    o3d.visualization.draw_geometries([point_cloud_reconstructed, xyz_lines])
 

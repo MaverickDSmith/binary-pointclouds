@@ -61,8 +61,8 @@ def main():
     # Visualize the point cloud
     o3d.visualization.draw_geometries([point_cloud_reconstructed])
 
-    target_size = np.shape(point_cloud_reconstructed.points)[0]
     # Voxel Approach for Comparison
+    target_size = np.shape(point_cloud_reconstructed.points)[0]
     voxel_cloud = point_cloud_normalized.voxel_down_sample(0.001)
     if (np.shape(voxel_cloud.points)[0] > target_size):
         voxel_cloud = density_aware_downsampling(voxel_cloud, target_size=target_size, voxel_size=0.01)
