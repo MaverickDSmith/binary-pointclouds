@@ -1,0 +1,136 @@
+Processing Log
+=================
+
+Processed airplane_0627 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.04 seconds
+ - Binary Encoding (128 Slices): 2.70 seconds
+ - Voxelization (Equal to 128 Slices): 0.00 seconds
+
+Processed airplane_0628 in airplane:
+ - Load and Normalize: 0.41 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Voxelization (Equal to 64 Slices): 0.05 seconds
+ - Binary Encoding (128 Slices): 2.67 seconds
+ - Voxelization (Equal to 128 Slices): 0.05 seconds
+
+Processed airplane_0629 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.33 seconds
+ - Voxelization (Equal to 64 Slices): 0.01 seconds
+ - Binary Encoding (128 Slices): 2.67 seconds
+ - Voxelization (Equal to 128 Slices): 0.01 seconds
+
+Processed airplane_0630 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Voxelization (Equal to 64 Slices): 0.03 seconds
+ - Binary Encoding (128 Slices): 2.55 seconds
+ - Voxelization (Equal to 128 Slices): 0.03 seconds
+
+Processed airplane_0631 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.02 seconds
+ - Binary Encoding (128 Slices): 2.54 seconds
+ - Voxelization (Equal to 128 Slices): 0.00 seconds
+
+Processed airplane_0632 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.33 seconds
+ - Voxelization (Equal to 64 Slices): 0.02 seconds
+ - Binary Encoding (128 Slices): 2.62 seconds
+ - Voxelization (Equal to 128 Slices): 0.02 seconds
+
+Processed airplane_0633 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.09 seconds
+ - Binary Encoding (128 Slices): 2.69 seconds
+ - Voxelization (Equal to 128 Slices): 0.08 seconds
+
+Processed airplane_0634 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.33 seconds
+ - Voxelization (Equal to 64 Slices): 0.03 seconds
+ - Binary Encoding (128 Slices): 2.64 seconds
+ - Voxelization (Equal to 128 Slices): 0.03 seconds
+
+Processed airplane_0635 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.06 seconds
+ - Binary Encoding (128 Slices): 2.65 seconds
+ - Voxelization (Equal to 128 Slices): 0.06 seconds
+
+Processed airplane_0636 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.05 seconds
+ - Binary Encoding (128 Slices): 2.62 seconds
+ - Voxelization (Equal to 128 Slices): 0.05 seconds
+
+Processed airplane_0637 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.33 seconds
+ - Voxelization (Equal to 64 Slices): 0.01 seconds
+ - Binary Encoding (128 Slices): 2.63 seconds
+ - Voxelization (Equal to 128 Slices): 0.00 seconds
+
+Processed airplane_0638 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.32 seconds
+ - Voxelization (Equal to 64 Slices): 0.02 seconds
+ - Binary Encoding (128 Slices): 2.62 seconds
+ - Voxelization (Equal to 128 Slices): 0.02 seconds
+
+Processed airplane_0639 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.06 seconds
+ - Binary Encoding (128 Slices): 2.65 seconds
+ - Voxelization (Equal to 128 Slices): 0.06 seconds
+
+Processed airplane_0640 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.08 seconds
+ - Binary Encoding (128 Slices): 2.61 seconds
+ - Voxelization (Equal to 128 Slices): 0.08 seconds
+
+Processed airplane_0641 in airplane:
+ - Load and Normalize: 0.26 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Voxelization (Equal to 64 Slices): 0.07 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+ - Voxelization (Equal to 128 Slices): 0.07 seconds
+
+Processed airplane_0642 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Voxelization (Equal to 64 Slices): 0.05 seconds
+ - Binary Encoding (128 Slices): 2.63 seconds
+ - Voxelization (Equal to 128 Slices): 0.05 seconds
+
+Processed airplane_0643 in airplane:
+ - Load and Normalize: 0.37 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Voxelization (Equal to 64 Slices): 0.11 seconds
+ - Binary Encoding (128 Slices): 2.57 seconds
+ - Voxelization (Equal to 128 Slices): 0.12 seconds
+
+Processed airplane_0644 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Voxelization (Equal to 64 Slices): 0.07 seconds
+ - Binary Encoding (128 Slices): 2.58 seconds
+ - Voxelization (Equal to 128 Slices): 0.07 seconds
+
+Processed airplane_0645 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.33 seconds
+ - Voxelization (Equal to 64 Slices): 0.03 seconds
+ - Binary Encoding (128 Slices): 2.63 seconds
+ - Voxelization (Equal to 128 Slices): 0.00 seconds
+
