@@ -50,10 +50,18 @@ For this test, we converted the entirety of ModelNet40 into four separate downsa
 
 | Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
 |----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
-| Slice64  |                 |        32KB       |           N/A              |             N/A            |           N/A           |
-| Voxel64  |                 |                   |                            |                            |                         |
-| Slice128 |                 |       256KB       |           N/A              |             N/A            |           N/A           |
-| Voxel128 |                 |                   |                            |                            |                         |
+| Slice64  |    393952KB     |        32KB       |           N/A              |             N/A            |           N/A           |
+| Voxel64  |    272184KB     |        22KB       |          2398              |            9913            |            0            |
+| Slice128 |   3151616KB     |       256KB       |           N/A              |             N/A            |           N/A           |
+| Voxel128 |    395505KB     |        32KB       |           151              |           12160            |            0            |
+
+I rounded the Total Sizes of **Voxel64** and **Voxel128** to the nearest whole number.
+
+In more compact terms, the total sizes for each Dataset is:
+* **Slice64:** 384MB
+* **Voxel64:** 265MB
+* **Slice128:** 3GB
+* **Voxel128:** 386MB
 
 **Slice64** and **Slice128** are the datasets created by the binary technique. We differentiate between the two with their relevant number by how many slices there are on each axis. With the current technique, we are storing the data as one long bitarray with no extra compression. This means that each point is equivalent to 1 bit of space, and each point cloud is storing every single possible point in the point cloud as a 1 or a 0. Therefore, each object has the same storage size in their respective data sets. **Slice64** has 32KB for every point cloud, and **Slice128** has 256KB for every point cloud.
 
@@ -67,6 +75,8 @@ The rough average speed for an operation on the data sets were as follows:
 **Slice128:** ~2.6-2.8 seconds
 **Voxel64:** less than 0.1 seconds
 **Voxel128:** less than 0.1 seconds
+
+The total time to create all four Datasets was 10 Hours and 24 Minutes exactly. This ran on a single NVIDIA RTX 4090 and an Intel i9-14900KF.
 
 
 ## Results
