@@ -3,134 +3,4986 @@ Processing Log
 
 Processed airplane_0627 in airplane:
  - Load and Normalize: 0.02 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.04 seconds
- - Binary Encoding (128 Slices): 2.70 seconds
- - Voxelization (Equal to 128 Slices): 0.00 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
 
 Processed airplane_0628 in airplane:
- - Load and Normalize: 0.41 seconds
- - Binary Encoding (64 Slices): 0.36 seconds
- - Voxelization (Equal to 64 Slices): 0.05 seconds
- - Binary Encoding (128 Slices): 2.67 seconds
- - Voxelization (Equal to 128 Slices): 0.05 seconds
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
 
 Processed airplane_0629 in airplane:
  - Load and Normalize: 0.02 seconds
- - Binary Encoding (64 Slices): 0.33 seconds
- - Voxelization (Equal to 64 Slices): 0.01 seconds
- - Binary Encoding (128 Slices): 2.67 seconds
- - Voxelization (Equal to 128 Slices): 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
 
 Processed airplane_0630 in airplane:
- - Load and Normalize: 0.05 seconds
- - Binary Encoding (64 Slices): 0.35 seconds
- - Voxelization (Equal to 64 Slices): 0.03 seconds
- - Binary Encoding (128 Slices): 2.55 seconds
- - Voxelization (Equal to 128 Slices): 0.03 seconds
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
 
 Processed airplane_0631 in airplane:
  - Load and Normalize: 0.03 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.02 seconds
- - Binary Encoding (128 Slices): 2.54 seconds
- - Voxelization (Equal to 128 Slices): 0.00 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
 
 Processed airplane_0632 in airplane:
  - Load and Normalize: 0.03 seconds
- - Binary Encoding (64 Slices): 0.33 seconds
- - Voxelization (Equal to 64 Slices): 0.02 seconds
- - Binary Encoding (128 Slices): 2.62 seconds
- - Voxelization (Equal to 128 Slices): 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
 
 Processed airplane_0633 in airplane:
- - Load and Normalize: 0.14 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.09 seconds
- - Binary Encoding (128 Slices): 2.69 seconds
- - Voxelization (Equal to 128 Slices): 0.08 seconds
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
 
 Processed airplane_0634 in airplane:
- - Load and Normalize: 0.08 seconds
- - Binary Encoding (64 Slices): 0.33 seconds
- - Voxelization (Equal to 64 Slices): 0.03 seconds
- - Binary Encoding (128 Slices): 2.64 seconds
- - Voxelization (Equal to 128 Slices): 0.03 seconds
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
 
 Processed airplane_0635 in airplane:
- - Load and Normalize: 0.07 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.06 seconds
- - Binary Encoding (128 Slices): 2.65 seconds
- - Voxelization (Equal to 128 Slices): 0.06 seconds
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
 
 Processed airplane_0636 in airplane:
- - Load and Normalize: 0.08 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.05 seconds
- - Binary Encoding (128 Slices): 2.62 seconds
- - Voxelization (Equal to 128 Slices): 0.05 seconds
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
 
 Processed airplane_0637 in airplane:
- - Load and Normalize: 0.01 seconds
- - Binary Encoding (64 Slices): 0.33 seconds
- - Voxelization (Equal to 64 Slices): 0.01 seconds
- - Binary Encoding (128 Slices): 2.63 seconds
- - Voxelization (Equal to 128 Slices): 0.00 seconds
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
 
 Processed airplane_0638 in airplane:
- - Load and Normalize: 0.03 seconds
- - Binary Encoding (64 Slices): 0.32 seconds
- - Voxelization (Equal to 64 Slices): 0.02 seconds
- - Binary Encoding (128 Slices): 2.62 seconds
- - Voxelization (Equal to 128 Slices): 0.02 seconds
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
 
 Processed airplane_0639 in airplane:
- - Load and Normalize: 0.05 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.06 seconds
- - Binary Encoding (128 Slices): 2.65 seconds
- - Voxelization (Equal to 128 Slices): 0.06 seconds
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
 
 Processed airplane_0640 in airplane:
- - Load and Normalize: 0.13 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.08 seconds
- - Binary Encoding (128 Slices): 2.61 seconds
- - Voxelization (Equal to 128 Slices): 0.08 seconds
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
 
 Processed airplane_0641 in airplane:
- - Load and Normalize: 0.26 seconds
- - Binary Encoding (64 Slices): 0.38 seconds
- - Voxelization (Equal to 64 Slices): 0.07 seconds
- - Binary Encoding (128 Slices): 2.79 seconds
- - Voxelization (Equal to 128 Slices): 0.07 seconds
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
 
 Processed airplane_0642 in airplane:
- - Load and Normalize: 0.09 seconds
- - Binary Encoding (64 Slices): 0.36 seconds
- - Voxelization (Equal to 64 Slices): 0.05 seconds
- - Binary Encoding (128 Slices): 2.63 seconds
- - Voxelization (Equal to 128 Slices): 0.05 seconds
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
 
 Processed airplane_0643 in airplane:
- - Load and Normalize: 0.37 seconds
- - Binary Encoding (64 Slices): 0.35 seconds
- - Voxelization (Equal to 64 Slices): 0.11 seconds
- - Binary Encoding (128 Slices): 2.57 seconds
- - Voxelization (Equal to 128 Slices): 0.12 seconds
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
 
 Processed airplane_0644 in airplane:
  - Load and Normalize: 0.06 seconds
- - Binary Encoding (64 Slices): 0.34 seconds
- - Voxelization (Equal to 64 Slices): 0.07 seconds
- - Binary Encoding (128 Slices): 2.58 seconds
- - Voxelization (Equal to 128 Slices): 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
 
 Processed airplane_0645 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0646 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0647 in airplane:
+ - Load and Normalize: 0.26 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0648 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0649 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0650 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0651 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0652 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0653 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0654 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0655 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0656 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0657 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0658 in airplane:
  - Load and Normalize: 0.03 seconds
- - Binary Encoding (64 Slices): 0.33 seconds
- - Voxelization (Equal to 64 Slices): 0.03 seconds
- - Binary Encoding (128 Slices): 2.63 seconds
- - Voxelization (Equal to 128 Slices): 0.00 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0659 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0660 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0661 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0662 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0663 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0664 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0665 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0666 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0667 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0668 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0669 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0670 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0671 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0672 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0673 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0674 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0675 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0676 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0677 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0678 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0679 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0680 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0681 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0682 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0683 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0684 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0685 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0686 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0687 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0688 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 3.08 seconds
+
+Processed airplane_0689 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0690 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0691 in airplane:
+ - Load and Normalize: 0.62 seconds
+ - Binary Encoding (64 Slices): 0.49 seconds
+ - Binary Encoding (128 Slices): 3.00 seconds
+
+Processed airplane_0692 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0693 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0694 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0695 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0696 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0697 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0698 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0699 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0700 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0701 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0702 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0703 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0704 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0705 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0706 in airplane:
+ - Load and Normalize: 0.26 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0707 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0708 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0709 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0710 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0711 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0712 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0713 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0714 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0715 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0716 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0717 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0718 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0719 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0720 in airplane:
+ - Load and Normalize: 0.22 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0721 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0722 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0723 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0724 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0725 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0726 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0001 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0002 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0003 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0004 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0005 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0006 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0007 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0008 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0009 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0010 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0011 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0012 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0013 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0014 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0015 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0016 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0017 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0018 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0019 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0020 in airplane:
+ - Load and Normalize: 0.24 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0021 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0022 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0023 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0024 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0025 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0026 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0027 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0028 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0029 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0030 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0031 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0032 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0033 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0034 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0035 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0036 in airplane:
+ - Load and Normalize: 0.53 seconds
+ - Binary Encoding (64 Slices): 0.50 seconds
+ - Binary Encoding (128 Slices): 3.04 seconds
+
+Processed airplane_0037 in airplane:
+ - Load and Normalize: 0.24 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0038 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0039 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0040 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0041 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0042 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0043 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0044 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0045 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0046 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0047 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0048 in airplane:
+ - Load and Normalize: 0.42 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0049 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0050 in airplane:
+ - Load and Normalize: 3.04 seconds
+ - Binary Encoding (64 Slices): 1.19 seconds
+ - Binary Encoding (128 Slices): 3.71 seconds
+
+Processed airplane_0051 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 3.00 seconds
+
+Processed airplane_0052 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0053 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0054 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0055 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0056 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 3.06 seconds
+
+Processed airplane_0057 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0058 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0059 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0060 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0061 in airplane:
+ - Load and Normalize: 1.45 seconds
+ - Binary Encoding (64 Slices): 0.81 seconds
+ - Binary Encoding (128 Slices): 3.24 seconds
+
+Processed airplane_0062 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0063 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0064 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0065 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0066 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0067 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0068 in airplane:
+ - Load and Normalize: 0.39 seconds
+ - Binary Encoding (64 Slices): 0.50 seconds
+ - Binary Encoding (128 Slices): 3.05 seconds
+
+Processed airplane_0069 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0070 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0071 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0072 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0073 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0074 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0075 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0076 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0077 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0078 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0079 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0080 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0081 in airplane:
+ - Load and Normalize: 0.18 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0082 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0083 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0084 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0085 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0086 in airplane:
+ - Load and Normalize: 0.23 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0087 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0088 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0089 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0090 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0091 in airplane:
+ - Load and Normalize: 0.19 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0092 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0093 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0094 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0095 in airplane:
+ - Load and Normalize: 0.19 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0096 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0097 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0098 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0099 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0100 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0101 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0102 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0103 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0104 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0105 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0106 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0107 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0108 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0109 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0110 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0111 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0112 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0113 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0114 in airplane:
+ - Load and Normalize: 0.28 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0115 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0116 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0117 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0118 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0119 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0120 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0121 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0122 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0123 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0124 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0125 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0126 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0127 in airplane:
+ - Load and Normalize: 0.51 seconds
+ - Binary Encoding (64 Slices): 0.47 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0128 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0129 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0130 in airplane:
+ - Load and Normalize: 1.76 seconds
+ - Binary Encoding (64 Slices): 0.87 seconds
+ - Binary Encoding (128 Slices): 3.44 seconds
+
+Processed airplane_0131 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 3.01 seconds
+
+Processed airplane_0132 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0133 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0134 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0135 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0136 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0137 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0138 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0139 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0140 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0141 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0142 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0143 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0144 in airplane:
+ - Load and Normalize: 0.61 seconds
+ - Binary Encoding (64 Slices): 0.56 seconds
+ - Binary Encoding (128 Slices): 3.09 seconds
+
+Processed airplane_0145 in airplane:
+ - Load and Normalize: 0.19 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0146 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0147 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0148 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0149 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0150 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0151 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0152 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0153 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0154 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 3.01 seconds
+
+Processed airplane_0155 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0156 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0157 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0158 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 3.04 seconds
+
+Processed airplane_0159 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0160 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0161 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0162 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0163 in airplane:
+ - Load and Normalize: 0.24 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0164 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0165 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0166 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0167 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0168 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0169 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0170 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0171 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0172 in airplane:
+ - Load and Normalize: 0.62 seconds
+ - Binary Encoding (64 Slices): 0.55 seconds
+ - Binary Encoding (128 Slices): 3.04 seconds
+
+Processed airplane_0173 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0174 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0175 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0176 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0177 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0178 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0179 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0180 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0181 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0182 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0183 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0184 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0185 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0186 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0187 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0188 in airplane:
+ - Load and Normalize: 0.24 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0189 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0190 in airplane:
+ - Load and Normalize: 0.36 seconds
+ - Binary Encoding (64 Slices): 0.43 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0191 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0192 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0193 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0194 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0195 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0196 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0197 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0198 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0199 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0200 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0201 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0202 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0203 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0204 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0205 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0206 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0207 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0208 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0209 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0210 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0211 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0212 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0213 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0214 in airplane:
+ - Load and Normalize: 0.37 seconds
+ - Binary Encoding (64 Slices): 0.47 seconds
+ - Binary Encoding (128 Slices): 3.06 seconds
+
+Processed airplane_0215 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0216 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0217 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0218 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0219 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0220 in airplane:
+ - Load and Normalize: 0.25 seconds
+ - Binary Encoding (64 Slices): 0.43 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0221 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0222 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0223 in airplane:
+ - Load and Normalize: 0.77 seconds
+ - Binary Encoding (64 Slices): 0.54 seconds
+ - Binary Encoding (128 Slices): 3.04 seconds
+
+Processed airplane_0224 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0225 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0226 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0227 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0228 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0229 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0230 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0231 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0232 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0233 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0234 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0235 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0236 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0237 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0238 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0239 in airplane:
+ - Load and Normalize: 0.18 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0240 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0241 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0242 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0243 in airplane:
+ - Load and Normalize: 0.20 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0244 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0245 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0246 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0247 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0248 in airplane:
+ - Load and Normalize: 0.56 seconds
+ - Binary Encoding (64 Slices): 0.49 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0249 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0250 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0251 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0252 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0253 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0254 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0255 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0256 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0257 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0258 in airplane:
+ - Load and Normalize: 0.39 seconds
+ - Binary Encoding (64 Slices): 0.44 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0259 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0260 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0261 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 3.01 seconds
+
+Processed airplane_0262 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0263 in airplane:
+ - Load and Normalize: 0.20 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0264 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0265 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0266 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0267 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0268 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0269 in airplane:
+ - Load and Normalize: 0.39 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0270 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0271 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0272 in airplane:
+ - Load and Normalize: 0.18 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0273 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0274 in airplane:
+ - Load and Normalize: 0.26 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0275 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0276 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0277 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0278 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0279 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0280 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0281 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0282 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0283 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0284 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0285 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0286 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0287 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0288 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0289 in airplane:
+ - Load and Normalize: 0.33 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0290 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0291 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0292 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0293 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0294 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0295 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0296 in airplane:
+ - Load and Normalize: 0.34 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0297 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0298 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0299 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0300 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0301 in airplane:
+ - Load and Normalize: 0.22 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0302 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0303 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0304 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0305 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0306 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0307 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0308 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0309 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0310 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0311 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0312 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0313 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0314 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0315 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0316 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0317 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 3.01 seconds
+
+Processed airplane_0318 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0319 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0320 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 3.00 seconds
+
+Processed airplane_0321 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0322 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0323 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0324 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0325 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0326 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0327 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0328 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0329 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0330 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0331 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0332 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 3.06 seconds
+
+Processed airplane_0333 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0334 in airplane:
+ - Load and Normalize: 0.28 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0335 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0336 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0337 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0338 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0339 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0340 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0341 in airplane:
+ - Load and Normalize: 0.27 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0342 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0343 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0344 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0345 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0346 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed airplane_0347 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0348 in airplane:
+ - Load and Normalize: 0.49 seconds
+ - Binary Encoding (64 Slices): 0.47 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0349 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0350 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0351 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0352 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0353 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0354 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0355 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0356 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 3.07 seconds
+
+Processed airplane_0357 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.43 seconds
+ - Binary Encoding (128 Slices): 3.08 seconds
+
+Processed airplane_0358 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0359 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0360 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0361 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0362 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0363 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0364 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0365 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0366 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0367 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0368 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0369 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 3.06 seconds
+
+Processed airplane_0370 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0371 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0372 in airplane:
+ - Load and Normalize: 0.39 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0373 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0374 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0375 in airplane:
+ - Load and Normalize: 0.38 seconds
+ - Binary Encoding (64 Slices): 0.44 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0376 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0377 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0378 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0379 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0380 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0381 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0382 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0383 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0384 in airplane:
+ - Load and Normalize: 0.47 seconds
+ - Binary Encoding (64 Slices): 0.48 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0385 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0386 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0387 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0388 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0389 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0390 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0391 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0392 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0393 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0394 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0395 in airplane:
+ - Load and Normalize: 1.04 seconds
+ - Binary Encoding (64 Slices): 0.64 seconds
+ - Binary Encoding (128 Slices): 3.13 seconds
+
+Processed airplane_0396 in airplane:
+ - Load and Normalize: 0.67 seconds
+ - Binary Encoding (64 Slices): 0.48 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0397 in airplane:
+ - Load and Normalize: 0.18 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0398 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0399 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0400 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0401 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0402 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0403 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0404 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0405 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0406 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0407 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0408 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0409 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0410 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0411 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0412 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0413 in airplane:
+ - Load and Normalize: 0.45 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0414 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0415 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0416 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0417 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0418 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0419 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0420 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed airplane_0421 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0422 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0423 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0424 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0425 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0426 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0427 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0428 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0429 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0430 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0431 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0432 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0433 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0434 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0435 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0436 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0437 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0438 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0439 in airplane:
+ - Load and Normalize: 0.49 seconds
+ - Binary Encoding (64 Slices): 0.50 seconds
+ - Binary Encoding (128 Slices): 3.00 seconds
+
+Processed airplane_0440 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0441 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0442 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0443 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0444 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0445 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0446 in airplane:
+ - Load and Normalize: 0.36 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0447 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0448 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0449 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0450 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0451 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0452 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0453 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0454 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0455 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0456 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0457 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0458 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0459 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0460 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0461 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0462 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0463 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0464 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0465 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0466 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0467 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0468 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0469 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0470 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0471 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0472 in airplane:
+ - Load and Normalize: 0.19 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0473 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0474 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0475 in airplane:
+ - Load and Normalize: 0.72 seconds
+ - Binary Encoding (64 Slices): 0.55 seconds
+ - Binary Encoding (128 Slices): 3.07 seconds
+
+Processed airplane_0476 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0477 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0478 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0479 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 3.02 seconds
+
+Processed airplane_0480 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0481 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0482 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0483 in airplane:
+ - Load and Normalize: 0.29 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0484 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0485 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0486 in airplane:
+ - Load and Normalize: 0.35 seconds
+ - Binary Encoding (64 Slices): 0.43 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0487 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0488 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0489 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0490 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0491 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0492 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0493 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0494 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0495 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0496 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0497 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0498 in airplane:
+ - Load and Normalize: 0.14 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0499 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0500 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0501 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0502 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed airplane_0503 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0504 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0505 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0506 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0507 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0508 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0509 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0510 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0511 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0512 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0513 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0514 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0515 in airplane:
+ - Load and Normalize: 0.53 seconds
+ - Binary Encoding (64 Slices): 0.45 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0516 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0517 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0518 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0519 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0520 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed airplane_0521 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0522 in airplane:
+ - Load and Normalize: 0.21 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0523 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0524 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0525 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0526 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0527 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0528 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0529 in airplane:
+ - Load and Normalize: 0.24 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0530 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0531 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0532 in airplane:
+ - Load and Normalize: 0.18 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0533 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0534 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0535 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0536 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0537 in airplane:
+ - Load and Normalize: 0.22 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0538 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0539 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed airplane_0540 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0541 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0542 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0543 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0544 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed airplane_0545 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0546 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0547 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0548 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0549 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0550 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0551 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0552 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0553 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0554 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0555 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0556 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0557 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed airplane_0558 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0559 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed airplane_0560 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed airplane_0561 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0562 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed airplane_0563 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0564 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0565 in airplane:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0566 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0567 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed airplane_0568 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0569 in airplane:
+ - Load and Normalize: 0.64 seconds
+ - Binary Encoding (64 Slices): 0.61 seconds
+ - Binary Encoding (128 Slices): 3.20 seconds
+
+Processed airplane_0570 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.99 seconds
+
+Processed airplane_0571 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0572 in airplane:
+ - Load and Normalize: 0.28 seconds
+ - Binary Encoding (64 Slices): 0.44 seconds
+ - Binary Encoding (128 Slices): 3.07 seconds
+
+Processed airplane_0573 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0574 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0575 in airplane:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0576 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0577 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0578 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.44 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0579 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0580 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed airplane_0581 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0582 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0583 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0584 in airplane:
+ - Load and Normalize: 0.13 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0585 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0586 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0587 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0588 in airplane:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.41 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0589 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0590 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0591 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0592 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0593 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0594 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0595 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed airplane_0596 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0597 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed airplane_0598 in airplane:
+ - Load and Normalize: 1.64 seconds
+ - Binary Encoding (64 Slices): 0.83 seconds
+ - Binary Encoding (128 Slices): 3.37 seconds
+
+Processed airplane_0599 in airplane:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0600 in airplane:
+ - Load and Normalize: 0.17 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0601 in airplane:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0602 in airplane:
+ - Load and Normalize: 0.16 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed airplane_0603 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0604 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0605 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0606 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0607 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0608 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed airplane_0609 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0610 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0611 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed airplane_0612 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0613 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed airplane_0614 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed airplane_0615 in airplane:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed airplane_0616 in airplane:
+ - Load and Normalize: 0.11 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed airplane_0617 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed airplane_0618 in airplane:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed airplane_0619 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed airplane_0620 in airplane:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed airplane_0621 in airplane:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed airplane_0622 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed airplane_0623 in airplane:
+ - Load and Normalize: 0.26 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed airplane_0624 in airplane:
+ - Load and Normalize: 0.10 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed airplane_0625 in airplane:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed airplane_0626 in airplane:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0107 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0108 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0109 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0110 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0111 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0112 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0113 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0114 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0115 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0116 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0117 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0118 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0119 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0120 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0121 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0122 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bathtub_0123 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0124 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0125 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0126 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bathtub_0127 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0128 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0129 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0130 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0131 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0132 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0133 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0134 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0135 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0136 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed bathtub_0137 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0138 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0139 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0140 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0141 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0142 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0143 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0144 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0145 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0146 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0147 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0148 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0149 in bathtub:
+ - Load and Normalize: 0.15 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0150 in bathtub:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.40 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0151 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0152 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0153 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0154 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0155 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0156 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bathtub_0001 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bathtub_0002 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0003 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0004 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0005 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0006 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0007 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0008 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.96 seconds
+
+Processed bathtub_0009 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bathtub_0010 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0011 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0012 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0013 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bathtub_0014 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0015 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0016 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0017 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed bathtub_0018 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bathtub_0019 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bathtub_0020 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0021 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bathtub_0022 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0023 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0024 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0025 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0026 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0027 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0028 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0029 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0030 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0031 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0032 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0033 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bathtub_0034 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0035 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0036 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bathtub_0037 in bathtub:
+ - Load and Normalize: 0.29 seconds
+ - Binary Encoding (64 Slices): 0.43 seconds
+ - Binary Encoding (128 Slices): 3.00 seconds
+
+Processed bathtub_0038 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0039 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0040 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0041 in bathtub:
+ - Load and Normalize: 0.12 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0042 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0043 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0044 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0045 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0046 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0047 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0048 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0049 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0050 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0051 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0052 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0053 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0054 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0055 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0056 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0057 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0058 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bathtub_0059 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0060 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0061 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0062 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0063 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0064 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0065 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0066 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0067 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0068 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed bathtub_0069 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed bathtub_0070 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bathtub_0071 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bathtub_0072 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0073 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bathtub_0074 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0075 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bathtub_0076 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0077 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bathtub_0078 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0079 in bathtub:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0080 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0081 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0082 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0083 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
+
+Processed bathtub_0084 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0085 in bathtub:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bathtub_0086 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bathtub_0087 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0088 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bathtub_0089 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0090 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0091 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0092 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0093 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bathtub_0094 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bathtub_0095 in bathtub:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0096 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bathtub_0097 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0098 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bathtub_0099 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bathtub_0100 in bathtub:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bathtub_0101 in bathtub:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed bathtub_0102 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bathtub_0103 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bathtub_0104 in bathtub:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bathtub_0105 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bathtub_0106 in bathtub:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.92 seconds
+
+Processed bed_0516 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bed_0517 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.39 seconds
+ - Binary Encoding (128 Slices): 3.08 seconds
+
+Processed bed_0518 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bed_0519 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed bed_0520 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bed_0521 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bed_0522 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.90 seconds
+
+Processed bed_0523 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bed_0524 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.42 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed bed_0525 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bed_0526 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.97 seconds
+
+Processed bed_0527 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bed_0528 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.91 seconds
+
+Processed bed_0529 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.98 seconds
+
+Processed bed_0530 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bed_0531 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0532 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bed_0533 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0534 in bed:
+ - Load and Normalize: 0.07 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.87 seconds
+
+Processed bed_0535 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0536 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bed_0537 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bed_0538 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0539 in bed:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0540 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0541 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.85 seconds
+
+Processed bed_0542 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0543 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bed_0544 in bed:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0545 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0546 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0547 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bed_0548 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0549 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bed_0550 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed bed_0551 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.74 seconds
+
+Processed bed_0552 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0553 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0554 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bed_0555 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bed_0556 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0557 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bed_0558 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0559 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0560 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0561 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0562 in bed:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0563 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0564 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0565 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0566 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0567 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0568 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0569 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0570 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0571 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0572 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0573 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0574 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0575 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bed_0576 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0577 in bed:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0578 in bed:
+ - Load and Normalize: 0.09 seconds
+ - Binary Encoding (64 Slices): 0.38 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bed_0579 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0580 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bed_0581 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0582 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bed_0583 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0584 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0585 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0586 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0587 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.70 seconds
+
+Processed bed_0588 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0589 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0590 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0591 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0592 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0593 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0594 in bed:
+ - Load and Normalize: 0.06 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0595 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0596 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0597 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.88 seconds
+
+Processed bed_0598 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bed_0599 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.72 seconds
+
+Processed bed_0600 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0601 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0602 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0603 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0604 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0605 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0606 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0607 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0608 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.79 seconds
+
+Processed bed_0609 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0610 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0611 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0612 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.83 seconds
+
+Processed bed_0613 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0614 in bed:
+ - Load and Normalize: 0.08 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.84 seconds
+
+Processed bed_0615 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.77 seconds
+
+Processed bed_0001 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.76 seconds
+
+Processed bed_0002 in bed:
+ - Load and Normalize: 0.05 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0003 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.34 seconds
+ - Binary Encoding (128 Slices): 2.73 seconds
+
+Processed bed_0004 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.81 seconds
+
+Processed bed_0005 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0006 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.37 seconds
+ - Binary Encoding (128 Slices): 2.86 seconds
+
+Processed bed_0007 in bed:
+ - Load and Normalize: 0.04 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.80 seconds
+
+Processed bed_0008 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0009 in bed:
+ - Load and Normalize: 0.01 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.82 seconds
+
+Processed bed_0010 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.78 seconds
+
+Processed bed_0011 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.75 seconds
+
+Processed bed_0012 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.94 seconds
+
+Processed bed_0013 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.93 seconds
+
+Processed bed_0014 in bed:
+ - Load and Normalize: 0.03 seconds
+ - Binary Encoding (64 Slices): 0.35 seconds
+ - Binary Encoding (128 Slices): 2.95 seconds
+
+Processed bed_0015 in bed:
+ - Load and Normalize: 0.02 seconds
+ - Binary Encoding (64 Slices): 0.36 seconds
+ - Binary Encoding (128 Slices): 2.89 seconds
 
