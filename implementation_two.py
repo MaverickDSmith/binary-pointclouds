@@ -116,8 +116,8 @@ def decode_binary(points, slices, size, min_bound):
 
 if __name__ == '__main__':
     ## Variables and Initial Object loading
-    slices = 128
-    mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
+    slices = 64
+    mesh = o3d.io.read_triangle_mesh("data/bowl_0001.off")
 
     points_normalized = normalize(np.asarray(mesh.vertices))
     min_bound = np.min(points_normalized, axis=0)
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     o3d.visualization.draw_geometries([point_cloud_normalized, xyz_lines])
 
     ba, _ = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
-    # with open('data/bitarray_3d.bin', 'rb') as f:
+    # with open('data/bowl_0001_slice64.bin', 'rb') as f:
     #     ba = bitarray()
     #     ba.fromfile(f)
     numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
