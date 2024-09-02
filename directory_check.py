@@ -1,7 +1,8 @@
 import os
 from tqdm import tqdm
 
-def get_directory_stats(directory_path, size_threshold_kb):
+
+def get_directory_stats(directory_path, slice64_path=None, slice128_path=None):
     total_size_bytes = 0
     file_count = 0
     larger_than_threshold = 0
@@ -22,13 +23,36 @@ def get_directory_stats(directory_path, size_threshold_kb):
                     # Convert file size to kilobytes
                     file_size_kb = file_size_bytes / 1024
 
-                    # Count files based on the size threshold
-                    if file_size_kb > size_threshold_kb:
-                        larger_than_threshold += 1
-                    elif file_size_kb < size_threshold_kb:
-                        smaller_than_threshold += 1
+                    # Determine the subdirectory (object label)
+                    subdirectory = os.path.basename(root)
+
+                    # Determine the corresponding slice file path
+                    if 'voxel64' in directory_path:
+                        corresponding_slice_file = file.replace('_voxelized64.pcd', '_slice64.bin')
+                        corresponding_slice_path = os.path.join(slice64_path, subdirectory, corresponding_slice_file)
+                    elif 'voxel128' in directory_path:
+                        corresponding_slice_file = file.replace('_voxelized128.pcd', '_slice128.bin')
+                        corresponding_slice_path = os.path.join(slice128_path, subdirectory, corresponding_slice_file)
                     else:
-                        equal_to_threshold += 1
+                        corresponding_slice_path = None
+
+                    # Compare the file sizes if it's a voxel directory
+                    if 'voxel64' in directory_path or 'voxel128' in directory_path:
+                        if corresponding_slice_path and os.path.exists(corresponding_slice_path):
+                            slice_file_size_bytes = os.path.getsize(corresponding_slice_path)
+                            slice_file_size_kb = slice_file_size_bytes / 1024
+
+                            if file_size_kb > slice_file_size_kb:
+                                larger_than_threshold += 1
+                            elif file_size_kb < slice_file_size_kb:
+                                smaller_than_threshold += 1
+                            else:
+                                equal_to_threshold += 1
+                        else:
+                            # Could not find the file
+                            print(f"Error: could not find corresponding file for {file_path}. The slice path was: {corresponding_slice_path}.")
+                            
+
                 except FileNotFoundError:
                     print(f"File not found: {file_path}")
                 except PermissionError:
@@ -37,7 +61,6 @@ def get_directory_stats(directory_path, size_threshold_kb):
                     print(f"Error processing file {file_path}: {e}")
                 pbar.update(1)
     print("Done with a dataset\n")
-
 
     # Calculate the average file size in kilobytes
     average_size_kb = (total_size_bytes / 1024) / file_count if file_count > 0 else 0
@@ -51,18 +74,18 @@ def get_directory_stats(directory_path, size_threshold_kb):
         'equal_to_threshold': equal_to_threshold
     }
 
-
-slice64_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/slice64"
-slice128_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/slice128"
+slice64_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice64"
+slice128_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice128"
 voxel64_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/voxel64"
 voxel128_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/voxel128"
-final_log_path = "final_metrics.txt"
+final_log_path = "final_metrics_two.txt"
 
-# get sizes
-slice64_stats = get_directory_stats(slice64_output_dir, 32)
-slice128_stats = get_directory_stats(slice128_output_dir, 256)
-voxel64_stats = get_directory_stats(voxel64_output_dir, 32)
-voxel128_stats = get_directory_stats(voxel128_output_dir, 256)
+# Get sizes
+slice64_stats = get_directory_stats(slice64_output_dir)
+slice128_stats = get_directory_stats(slice128_output_dir)
+voxel64_stats = get_directory_stats(voxel64_output_dir, slice64_output_dir, slice128_output_dir)
+voxel128_stats = get_directory_stats(voxel128_output_dir, slice64_output_dir, slice128_output_dir)
+
 
 with open(final_log_path, 'w') as log_file:
     # log_file.write("Time Stats\n")
