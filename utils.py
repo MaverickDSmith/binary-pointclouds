@@ -150,4 +150,5 @@ def normalize(points):
     size = max_bound - min_bound
     pointcloud = (points - center) / scale
 
+
     return pointcloud
