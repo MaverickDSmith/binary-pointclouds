@@ -32,6 +32,7 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
 
     # Determine threshold value
     # This should be configurable
+    # Maybe further refine this?
     x_thresh = step_x / 2
     y_thresh = step_y / 2
     z_thresh = step_z / 2
@@ -67,7 +68,6 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
             num_of_ones = num_of_ones + 1
         else:
             grid[i] = 0
-    print(z_count)
 
     ## Export the min/max bounds as a bit sequence
     min_bound_binary = np.array([float_to_binary32(min_bound[0]), float_to_binary32(min_bound[1]), float_to_binary32(min_bound[2])])
@@ -175,8 +175,7 @@ def decode_binary(points, slices, size, min_bound):
     x_count = 0
     y_count = 0
     z_count = 0
-    counter = 0
-    print("Num of Points: ", np.shape(points))
+
     for i in range(len(grid.flatten())):
         # If 1, point is there. Place point based on index.
         if points[i] == 1:
@@ -194,17 +193,6 @@ def decode_binary(points, slices, size, min_bound):
                 y_count = 0
                 z_count = z_count + 1
 
-
-        # Error checking
-        if x_count >= slices + 1:
-            print(f"Error in counting logic at count {i} for x_count")
-        if y_count >= slices + 1:
-            print(f"Error in counting logic at count {i} for y_count")
-        if z_count >= slices + 1:
-            print(f"Error in counting logic at count {i} for z_count")
-        counter = counter + 1
-    print(z_count)
-    print(counter)
 
     # Convert to NumPy array
     grid_points = np.array(grid_points)
