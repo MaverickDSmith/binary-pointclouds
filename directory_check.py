@@ -28,10 +28,10 @@ def get_directory_stats(directory_path, slice64_path=None, slice128_path=None):
 
                     # Determine the corresponding slice file path
                     if 'voxel64' in directory_path:
-                        corresponding_slice_file = file.replace('_voxelized64.pcd', '_slice64.bin')
+                        corresponding_slice_file = file.replace('_voxel64.pcd', '_slice64.bin')
                         corresponding_slice_path = os.path.join(slice64_path, subdirectory, corresponding_slice_file)
                     elif 'voxel128' in directory_path:
-                        corresponding_slice_file = file.replace('_voxelized128.pcd', '_slice128.bin')
+                        corresponding_slice_file = file.replace('_voxel128.pcd', '_slice128.bin')
                         corresponding_slice_path = os.path.join(slice128_path, subdirectory, corresponding_slice_file)
                     else:
                         corresponding_slice_path = None
@@ -74,10 +74,10 @@ def get_directory_stats(directory_path, slice64_path=None, slice128_path=None):
         'equal_to_threshold': equal_to_threshold
     }
 
-slice64_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice64"
-slice128_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice128"
-voxel64_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/voxel64"
-voxel128_output_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test/voxel128"
+slice64_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice64"
+slice128_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice128"
+voxel64_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel64"
+voxel128_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel128"
 final_log_path = "final_metrics_two.txt"
 
 # Get sizes

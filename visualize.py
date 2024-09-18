@@ -5,8 +5,8 @@ from utils import normalize, create_xyz_line
 
 from implementation_three import rle_decode_variable_length, decode_binary
 
-og_path = '/home/hi5lab/github/github_ander/Fall 2024/data/ModelNet40/airplane/train/airplane_0130.off'
-ba_path = '/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice64/airplane/airplane_0130_slice64.bin'
+og_path = '/home/hi5lab/pointcloud_data/ModelNet40/dresser/train/dresser_0054.off'
+ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/dresser_0054_slice64.bin'
 
 
 slices = 64
@@ -21,19 +21,25 @@ mesh.vertices = o3d.utility.Vector3dVector(points_normalized)
 print(f"Max Bound: {max_bound}")
 print(f"Min Bound: {min_bound}")
 print(f"Size: {size}")
-
-xyz_lines = create_xyz_line(min_bound, max_bound, slices)
+point_cloud_input = o3d.geometry.PointCloud()
+point_cloud_input.points = mesh.vertices
+o3d.visualization.draw_geometries([point_cloud_input])
 
 
 ba = bitarray()
 with open(ba_path, 'rb') as f:
         ba.fromfile(f)
 
-ba = rle_decode_variable_length(ba)
+ba, min_bound, max_bound = rle_decode_variable_length(ba)
 numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
+size = max_bound - min_bound
 
 # Decode it
-grid_points = decode_binary(numpy_array_loaded, slices, size, min_bound)
+grid_points = decode_binary(numpy_array_loaded, 64, size, min_bound)
+xyz_lines = create_xyz_line(min_bound, max_bound, 64)
+
+
+# xyz_lines = create_xyz_line(min_bound, max_bound, slices)
 
 print(grid_points)
 print(np.shape(grid_points))

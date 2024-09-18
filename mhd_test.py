@@ -49,9 +49,11 @@ def process_off_file(off_file_path, slice64_base_path, slice128_base_path, voxel
             slice128_data = decode_binary(numpy_array_loaded, 128, size, min_bound)
     if os.path.exists(voxel64_path):
         voxel64_data = o3d.io.read_point_cloud(voxel64_path)
+        voxel64_data = np.asarray(voxel64_data.points)
 
     if os.path.exists(voxel128_path):
         voxel128_data = o3d.io.read_point_cloud(voxel128_path)
+        voxel128_data = np.asarray(voxel128_data.points)
 
 
 
@@ -60,10 +62,12 @@ def process_off_file(off_file_path, slice64_base_path, slice128_base_path, voxel
 
 def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir):
     # Initialize timers and log file
-    start_time = time.time()
-    log_file_path = "processing_log.txt"
-    final_log_path = "final_metrics.txt"
-    total_timings = {}
+    log_file_path = "processing_log_mhdtest.txt"
+    final_log_path = "final_metrics_mhdtest.txt"
+    total_mhd_slice64 = {}
+    total_mhd_slice128 = {}
+    total_mhd_voxel64 = {}
+    total_mhd_voxel128 = {}
 
     with open(log_file_path, 'w') as log_file:
         log_file.write("Processing Log\n")
@@ -86,27 +90,59 @@ def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxe
 
             # Process the .off file to generate voxelized and custom data
             slice64_data, slice128_data, voxel64_data, voxel128_data, input_pointcloud  = process_off_file(off_file_path, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir)
+            
+            # Compute MHD values
+            print(f"SLICE 64: {object_name}")
             mhd_slice64 = modified_hausdorff_mean(input_pointcloud, slice64_data)
+            print(f"SLICE 128: {object_name}")
             mhd_slice128 = modified_hausdorff_mean(input_pointcloud, slice128_data)
+            print(f"VOXEL 64: {object_name}")
             mhd_voxel64 = modified_hausdorff_mean(input_pointcloud, voxel64_data)
+            print(f"VOXEL 128: {object_name}")
             mhd_voxel128 = modified_hausdorff_mean(input_pointcloud, voxel128_data)
 
-            print(f"Slice64: {mhd_slice64}")
-            print(f"Slice128: {mhd_slice128}")
-            print(f"Voxel64: {mhd_voxel64}")
-            print(f"Voxel128: {mhd_voxel128}")
+            # Append MHD values to corresponding dictionaries
+            total_mhd_slice64.setdefault(label, []).append(mhd_slice64)
+            total_mhd_slice128.setdefault(label, []).append(mhd_slice128)
+            total_mhd_voxel64.setdefault(label, []).append(mhd_voxel64)
+            total_mhd_voxel128.setdefault(label, []).append(mhd_voxel128)
+
+            # Log MHD values for this object
+            with open(log_file_path, 'a') as log_file:
+                log_file.write(f"{label}: {object_name}\n")
+                log_file.write(f"Slice64: {mhd_slice64}\n")
+                log_file.write(f"Slice128: {mhd_slice128}\n")
+                log_file.write(f"Voxel64: {mhd_voxel64}\n")
+                log_file.write(f"Voxel128: {mhd_voxel128}\n\n")
 
             pbar.update(1)
+
+
+    # Calculate and log final average MHD per category and overall
+    with open(final_log_path, 'w') as final_log:
+        final_log.write("Final MHD Averages\n")
+        final_log.write("=================\n\n")
+        
+        def calculate_and_log_average(total_mhd, name):
+            final_log.write(f"{name} Averages:\n")
+            category_averages = []
+            for label, values in total_mhd.items():
+                category_average = sum(values) / len(values)
+                category_averages.append((label, category_average))
+                final_log.write(f"{label}: {category_average}\n")
             
-    # Calculate total processing time and log it
-    end_time = time.time()
-    total_time = end_time - start_time
+            overall_average = sum([avg for _, avg in category_averages]) / len(category_averages)
+            final_log.write(f"Overall {name} Average: {overall_average}\n\n")
 
-    print("Time ended, computing metrics...\n")
+        # Calculate and log averages for each MHD dictionary
+        calculate_and_log_average(total_mhd_slice64, "Slice64")
+        calculate_and_log_average(total_mhd_slice128, "Slice128")
+        calculate_and_log_average(total_mhd_voxel64, "Voxel64")
+        calculate_and_log_average(total_mhd_voxel128, "Voxel128")
 
-    # sum the values with same keys
-    result = dict(functools.reduce(operator.add,
-            map(collections.Counter, total_timings)))
+    # # sum the values with same keys
+    # result = dict(functools.reduce(operator.add,
+    #         map(collections.Counter, total_timings)))
     
 
     # with open(final_log_path, 'w') as log_file:
@@ -133,10 +169,10 @@ def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxe
 
 if __name__ == "__main__":
     # Define your dataset and output directories here
-    root_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/ModelNet40"
-    slice64_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice64"
-    slice128_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice128"
-    voxel64_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_one/voxel64"
-    voxel128_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_tone/voxel128"
+    root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
+    slice64_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice64"
+    slice128_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice128"
+    voxel64_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel64"
+    voxel128_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel128"
 
     iterate_modelnet40(root_dir, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir)

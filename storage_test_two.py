@@ -229,10 +229,10 @@ def iterate_modelnet40(dataset_dir, slice64_output_dir, slice128_output_dir, vox
 
 if __name__ == "__main__":
     # Define your dataset and output directories here
-    root_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/ModelNet40"
-    slice64_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice64"
-    slice128_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/slice128"
-    voxel64_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/voxel64"
-    voxel128_dir = "/home/hi5lab/github/github_ander/Fall 2024/data/storage_test_two/voxel128"
+    root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
+    slice64_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice64"
+    slice128_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice128"
+    voxel64_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel64"
+    voxel128_dir = "/home/hi5lab/pointcloud_data/storage_test_two/voxel128"
 
     iterate_modelnet40(root_dir, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir)

@@ -1,45 +1,33 @@
 Processing Log
 =================
 
-Processed airplane_0627 in airplane:
- - Load and Normalize: 0.02 seconds
- - Binary Encoding (64 Slices): 0.38 seconds
- - Binary Encoding (128 Slices): 2.97 seconds
- - Voxelization (64 Slices): 0.03 seconds
- - Voxelization (128 Slices): 0.00 seconds
+glass_box: glass_box_0080
+Slice64: 0.004453884609846148
+Slice128: 0.0026116289065139333
+Voxel64: 6.62460863077167e-05
+Voxel128: 6.62460863077167e-05
 
-Processed airplane_0628 in airplane:
- - Load and Normalize: 0.21 seconds
- - Binary Encoding (64 Slices): 0.41 seconds
- - Binary Encoding (128 Slices): 2.96 seconds
- - Voxelization (64 Slices): 0.05 seconds
- - Voxelization (128 Slices): 0.05 seconds
+glass_box: glass_box_0005
+Slice64: 0.0045773820499215665
+Slice128: 0.0025105125717757755
+Voxel64: 1.2483775811198638e-05
+Voxel128: 1.2483775811198638e-05
 
-Processed airplane_0629 in airplane:
- - Load and Normalize: 0.04 seconds
- - Binary Encoding (64 Slices): 0.37 seconds
- - Binary Encoding (128 Slices): 2.88 seconds
- - Voxelization (64 Slices): 0.01 seconds
- - Voxelization (128 Slices): 0.01 seconds
+glass_box: glass_box_0003
+Slice64: 0.007011528892251588
+Slice128: 0.002861644582427823
+Voxel64: 0.0003337448395303709
+Voxel128: 1.0331582664117299e-05
 
-Processed airplane_0630 in airplane:
- - Load and Normalize: 0.07 seconds
- - Binary Encoding (64 Slices): 0.39 seconds
- - Binary Encoding (128 Slices): 2.93 seconds
- - Voxelization (64 Slices): 0.03 seconds
- - Voxelization (128 Slices): 0.03 seconds
+glass_box: glass_box_0128
+Slice64: 0.006209909435855893
+Slice128: 0.0022977272179170428
+Voxel64: 0.0001942662913352124
+Voxel128: 2.0085918177983545e-07
 
-Processed airplane_0631 in airplane:
- - Load and Normalize: 0.05 seconds
- - Binary Encoding (64 Slices): 0.37 seconds
- - Binary Encoding (128 Slices): 2.81 seconds
- - Voxelization (64 Slices): 0.02 seconds
- - Voxelization (128 Slices): 0.00 seconds
-
-Processed airplane_0632 in airplane:
- - Load and Normalize: 0.03 seconds
- - Binary Encoding (64 Slices): 0.37 seconds
- - Binary Encoding (128 Slices): 2.84 seconds
- - Voxelization (64 Slices): 0.02 seconds
- - Voxelization (128 Slices): 0.02 seconds
+glass_box: glass_box_0114
+Slice64: 0.012144250648743832
+Slice128: 0.022097993612247777
+Voxel64: 0.007933172604849145
+Voxel128: 0.014395636756036346
 

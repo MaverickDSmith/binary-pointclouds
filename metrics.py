@@ -7,6 +7,8 @@ from implementation_three import rle_decode_variable_length, decode_binary
 from utils import normalize
 from voxel_downsample import density_aware_downsampling
 
+from scipy.spatial import KDTree
+
 
 
 ## Add Evaluation Functions for:
@@ -28,8 +30,13 @@ from voxel_downsample import density_aware_downsampling
 ## Overall averages
 
 def directed_mean_hausdorff(A, B):
-    # Compute the mean of the minimum distances from A to B
-    return np.mean(np.min(distance.cdist(A, B), axis=1))
+    """
+    Compute the mean of the minimum distances from points in A to their nearest neighbors in B.
+    """
+    # Use KDTree to find the nearest neighbors efficiently
+    tree_B = KDTree(B)
+    distances, _ = tree_B.query(A, k=1)  # Find the nearest neighbor for each point in A
+    return np.mean(distances)
 
 def modified_hausdorff_mean(A, B):
     """
