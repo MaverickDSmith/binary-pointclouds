@@ -122,6 +122,11 @@ def rle_encode_variable_length(bitarr, min_bound, max_bound):
     return encoded
 
 def rle_decode_variable_length(encoded_bitarr):
+    '''Returns:
+        Decoded Bitarray 1D List bitarray(),
+        np.array(min_bound),
+        np.array(max_bound)
+    '''
     decoded = bitarray()
 
     index = 0
