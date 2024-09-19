@@ -57,6 +57,9 @@ A full description of the Experiments ran can be found [here.](assets/docs/exper
 
 ## Results
 
+For further information on the results, please refer to the [extended results page.](assets/docs/results.md)
+
+
 ### Storage Tests
 
 In these tests, we compare our technique against other downsampling techniques to see which one stores data more compact. More information the experiments can be found in the Experiments section.
@@ -72,13 +75,6 @@ In these tests, we compare our technique against other downsampling techniques t
 
 In our Base Case study, we compare our Binary Encoding technique against Open3D's Voxelization Technique + a Density-Aware Downsampling method. The Density-Aware Downsampling method was only used if the total number of points in the Voxelized point cloud was higher than the total number of points the Binary Encoded point cloud, in order to keep things fair.
 
-In this test, we find that Voxelization rather handily beats our method at 64 slices, and overwhelmingly beats our method at 128 slices. I initially thought we would perform much worse than voxelization at this point, but was surprised to see just how much worse this method was compared to voxelization.
-
-Although we store 8 points for the price of 1 byte, we also store every single empty space as a point in our bitarray. Voxelization stores every active point more expensively than we do, but does not store the empty space. Our base method can be expected to beat Voxelization when our method is used with lower resolution on large point clouds.
-
-Furthermore, although this is the storage test, it is worth noting that Voxelization performs significantly faster than our Binary Encoding technique. The higher the slice resolution, the longer it takes for a point cloud to be encoded. Although we have significantly decreased the length of time it takes for the binary encoding to finish, the 128 resolution still takes on average just under three seconds to finish, whereas the voxelization takes less than a tenth of a second. However, we find that this length of time is not necessarily a deterrent from using our method in cases where it makes sense to use, as this is a pre-processing step, and the decoding time is exponentially faster than the encoding time.
-
-
 #### Storage Test 2: RLE Test 1
 
 | Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
@@ -90,19 +86,7 @@ Furthermore, although this is the storage test, it is worth noting that Voxeliza
 
 In our Run Length Encoding (RLE) study, we compare our Binary Encoding technique against Open3D's Voxelization Technique + a Density-Aware Downsampling method. The Density-Aware Downsampling method was only used if the total number of points in the Voxelized point cloud was higher than the total number of points the Binary Encoded point cloud, in order to keep things fair. It is important to mention that we did not re-run the Voxelization test for this study, as there was no change to the encoding process that made it necessary to re-run the Voxelization datasets.
 
-In short, our RLE method further compresses the bitarray by representing the length of a sequence as a binary number. Until further literature review is finished, I am calling our method of RLE "Dynamic Binary RLE." Dynamic, because the bit-string length is not a static number for each object being stored, and Binary because it's all 1s and 0s. I go into further detail in the corresponding Experiments section.
-
-In this test, we find that our method beats the Voxelization method in a vast majority of cases. As of right now, it seems the only times Voxelization stores more compact is when point clouds are so small they hardly need to be down-sampled to begin with (such as point clouds with only 100 points or less). We will need to sample more of the cases where Voxelization wins to make this a blanket statement.
-
-Our method finds exponential gains in compression when point clouds are large. This is because we can better utilize the method of storing 8 points in 1 byte of memory than previously, as we have significantly reduced the amount of storage space the empty space of the point cloud takes. In that same vein, we still find sufficiently performed compression when we compare the small and medium sized point clouds.
-
-I will once again state that Voxelization performs significantly faster than our Binary Encoding technique. However, adding this extra encoding step does dramatically further increase the time it takes to perform our technique. On average, for Slice64, we only added an additional 0.01-0.05 seconds, and for Slice128, we only added an additional 0.05-0.1 seconds. As for decoding speeds, the Binary Encoding technique still decodes extremely fast (I am assuming less than 0.1 seconds, but I have not done a rigourous speed test on the decoding aspect yet).
-
-Our implementation of RLE seems to be what we're looking for to enable our Binary Encoding Technique to be an extremely efficient method of compressing point cloud data. Our future tests will involve analyzing the structural integrity of the point cloud post-downsampling, and performing AI/ML tasks on the data.
-
-#### Storage Test 2: RLE Test 2
-
-In round 2 of testing, we re-run both the binary point cloud encoding portion and the voxelization portion, as we have changed the style of the heading and the method of encoding. The change to the encoding reflects a fix to how points were being placed and measured, and the change to the heading reflects the need to keep only necessary information in the stored binary file.
+#### Storage Test 3: RLE Test 2
 
 | Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
 |----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
@@ -111,7 +95,7 @@ In round 2 of testing, we re-run both the binary point cloud encoding portion an
 | Slice128 |    144555KB     |      11.7KB       |           N/A              |             N/A            |           N/A           |
 | Voxel128 |    400118KB     |        32KB       |          11481             |             828            |            2            |
 
-Even with this change, our technique is still, on average, superior. In this situation where we have added a substantial number of points per point cloud, there is not a proportial substantial increase in point clouds where voxelization is better than our technique.
+In round 2 of testing, we re-run both the binary point cloud encoding portion and the voxelization portion, as we have changed the style of the heading and the method of encoding. The change to the encoding reflects a fix to how points were being placed and measured, and the change to the heading reflects the need to keep only necessary information in the stored binary file.
 
 ### Similarity Tests
 
