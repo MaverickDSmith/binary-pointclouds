@@ -113,5 +113,22 @@ In round 2 of testing, we re-run both the binary point cloud encoding portion an
 
 Even with this change, our technique is still, on average, superior. In this situation where we have added a substantial number of points per point cloud, there is not a proportial substantial increase in point clouds where voxelization is better than our technique.
 
+### Similarity Tests
+
+For full results for each category, please refer to the [extended results page.](assets/docs/results.md)
+
+#### Modified Hausdorff Distance
+
+| Dataset  |    Overall Average    |
+|----------|-----------------------|
+| Slice64  | 0.00616841119289346   |
+| Voxel64  | 0.0017316045592079908 |
+| Slice128 | 0.003651373099715794  |
+| Voxel128 | 0.001071547890892029  |
+
+We found that for each category, Voxelization performed better than our technique in the similarity test. This is to be expected, especially for the low resolution we are using to obtain our point clouds. However, we find that even though Voxelization performs better, our technique still consistently achieves a less than 1% difference score for the majority of the point clouds in each data set. We find that in data sets with extremely small numbers of points, our technique fails. However, our technique is not addressing these tiny data sets, and is an expected flaw. 
+
+#### Chamfer's Distance
+
 
 ## References

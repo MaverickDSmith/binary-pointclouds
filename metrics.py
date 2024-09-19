@@ -58,29 +58,31 @@ def modified_hausdorff_mean(A, B):
     # Return the average of the two
     return (dist_A_to_B + dist_B_to_A) / 2
 
-# def chamfer_distance(A, B):
-#     """
-#     Compute the Chamfer Distance between two point clouds A and B.
+def chamfer_distance(A, B):
+    """
+    Compute the Chamfer Distance between two point clouds A and B.
     
-#     Parameters:
-#     A, B : np.ndarray
-#         Point clouds with shape (N, D), where N is the number of points and D is the dimensionality.
+    Parameters:
+    A, B : np.ndarray
+        Point clouds with shape (N, D), where N is the number of points and D is the dimensionality.
 
-#     Returns:
-#     float
-#         The Chamfer distance.
-#     """
-#     # Directed Chamfer distance from A to B
-#     def directed_chamfer(A, B):
-#         # Sum of the minimum distances from each point in A to B
-#         return np.sum(np.min(distance.cdist(A, B), axis=1))
+    Returns:
+    float
+        The Chamfer distance.
+    """
+    # Directed Chamfer distance from A to B using KDTree
+    def directed_chamfer(A, B):
+        # Use KDTree to find the nearest neighbors efficiently
+        tree_B = KDTree(B)
+        distances, _ = tree_B.query(A, k=1)  # Find the nearest neighbor for each point in A
+        return np.sum(distances)  # Sum of the minimum distances from each point in A to B
 
-#     # Compute Chamfer distances in both directions
-#     dist_A_to_B = directed_chamfer(A, B)
-#     dist_B_to_A = directed_chamfer(B, A)
+    # Compute Chamfer distances in both directions
+    dist_A_to_B = directed_chamfer(A, B)
+    dist_B_to_A = directed_chamfer(B, A)
     
-#     # Return the average Chamfer distance in both directions
-#     return (dist_A_to_B + dist_B_to_A) / (A.shape[0] + B.shape[0])
+    # Return the average Chamfer distance in both directions
+    return (dist_A_to_B + dist_B_to_A) / (A.shape[0] + B.shape[0])
 
 
 
