@@ -1,4 +1,4 @@
-from metrics import modified_hausdorff_mean
+from metrics import chamfer_distance
 from implementation_three import rle_decode_variable_length, decode_binary
 from utils import normalize
 
@@ -62,8 +62,8 @@ def process_off_file(off_file_path, slice64_base_path, slice128_base_path, voxel
 
 def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir):
     # Initialize timers and log file
-    log_file_path = "processing_log_mhdtest.txt"
-    final_log_path = "final_metrics_mhdtest.txt"
+    log_file_path = "processing_log_chamfertest.txt"
+    final_log_path = "final_metrics_chamfertest.txt"
     total_mhd_slice64 = {}
     total_mhd_slice128 = {}
     total_mhd_voxel64 = {}
@@ -92,10 +92,10 @@ def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxe
             slice64_data, slice128_data, voxel64_data, voxel128_data, input_pointcloud  = process_off_file(off_file_path, slice64_dir, slice128_dir, voxel64_dir, voxel128_dir)
             
             # Compute MHD values
-            mhd_slice64 = modified_hausdorff_mean(input_pointcloud, slice64_data)
-            mhd_slice128 = modified_hausdorff_mean(input_pointcloud, slice128_data)
-            mhd_voxel64 = modified_hausdorff_mean(input_pointcloud, voxel64_data)
-            mhd_voxel128 = modified_hausdorff_mean(input_pointcloud, voxel128_data)
+            mhd_slice64 = chamfer_distance(input_pointcloud, slice64_data)
+            mhd_slice128 = chamfer_distance(input_pointcloud, slice128_data)
+            mhd_voxel64 = chamfer_distance(input_pointcloud, voxel64_data)
+            mhd_voxel128 = chamfer_distance(input_pointcloud, voxel128_data)
 
             # Append MHD values to corresponding dictionaries
             total_mhd_slice64.setdefault(label, []).append(mhd_slice64)
@@ -116,7 +116,7 @@ def iterate_modelnet40(dataset_dir, slice64_dir, slice128_dir, voxel64_dir, voxe
 
     # Calculate and log final average MHD per category and overall
     with open(final_log_path, 'w') as final_log:
-        final_log.write("Final MHD Averages\n")
+        final_log.write("Final Chamfer Averages\n")
         final_log.write("=================\n\n")
         
         def calculate_and_log_average(total_mhd, name):

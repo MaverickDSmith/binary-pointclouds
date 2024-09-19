@@ -7,3 +7,5 @@ processing_log_mhdtest.txt
 final_metrics_mhdtest.txt
 data/
 /data
+final_metrics_chamfertest.txt
+processing_log_chamfertest.txt
