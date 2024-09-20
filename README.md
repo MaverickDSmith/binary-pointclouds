@@ -60,33 +60,11 @@ A full description of the Experiments ran can be found [here.](assets/docs/exper
 For further information on the results, please refer to the [extended results page.](assets/docs/results.md)
 
 
-### Storage Tests
+### Storage Test
 
 In these tests, we compare our technique against other downsampling techniques to see which one stores data more compact. More information the experiments can be found in the Experiments section.
 
-#### Storage Test 1: Base Case
-
-| Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
-|----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
-| Slice64  |    393952KB     |        32KB       |           N/A              |             N/A            |           N/A           |
-| Voxel64  |    272184KB     |        22KB       |          2398              |            9913            |            0            |
-| Slice128 |   3151616KB     |       256KB       |           N/A              |             N/A            |           N/A           |
-| Voxel128 |    395505KB     |        32KB       |           151              |           12160            |            0            |
-
-In our Base Case study, we compare our Binary Encoding technique against Open3D's Voxelization Technique + a Density-Aware Downsampling method. The Density-Aware Downsampling method was only used if the total number of points in the Voxelized point cloud was higher than the total number of points the Binary Encoded point cloud, in order to keep things fair.
-
-#### Storage Test 2: RLE Test 1
-
-| Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
-|----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
-| Slice64  |     53058KB     |       4.3KB       |           N/A              |             N/A            |           N/A           |
-| Voxel64  |    272184KB     |        22KB       |          12081             |             229            |            1            |
-| Slice128 |    139476KB     |      11.3KB       |           N/A              |             N/A            |           N/A           |
-| Voxel128 |    395505KB     |        32KB       |          11631             |             679            |            1            |
-
-In our Run Length Encoding (RLE) study, we compare our Binary Encoding technique against Open3D's Voxelization Technique + a Density-Aware Downsampling method. The Density-Aware Downsampling method was only used if the total number of points in the Voxelized point cloud was higher than the total number of points the Binary Encoded point cloud, in order to keep things fair. It is important to mention that we did not re-run the Voxelization test for this study, as there was no change to the encoding process that made it necessary to re-run the Voxelization datasets.
-
-#### Storage Test 3: RLE Test 2
+#### Current method's results
 
 | Dataset  | Total Size (KB) | Average Size (KB) | Objects larger than binary | Objects smaller than binary | Objects equal to binary |
 |----------|-----------------|-------------------|----------------------------|----------------------------|-------------------------|
@@ -95,11 +73,12 @@ In our Run Length Encoding (RLE) study, we compare our Binary Encoding technique
 | Slice128 |    144555KB     |      11.7KB       |           N/A              |             N/A            |           N/A           |
 | Voxel128 |    400118KB     |        32KB       |          11481             |             828            |            2            |
 
-In round 2 of testing, we re-run both the binary point cloud encoding portion and the voxelization portion, as we have changed the style of the heading and the method of encoding. The change to the encoding reflects a fix to how points were being placed and measured, and the change to the heading reflects the need to keep only necessary information in the stored binary file.
+This table shows the results of our current method. The results show that our method is generally superior to Voxelization, and appears to only be outperformed when point clouds are so small that there is no real reason to down-sample the data.
+
 
 ### Similarity Tests
 
-For full results for each category, please refer to the [extended results page.](assets/docs/results.md)
+In these tests, we use different point cloud similarity metrics to determine how similar the down-sampled point cloud is to the ground truth point cloud.
 
 #### Modified Hausdorff Distance
 
@@ -114,5 +93,13 @@ We found that for each category, Voxelization performed better than our techniqu
 
 #### Chamfer's Distance
 
+| Dataset  |    Overall Average    |
+|----------|-----------------------|
+| Slice64  | 0.006782016374157892  |
+| Voxel64  | 0.0029915333896178603 |
+| Slice128 | 0.004195367120516455  |
+| Voxel128 | 0.0017880446132857424 |
+
+We found similar results to the Modified Hausdorff Distance test.
 
 ## References

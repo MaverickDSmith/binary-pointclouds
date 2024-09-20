@@ -60,6 +60,8 @@ Even with this change, our technique is still, on average, superior. In this sit
 
 ### Modified Hausdorff Distance
 
+Below is the results of the Modified Hasudroff Distance test. The first table shows the overall average across all 40 categories for each data set, and in the next four tables are the averages for each individual category within the data set. The test was conducted by comparing the point cloud of the data set with the point cloud of the ground truth data set. Modified Hausdorff Distance compares the nearest point from point cloud A to the nearest point in the same position in point cloud B, then from B to A, and takes the average of these distances for each point cloud.
+
 | Dataset  |    Overall Average    |
 |----------|-----------------------|
 | Slice64  | 0.00616841119289346   |
@@ -67,7 +69,7 @@ Even with this change, our technique is still, on average, superior. In this sit
 | Slice128 | 0.003651373099715794  |
 | Voxel128 | 0.001071547890892029  |
 
-For the Slice64 Dataset:
+Slice64 Dataset:
 | Category | Average |
 |----------|---------|
 | glass_box    | 0.005963584946819966  |
@@ -112,7 +114,7 @@ For the Slice64 Dataset:
 | keyboard     | 0.004891101356882418  |
 | **Overall**  | **0.00616841119289346** |
 
-For the Slice128 Dataset:
+Slice128 Dataset:
 | Category     | Average  |
 |--------------|----------|
 | glass_box    | 0.0039478296993626745 |
@@ -157,7 +159,7 @@ For the Slice128 Dataset:
 | keyboard     | 0.0025153642545778115 |
 | **Overall**  | **0.003651373099715794** |
 
-For the Voxel64 Dataset:
+Voxel64 Dataset:
 | Category     | Average  |
 |--------------|----------|
 | glass_box    | 0.002135709814700037   |
@@ -202,7 +204,7 @@ For the Voxel64 Dataset:
 | keyboard     | 0.0000916180512806738  |
 | **Overall**  | **0.0017316045592079908** |
 
-For the Voxel128 Dataset:
+Voxel128 Dataset:
 | Category     | Average  |
 |--------------|----------|
 | glass_box    | 0.002011316231071899   |
@@ -248,3 +250,194 @@ For the Voxel128 Dataset:
 | **Overall**  | **0.001071547890892029** |
 
 ### Chamfer's Distance
+
+Below is the results of the Chamfer's Distance test. The first table shows the overall average across all 40 categories for each data set, and in the next four tables are the averages for each individual category within the data set. The test was conducted by comparing the point cloud of the data set with the point cloud of the ground truth data set. Chamfer's Distance compares the nearest point from point cloud A to the nearest point in the same position in point cloud B, then from B to A, and takes the sum of the minimum distances for each point cloud, and averages it out between the two.
+
+
+| Dataset  |    Overall Average    |
+|----------|-----------------------|
+| Slice64  | 0.006782016374157892  |
+| Voxel64  | 0.0029915333896178603 |
+| Slice128 | 0.004195367120516455  |
+| Voxel128 | 0.0017880446132857424 |
+
+
+Slice64 Dataset:
+| Object        |         Average         |
+|---------------|-------------------------|
+| glass_box     | 0.006482610097117446     |
+| cone          | 0.01047009220799138      |
+| door          | 0.005014270182225524     |
+| curtain       | 0.004800956120406657     |
+| plant         | 0.0080327857556276       |
+| wardrobe      | 0.005882774930268028     |
+| range_hood    | 0.006561542540718477     |
+| dresser       | 0.006641800140253564     |
+| night_stand   | 0.010104883794478315     |
+| bookshelf     | 0.006432575946987018     |
+| tent          | 0.008801382390396862     |
+| stairs        | 0.0069194617673266874    |
+| lamp          | 0.006478379096254504     |
+| piano         | 0.007047606709179776     |
+| sink          | 0.0060141252088436485    |
+| bathtub       | 0.005543830259742346     |
+| person        | 0.005262936304427622     |
+| xbox          | 0.005608234971206436     |
+| desk          | 0.007477997236609773     |
+| bench         | 0.00509366896202452      |
+| sofa          | 0.005275308007639118     |
+| guitar        | 0.004757515569888694     |
+| airplane      | 0.005675992661032855     |
+| mantel        | 0.005725321325670478     |
+| chair         | 0.006589437930667942     |
+| laptop        | 0.00802734990747436      |
+| cup           | 0.008929597175682343     |
+| flower_pot    | 0.00980690067185205      |
+| monitor       | 0.007156632180374942     |
+| radio         | 0.005827127857187279     |
+| bed           | 0.006298414326434479     |
+| toilet        | 0.008101409489019622     |
+| bowl          | 0.010842438792826151     |
+| stool         | 0.006417933528003229     |
+| vase          | 0.007894532289138436     |
+| bottle        | 0.005142057856600174     |
+| car           | 0.004974042750830451     |
+| table         | 0.008504526326217678     |
+| tv_stand      | 0.0056362506360430565    |
+| keyboard      | 0.005025951061646187     |
+| **Overall Average** | **0.006782016374157892** |
+
+Slice128 Dataset:
+| Object        |         Average         |
+|---------------|-------------------------|
+| glass_box     | 0.005098019413645553     |
+| cone          | 0.00778216844489029      |
+| door          | 0.0026306493852658024    |
+| curtain       | 0.0025833718748154186    |
+| plant         | 0.005566760851193358     |
+| wardrobe      | 0.0032410583125007364    |
+| range_hood    | 0.0038428464895078366    |
+| dresser       | 0.00406370054619951      |
+| night_stand   | 0.0061138329473687135    |
+| bookshelf     | 0.004090648864009542     |
+| tent          | 0.00524335668354026      |
+| stairs        | 0.004024258208038621     |
+| lamp          | 0.0033176747827665617    |
+| piano         | 0.004130518485408845     |
+| sink          | 0.003381258439432835     |
+| bathtub       | 0.0029948787657279527    |
+| person        | 0.002811790315500742     |
+| xbox          | 0.0029945089774902718    |
+| desk          | 0.004042212959800346     |
+| bench         | 0.002917765148635204     |
+| sofa          | 0.003042202256492361     |
+| guitar        | 0.0024797729610989703    |
+| airplane      | 0.0029522331014313077    |
+| mantel        | 0.003244324992180118     |
+| chair         | 0.003938017855818889     |
+| laptop        | 0.00706090289501921      |
+| cup           | 0.006371747160941821     |
+| flower_pot    | 0.006771681631773284     |
+| monitor       | 0.00489538437391969      |
+| radio         | 0.003132855543202054     |
+| bed           | 0.0035214838488062967    |
+| toilet        | 0.005511791284642555     |
+| bowl          | 0.007794921641387016     |
+| stool         | 0.005041078539392776     |
+| vase          | 0.0054295672730598635    |
+| bottle        | 0.002759535396525997     |
+| car           | 0.0025841224471611947    |
+| table         | 0.004517777419851614     |
+| tv_stand      | 0.003279306548141366     |
+| keyboard      | 0.00261469775407335      |
+| **Overall Average** | **0.004195367120516455** |
+
+Voxel64 Dataset:
+| Object        |         Average         |
+|---------------|-------------------------|
+| glass_box     | 0.0036014969781576556    |
+| cone          | 0.012738019064063003     |
+| door          | 0.00046127018862232827   |
+| curtain       | 0.00023763281202057848   |
+| plant         | 0.00533911518129075      |
+| wardrobe      | 0.0020398311750788696    |
+| range_hood    | 0.004563852704846183     |
+| dresser       | 0.004482225605817654     |
+| night_stand   | 0.010537212642050988     |
+| bookshelf     | 0.0006436080986878008    |
+| tent          | 0.0032193356482614474    |
+| stairs        | 0.003036870617741186     |
+| lamp          | 0.0023261417664441997    |
+| piano         | 0.003983952990845072     |
+| sink          | 0.0033492562620963244    |
+| bathtub       | 0.001162350683970318     |
+| person        | 0.0005135481086214378    |
+| xbox          | 0.0017492546406196092    |
+| desk          | 0.0033327752483919195    |
+| bench         | 0.0005178158507739297    |
+| sofa          | 0.0006648169826202159    |
+| guitar        | 0.00017003429866641861   |
+| airplane      | 0.002091399393592623     |
+| mantel        | 0.0040124126716694335    |
+| chair         | 0.0032971540495269356    |
+| laptop        | 0.005864241316780886     |
+| cup           | 0.004933568065466368     |
+| flower_pot    | 0.005761639511878476     |
+| monitor       | 0.003701401869222145     |
+| radio         | 0.001857774496058681     |
+| bed           | 0.002106786230055147     |
+| toilet        | 0.0037396631646270414    |
+| bowl          | 0.0018339287683071313    |
+| stool         | 0.0018993978093606065    |
+| vase          | 0.003172059882919926     |
+| bottle        | 0.00015198390352039106   |
+| car           | 0.0005496325834521708    |
+| table         | 0.004267685875200518     |
+| tv_stand      | 0.0016188178989041506    |
+| keyboard      | 0.00013137054448390548   |
+| **Overall Average** | **0.0029915333896178603** |
+
+Voxel128 Dataset:
+| Object        |         Average         |
+|---------------|-------------------------|
+| glass_box     | 0.0036793835546583536    |
+| cone          | 0.013051209747374058     |
+| door          | 0.0007020124988658595    |
+| curtain       | 0.00023496069483964646   |
+| plant         | 0.005306501057952643     |
+| wardrobe      | 0.0019287864011176825    |
+| range_hood    | 0.004476132366296768     |
+| dresser       | 0.004551020227789879     |
+| night_stand   | 0.010741859797525477     |
+| bookshelf     | 0.0007036291442894076    |
+| tent          | 0.0032678915569782255    |
+| stairs        | 0.0031277013093369       |
+| lamp          | 0.002482264611981011     |
+| piano         | 0.0040110410639274715    |
+| sink          | 0.003429769248537719     |
+| bathtub       | 0.0011432640879561684    |
+| person        | 0.0005613548086555917    |
+| xbox          | 0.0017649522350269268    |
+| desk          | 0.0034347848396159826    |
+| bench         | 0.000544453317029571     |
+| sofa          | 0.0006634793034521458    |
+| guitar        | 0.00017823716016685032   |
+| airplane      | 0.002117671213978767     |
+| mantel        | 0.00407167764943868      |
+| chair         | 0.003397491939731668     |
+| laptop        | 0.00607719103189695      |
+| cup           | 0.005126936153049469     |
+| flower_pot    | 0.005894982487007379     |
+| monitor       | 0.003785788452252924     |
+| radio         | 0.0019245791948347025    |
+| bed           | 0.0022430075435042387    |
+| toilet        | 0.003845197073028444     |
+| bowl          | 0.0019227847640858297    |
+| stool         | 0.0019256505582332616    |
+| vase          | 0.003256835809796076     |
+| bottle        | 0.00016661117610794378   |
+| car           | 0.0005700722415828205    |
+| table         | 0.004371239859986214     |
+| tv_stand      | 0.0016947482270309928    |
+| keyboard      | 0.00013672525131461525   |
+| **Overall Average** | **0.0031065911914068424** |
