@@ -1,8 +1,12 @@
-# Storage Size Comparison Against Open3D Voxelization Technique
+# Experiments and Validation Tests
 
 Note: Bathtub_0141 does not have triangles, and throws a warning during processing.
 
-## Base Test
+## Compression Tests
+
+These tests are storage size comparisons against Open3D's Voxelization technique. The voxelized downsample threshold was set to 0.001, and whenever there were more points in the voxelized point cloud compared to my technique, I added a density aware downsampling technique to further downsample until there were an equal number of points between the two. If the voxelization technique had less points than the binary encoding technique, I would leave it as is.
+
+### Base Test
 
 For this test, we converted the entirety of ModelNet40 into four separate downsampled point cloud versions. Two of these datasets were made with the technique in Implementation Two, and the other two datasets were made using Open3D's Voxelization technique. The following table shows the results in the Size Comparison test, with notes below:
 
@@ -36,7 +40,7 @@ In more compact terms, the total sizes for each Dataset is:
 * To make things fair, I decided to also apply a density aware downsampling technique to the voxelization technique when the overall points of the point cloud after voxelization was higher than the number of 1s in the corresponding binary point cloud. The density aware downsampling ensures that no voxelized point cloud has more points than its binary point cloud counterpart. This technique was not applied to any point clouds with equal or lower number of points than the binary point cloud counterpart. I believe this makes the comparison fair, as I find that density aware downsampling is an easy to implement addition to voxelization when you're trying to perform data preprocessing, and most Deep Learning tasks find their job easier when the number of points is homogenous across the entire dataset. I did not pad points when the total points were lower, as this is ultimately a test of which technique stores in a more compact form.
 * The threshold for "larger / smaller / equal to" is based on the storage size of the binary. So for **Voxel64**, the threshold is 32KB, and for **Voxel128**, the threshold is 256KB.
 
-## RLE Tests
+### RLE Tests
 
 For this test, we added an extra step to the encoding process. After encoding the point cloud as a 1D binary bitarray, we take the bitarray and encode it using Run Length Encoding. Essentially, RLE takes a sequence of numbers and converts it to a tuple. So if part of the bitarray had a run of 0s such as "0000000000", RLE would convert that to (10, 0), representing ten 0s in that spot.
 
@@ -60,7 +64,7 @@ Until I determine if someone else has done something similar, I'm calling this i
 
 Voxelization is run the same way as before. We compare the direct file counterpart to its binary RLE counterpart to see how many are larger, smaller, or equal to. Further notes on the test are below the table.
 
-### RLE Test 1
+#### RLE Test 1
 
 This test was run before fixing some issues with how the points were placed. Originally, the First 16 bits represented how long each bit-string was in the rest of the bitarray, and that was the only information in the header. 
 
@@ -85,7 +89,7 @@ Despite running an extra encoding step, the RLE did not add significant time ove
 Average processing for **Slice64:** 0.35 - 0.4 seconds
 Average processing for **Slice128:** 2.7 - 2.9 seconds
 
-### RLE Test 2
+#### RLE Test 2
 
 This test is on the current best implementation of the encoding process. This test was ran after a fix to the encoding process. Prior to this test, I did not account for the two extra intersection points that come from slicing the bounding box as many times as we did. Originally, we accounted for one extra point by going from slice 0 to slice 64, inclusive of slice 0. However, we still need to get the end edge from these intersections, which means we actually have to iterate slices + 1 times, inclusive of 0. To find how many slices are in the point cloud now, you must take the cube root of the total points, and subtract one.
 
@@ -103,3 +107,31 @@ In more compact terms, the total sizes for each Dataset is:
 * **Voxel128:** 386MB
 
 The total time to create all four Datasets was roughly 11 hours. For this test I did re-run the Voxelization datasets, as I had fixed some issues I found with how I was slicing the bounding box and determining where intersections were. This ran on a single NVIDIA RTX 4090 and an Intel i9-14900KF.
+
+## Similarity Tests
+
+For these tests, I ran different point cloud similarity tests between the downsampled point clouds and the ground truth. Averages of each category for each data set can be found [here.](/assets/docs/results.md)
+
+### Modified Hausdorff Distance
+
+The test was conducted by comparing the point cloud of the data set with the point cloud of the ground truth data set. Modified Hausdorff Distance compares the nearest point from point cloud A to the nearest point in the same position in point cloud B, then from B to A, and takes the average of these distances for each point cloud.
+
+| Dataset  |    Overall Average    |
+|----------|-----------------------|
+| Slice64  | 0.00616841119289346   |
+| Voxel64  | 0.0017316045592079908 |
+| Slice128 | 0.003651373099715794  |
+| Voxel128 | 0.001071547890892029  |
+
+
+### Chamfer's Distance
+
+Chamfer's Distance compares the nearest point from point cloud A to the nearest point in the same position in point cloud B, then from B to A, and takes the sum of the minimum distances for each point cloud, and averages it out between the two.
+
+
+| Dataset  |    Overall Average    |
+|----------|-----------------------|
+| Slice64  | 0.006782016374157892  |
+| Voxel64  | 0.0029915333896178603 |
+| Slice128 | 0.004195367120516455  |
+| Voxel128 | 0.0017880446132857424 |
