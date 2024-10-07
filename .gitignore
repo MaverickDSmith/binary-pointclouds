@@ -1,11 +1,2 @@
-final_metrics.txt
-final_metrics_testone.txt
-final_metrics_testtwo.txt
-processing_log.txt
+/tb_logs/
 /data/
-processing_log_mhdtest.txt
-final_metrics_mhdtest.txt
-data/
-/data
-final_metrics_chamfertest.txt
-processing_log_chamfertest.txt
