@@ -1,0 +1,39 @@
+# Configuration for the PyTorch Lightning model and data module
+
+model:
+  name: CustomCNN
+  num_classes: 40  # Number of classes in your dataset
+  alpha: 0.5  # Focal loss parameter
+  gamma: 2.0  # Focal loss parameter
+  margin: 1.0  # Triplet margin (if applicable)
+  emb_dim: 256  # Embedding dimension (if applicable)
+
+data:
+  root_dir: '/home/hi5lab/pointcloud_data/storage_test_two/slice64'  # Root directory for the dataset
+  batch_size: 24  # Batch size for training
+  num_workers: 16  # Number of workers for data loading
+
+training:
+  max_epochs: 40  # Maximum number of epochs
+  checkpoint_path: '/path/to/checkpoint.ckpt'  # Path to model checkpoint (if resuming training)
+  checkpoint: false  # Set to true if you want to load a checkpoint
+  log_dir: 'tb_logs'  # Directory for TensorBoard logs
+  save_model: true  # Whether to save the final model
+
+callbacks:
+  checkpoint:
+    monitor: 'Acc/val_acc'  # Metric to monitor for saving checkpoints
+    save_top_k: 1  # Number of top checkpoints to save
+    mode: 'max'  # Mode for the monitored metric (max/min)
+    filename: '{epoch}-{Acc/val_acc:.4f}'  # Filename format for saved checkpoints
+
+logging:
+  logger_type: 'TensorBoardLogger'  # Logger type
+  log_dir: 'tb_logs'  # Directory for logging
+  log_name: 'pointcloud_cnn'  # Name for logging
+
+gpu:
+  use_gpu: true  # Set to true to use GPU
+  devices: 1  # Number of GPUs to use
+  strategy: 'ddp'  # Distributed strategy (e.g., 'ddp' for distributed data parallel)
+  num_nodes: 1  # Number of nodes to use for distributed training

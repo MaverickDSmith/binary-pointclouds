@@ -10,6 +10,7 @@ import numpy as np
 
 from binary_encoder import rle_decode_variable_length
 from sklearn.utils.class_weight import compute_class_weight
+from data_augmentation_experiments import reordering_bitarray
 
 class BitArrayDataset(Dataset):
     def __init__(self, root_dir, folder):
@@ -43,7 +44,7 @@ class BitArrayDataset(Dataset):
                                 self.class_dict[label_index].append(file_path)
 
         # Load a sample to determine num_slices
-        with open(self.file_paths[0], 'rb') as f:
+        with open(file_path, 'rb') as f:
             ba = bitarray.bitarray()
             ba.fromfile(f)
         ba, _, _ = rle_decode_variable_length(ba)
@@ -66,33 +67,20 @@ class BitArrayDataset(Dataset):
         # Load anchor
         anchor_path = self.file_paths[idx]
         anchor_label = self.labels[idx]
-        anchor_tensor = self.load_bitarray(anchor_path)
-        anchor_class_name = self.index_to_label[anchor_label]  
-        
-        # Load a positive sample from the same class
-        positive_idx = self.get_positive_sample(anchor_label)
-        positive_path = self.file_paths[positive_idx]
-        positive_tensor = self.load_bitarray(positive_path)
-        # positive_class_name = self.index_to_label[self.labels[positive_idx]]  
-        
-        # Load a negative sample from a different class
-        negative_idx = self.get_negative_sample(anchor_label)
-        negative_path = self.file_paths[negative_idx]
-        negative_tensor = self.load_bitarray(negative_path)
-        # negative_class_name = self.index_to_label[self.labels[negative_idx]]  
+        anchor_tensor = self.load_bitarray(anchor_path)  # Returns NumPy array
 
-        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.bfloat16)
+        # Convert to tensor and move to GPU (if applicable)
+        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.float16)  # Adjust dtype/device as needed
+
+        # Perform reordering
+        anchor_tensor = reordering_bitarray(anchor_tensor, self.num_slices)
+
+        # Ensure correct shape
         anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        positive_tensor = torch.tensor(positive_tensor, dtype=torch.bfloat16)
-        positive_tensor = positive_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        negative_tensor = torch.tensor(negative_tensor, dtype=torch.bfloat16)
-        negative_tensor = negative_tensor.view(self.num_slices, self.num_slices, self.num_slices)
 
         # Return class names along with tensors and integer labels
-        return (anchor_tensor, anchor_label, anchor_class_name), \
-               (positive_tensor, self.labels[positive_idx]), \
-               (negative_tensor, self.labels[negative_idx]), \
-               self.num_slices
+        return (anchor_tensor, anchor_label), self.num_slices
+
 
     def load_bitarray(self, file_path):
         with open(file_path, 'rb') as f:
@@ -101,36 +89,3 @@ class BitArrayDataset(Dataset):
         ba, _, _ = rle_decode_variable_length(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
         return ba_unpacked
-
-    def get_positive_sample(self, anchor_label):
-        """Get a positive sample index for the given label."""
-        positive_indices = [i for i, label in enumerate(self.labels) if label == anchor_label]
-        return random.choice(positive_indices)
-
-    def get_negative_sample(self, anchor_label):
-        """Get a negative sample index different from the anchor label."""
-        negative_indices = [i for i, label in enumerate(self.labels) if label != anchor_label]
-        return random.choice(negative_indices)
-
-
-# DataModule that handles loading the data
-class PointCloudDataModule(pl.LightningDataModule):
-    def __init__(self, root_dir, batch_size=24, num_workers=16):
-        super().__init__()
-        self.root_dir = root_dir
-        self.batch_size = batch_size
-        self.num_workers = num_workers
-
-    def setup(self, stage=None):
-        self.train_dataset = BitArrayDataset(self.root_dir, "train")
-        self.test_dataset  = BitArrayDataset(self.root_dir, "test")
-        self.val_dataset   = BitArrayDataset(self.root_dir, "val")
-
-    def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
-
-    def val_dataloader(self):
-        return DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
-
-    def test_dataloader(self):
-        return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)

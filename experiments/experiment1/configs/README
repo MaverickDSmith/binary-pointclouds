@@ -1,0 +1,6 @@
+This set of tests runs by comparing various embed dimensions with different alpha and gamma levels for the Focal Loss
+The more embed dimensions, the more features that are recorded at the end of the training sequence
+The varying gamma levels dictates how hard the model is on overbalanced classes and how lenient it is on underbalanced
+Alpha is a sort of weighting mechanism for how tolerant it is to helping underbalanced classes
+
+(for ander) This represents Version1-12 in Tensorboard. Version_0 is the base config template run.

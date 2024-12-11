@@ -6,7 +6,7 @@ from utils.utils import normalize, create_xyz_line
 from binary_encoder import rle_decode_variable_length, decode_binary
 
 og_path = '/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off'
-ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/sofa/sofa_0166_slice64.bin'
+ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64_og/sofa/sofa_0166_slice64.bin'
 vox_path = '/home/hi5lab/pointcloud_data/storage_test_two/voxel64/sofa/sofa_0166_voxel64.pcd'
 
 

@@ -1,68 +1,81 @@
-import os
-import bitarray
-import numpy as np
-import math
-import random
-
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader
-
-import pytorch_lightning as pl
+import argparse
+import yaml
 from pytorch_lightning import Trainer
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 from pytorch_lightning.strategies import DDPStrategy
+from pytorch_lightning.cli import LightningCLI
+from models.Conv1dCNN import CustomCNN
+from dataloaders.BitArrayDataset import PointCloudDataModule
 
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
+def cli_main():
+    cli = LightningCLI(CustomCNN, PointCloudDataModule)
 
-from binary_encoder import rle_decode_variable_length
-from models.CustomCNN import CustomCNN
-from dataloaders.BitArrayDataset import BitArrayDataset, PointCloudDataModule
+def train_main(config_path='config.yaml'):
+    # Load the configuration file
+    with open(config_path, 'r') as file:
+        config = yaml.safe_load(file)
 
-def train_main():
-    # Instantiate the DataModule and Model
-    # sys.set_int_max_str_digits(274625)
-    root_dir = '/home/hi5lab/pointcloud_data/storage_test_two/slice64'
-    datamodule = PointCloudDataModule(root_dir)
+    # Initialize DataModule
+    datamodule = PointCloudDataModule(
+        root_dir=config['data']['root_dir'],
+        batch_size=config['data']['batch_size'],
+        num_workers=config['data']['num_workers']
+    )
     datamodule.setup()
-    checkpoint_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/tb_logs/pointcloud_cnn/version_34/checkpoints/epoch=64-Acc/val_acc=0.8704.ckpt'
-    checkpoint = False
+
+    # Determine number of slices from the dataset
     _, _, _, num_slices = next(iter(datamodule.train_dataloader()))
     num_slices = num_slices[0].item()
 
-    if checkpoint:
-        model = CustomCNN.load_from_checkpoint(checkpoint_path, num_classes=40, num_slices=num_slices)
+    # Initialize Model
+    if config['training']['checkpoint']:
+        model = CustomCNN.load_from_checkpoint(config['training']['checkpoint_path'],
+                                                num_classes=config['model']['num_classes'],
+                                                num_slices=num_slices,
+                                                alpha=config['model']['alpha'],
+                                                gamma=config['model']['gamma'],
+                                                margin=config['model']['margin'],
+                                                emb_dim=config['model']['emb_dim'])
     else:
-        model = CustomCNN(num_classes=40, num_slices=num_slices)
+        model = CustomCNN(num_classes=config['model']['num_classes'],
+                          num_slices=num_slices,
+                          alpha=config['model']['alpha'],
+                          gamma=config['model']['gamma'],
+                          margin=config['model']['margin'],
+                          emb_dim=config['model']['emb_dim'],
+                          dataset=datamodule)
 
     # Logging and Checkpointing
-    logger = TensorBoardLogger("tb_logs", name="pointcloud_cnn")
-    checkpoint_callback = ModelCheckpoint(monitor='Acc/val_acc', save_top_k=1, mode='max', filename='{epoch}-{Acc/val_acc:.4f}')
+    logger = TensorBoardLogger(config['logging']['log_dir'], name=config['logging']['log_name'])
+    checkpoint_callback = ModelCheckpoint(
+        monitor=config['callbacks']['checkpoint']['monitor'],
+        save_top_k=config['callbacks']['checkpoint']['save_top_k'],
+        mode=config['callbacks']['checkpoint']['mode'],
+        filename=config['callbacks']['checkpoint']['filename']
+    )
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
-    # Train the model using PyTorch Lightning Trainer
+    # Train the model
     trainer = Trainer(
-        max_epochs=100,
+        max_epochs=config['training']['max_epochs'],
         logger=logger,
         callbacks=[checkpoint_callback, lr_monitor],
-        accelerator='gpu',  # Ensure you're using GPUs
-        devices=1,  # Set to the number of GPUs you want to use (1 for single-GPU)
-        strategy=DDPStrategy(find_unused_parameters=False),  # Enable DDP
-        num_nodes=1  # This will be more than 1 when scaling to multiple GPUs
+        accelerator='gpu' if config['gpu']['use_gpu'] else 'cpu',
+        devices=config['gpu']['devices'],
+        strategy=config['gpu']['strategy'],
+        num_nodes=config['gpu']['num_nodes']
     )
     trainer.fit(model, datamodule)
 
     # Test the model
     trainer.test(model, datamodule.test_dataloader())
 
-    model_path = "final_model.ckpt"
-    trainer.save_checkpoint(model_path)
-    print(f"Model saved at {model_path}")
+    # Save the model if specified
+    if config['training']['save_model']:
+        model_path = "final_model.ckpt"
+        trainer.save_checkpoint(model_path)
+        print(f"Model saved at {model_path}")
 
 def test_main():
     # Step 1: Load the previously saved model
@@ -74,7 +87,6 @@ def test_main():
     datamodule = PointCloudDataModule(root_dir)
     datamodule.setup()
     logger = TensorBoardLogger("tb_logs", name="pointcloud_cnn")
-
 
     # Step 3: Create a Trainer instance without training
     trainer = Trainer(
@@ -88,7 +100,11 @@ def test_main():
     # Step 4: Run the test step
     trainer.test(loaded_model, datamodule.test_dataloader())
 
-
 if __name__ == '__main__':
-    train_main()
-    # test_main()
+    parser = argparse.ArgumentParser(description='Train a model with PyTorch Lightning.')
+    parser.add_argument('--config', type=str, default='config.yaml', help='Path to the configuration file.')
+
+    args = parser.parse_args()
+    train_main(config_path=args.config)
+    # cli_main()  # Uncomment if you want to use CLI
+    # test_main()  # Uncomment if you want to run testing
