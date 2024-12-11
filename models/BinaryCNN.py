@@ -9,6 +9,21 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
+class BitwiseConv1dLayer(nn.Module):
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
+        super(BitwiseConv1dLayer, self).__init__()
+        self.conv1d = nn.Conv1d(in_channels, out_channels, kernel_size, stride=stride, padding=padding)
+    
+    def forward(self, x):
+        # Apply the standard convolution operation
+        conv_output = self.conv1d(x.to(torch.bfloat16))  # Keep the convolution as float
+
+        # Perform bitwise operations by converting to uint8
+        bitwise_output = torch.round(torch.sigmoid(conv_output)).to(torch.uint8) # Thresholding the result to binary
+
+        return bitwise_output
+
+
 # LightningModule that handles the model and training/validation loop
 class CustomCNN(pl.LightningModule):
     def __init__(self, num_classes, num_slices):
@@ -22,12 +37,13 @@ class CustomCNN(pl.LightningModule):
         self.test_labels = []  
 
         # # Convolutional Layers
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=8, kernel_size=2, stride=1, padding=1)
-        self.conv2 = nn.Conv2d(8, 16, kernel_size=5, stride=1, padding=2)
-        self.conv3 = nn.Conv2d(16, 64, kernel_size=5, stride=1, padding=2)
-        # self.conv1 = nn.Conv1d(in_channels=1, out_channels=64, kernel_size=2, stride=1, padding=1)
-        # self.conv2 = nn.Conv1d(64, 64, kernel_size=5, stride=1, padding=2)
-        # self.conv3 = nn.Conv1d(64, 128, kernel_size=5, stride=1, padding=2)
+        # self.conv1 = nn.Conv2d(in_channels=1, out_channels=4, kernel_size=2, stride=1, padding=1)
+        # self.conv2 = nn.Conv2d(4, 8, kernel_size=5, stride=1, padding=2)
+        # self.conv3 = nn.Conv2d(8, 16, kernel_size=5, stride=1, padding=2)
+        # Custom bitwise convolutional layers
+        self.conv1 = BitwiseConv1dLayer(in_channels=1, out_channels=4, kernel_size=2, stride=1, padding=1)
+        self.conv2 = BitwiseConv1dLayer(4, 8, kernel_size=5, stride=1, padding=2)
+        self.conv3 = BitwiseConv1dLayer(8, 16, kernel_size=5, stride=1, padding=2)
 
         # Convert convolutional layers to bfloat16 to match input tensor
         self.conv1 = self.conv1.to(torch.bfloat16)
@@ -44,18 +60,20 @@ class CustomCNN(pl.LightningModule):
         # self.bn3 = nn.BatchNorm1d(16, dtype=torch.bfloat16)
 
         # # Global Pool to learn features from full set of slices
-        self.global_pool = nn.AdaptiveMaxPool2d((4, 4))
+        # self.global_pool = nn.AdaptiveMaxPool2d((4, 4))
         # self.global_pool = nn.AdaptiveMaxPool1d(8)
+        self.global_conv = BitwiseConv1dLayer(16 * num_slices, 16, kernel_size=5, stride=8, padding=0)  # Stride of 8 to downsample
+        self.global_conv = self.global_conv.to(torch.bfloat16)
 
         # Regularizations
         # self.fc1 = nn.Linear(16 * num_slices * 4 * 4, 256, dtype=torch.bfloat16)
-        self.fc1 = nn.Linear(64 * num_slices * 4 * 4, 256, dtype=torch.bfloat16)
-        self.fc2 = nn.Linear(256, num_classes, dtype=torch.bfloat16)
-        self.dropout = nn.Dropout(p=0.4)
+        self.fc1 = nn.Linear((16 * num_slices * 8) + 128, 128, dtype=torch.bfloat16)
+        self.fc2 = nn.Linear(128, num_classes, dtype=torch.bfloat16)
+        self.dropout = nn.Dropout(p=0.5)
 
         # Losses
         self.classification_loss = nn.CrossEntropyLoss()
-        self.triplet_loss = nn.TripletMarginLoss(margin=2.0)
+        self.triplet_loss = nn.TripletMarginLoss(margin=1.0)
 
     def forward(self, x, embeddings=False):
         batch_size, num_slices, _, _ = x.size()
@@ -64,23 +82,25 @@ class CustomCNN(pl.LightningModule):
         # Iterate through each slice, sending each slice through the Conv2D Layers
         # Add their output to a list
         for slice_idx in range(num_slices):
-            slice_input = x[:, slice_idx:slice_idx+1, :, :]#.view(batch_size, 1, 4225)
+            slice_input = x[:, slice_idx:slice_idx+1, :, :].view(batch_size, 1, 4225)
             
             # conv_output = F.leaky_relu(self.bn1(self.conv1(slice_input)), negative_slope=0.01)
             # conv_output = F.leaky_relu(self.bn2(self.conv2(conv_output)), negative_slope=0.01)
             # conv_output = F.leaky_relu(self.bn3(self.conv3(conv_output)), negative_slope=0.01)
-            conv_output = F.leaky_relu(self.conv1(slice_input), negative_slope=0.01)
-            conv_output = F.leaky_relu(self.conv2(conv_output), negative_slope=0.01)
-            conv_output = F.leaky_relu(self.conv3(conv_output), negative_slope=0.01)
+            conv_output = F.relu(self.conv1(slice_input))
+            conv_output = F.relu(self.conv2(conv_output))
+            conv_output = F.relu(self.conv3(conv_output))
 
             outputs.append(conv_output)
 
         # Concatenate each slice's features into a single tensor, then do a global_pooling pass
         fused_output = torch.cat(outputs, dim=1)
-        fused_output = self.global_pool(fused_output)
+        fused_output = self.global_conv(fused_output)
         flattened_output = fused_output.view(batch_size, -1)
+        # Convert to float16 for the linear layers
+        flattened_output = flattened_output.to(torch.bfloat16)
 
-        embedding = F.leaky_relu(self.fc1(flattened_output), negative_slope=0.01)
+        embedding = F.relu(self.fc1(flattened_output))
         dropout = self.dropout(embedding)
 
         # Regularization, then output
@@ -88,19 +108,19 @@ class CustomCNN(pl.LightningModule):
         return output, embedding
     
     def steps(self, anchor, positive, negative, type):
-        anchor_input, anchor_label, target = anchor
+        anchor_input, anchor_label = anchor
         positive_input, _ = positive
         negative_input, _= negative
 
         ## Forward pass
         anchor_output, anchor_embedding = self(anchor_input)         # Anchor is the sample being trained on
-        _, positive_embedding = self(positive_input)                 # Positive is a sample in the same class
-        _, negative_embedding = self(negative_input)                 # Negative is a sample in a different class
+        _, positive_embedding = self(positive_input)     # Positive is a sample in the same class
+        _, negative_embedding = self(negative_input)     # Negative is a sample in a different class
         
         ## Loss Functions
         loss_classification = self.classification_loss(anchor_output, anchor_label)
         loss_triplet = self.triplet_loss(anchor_embedding, positive_embedding, negative_embedding)
-        loss = loss_classification + 1 * loss_triplet  # Weighting losses
+        loss = loss_classification + 0.5 * loss_triplet  # Weighting losses
 
         ## Accuracy
         preds = torch.argmax(anchor_output, dim=1)
@@ -208,8 +228,8 @@ class CustomCNN(pl.LightningModule):
         return image
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=1e-3)
-        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=20, eta_min=5e-4)
+        optimizer = optim.Adam(self.parameters(), lr=5e-3)
+        # scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=10, T_mult=2)
         # return {'optimizer': optimizer, 'lr_scheduler': scheduler}
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=3, factor=0.3, cooldown=2, min_lr=1e-5)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=3, factor=0.1, cooldown=2)
         return {'optimizer': optimizer, 'lr_scheduler': scheduler, 'monitor': 'Loss/val_loss'}

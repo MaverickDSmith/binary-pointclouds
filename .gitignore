@@ -1,2 +1,7 @@
 /tb_logs/
 /data/
+/tmp/
+/__pycache__/
+__pycache__/
+dataloaders/__pycache__/
+models/__pycache__/
