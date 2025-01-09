@@ -36,6 +36,7 @@ def binary32_to_float(binary_str):
 
 def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
     pcd_tree = o3d.geometry.KDTreeFlann(pcd)
+    change = False
 
     # Calculate step sizes for X and Y axes
     size = max_bound - min_bound
@@ -74,13 +75,12 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
             y_count = y_count + 1
             if y_count == slices + 1:
                 y_count = 0
+                change = True
                 z_count = z_count + 1
 
         if k > 0:
             grid[i] = 1
             num_of_ones = num_of_ones + 1
-        else:
-            grid[i] = 0
 
     ## Export the min/max bounds as a bit sequence
     min_bound_binary = np.array([float_to_binary32(min_bound[0]), float_to_binary32(min_bound[1]), float_to_binary32(min_bound[2])])
@@ -220,7 +220,7 @@ def decode_binary(points, slices, size, min_bound):
 if __name__ == '__main__':
     ## Variables and Initial Object loading
     slices = 64
-    mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
+    mesh = o3d.io.read_triangle_mesh("/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off")
     print(np.shape(mesh.vertices))
 
     points_normalized = normalize(np.asarray(mesh.vertices))
@@ -247,8 +247,10 @@ if __name__ == '__main__':
     ba = rle_encode_variable_length(ba, min_bound_binary, max_bound_binary)
     with open('data/rle_encoded_sofa_0166.bin', 'wb') as f:
         ba.tofile(f)
+    
 
     ba, min_bound, max_bound = rle_decode_variable_length(ba)
+    print(f'Length of BA: {len(ba)}')
     numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
 
     # Decode it

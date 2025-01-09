@@ -1,6 +1,7 @@
 import open3d as o3d
 import numpy as np
 from bitarray import bitarray
+from bitarray.util import sc_encode, sc_decode
 import struct
 
 import math
@@ -34,61 +35,104 @@ def binary32_to_float(binary_str):
     [float_value] = struct.unpack('!f', struct.pack('!I', int_representation))
     return float_value
 
-def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
-    pcd_tree = o3d.geometry.KDTreeFlann(pcd)
-    change = False
+def binary_your_pointcloud_test(pcd, slices, max_bound, min_bound):
+    # """
+    # Converts a point cloud to a binary representation using voxelization.
 
-    # Calculate step sizes for X and Y axes
-    size = max_bound - min_bound
-    step_x = size[0] / slices
-    step_y = size[1] / slices
-    step_z = size[2] / slices
+    # Parameters:
+    #     pcd (open3d.geometry.PointCloud): Input point cloud.
+    #     slices (int): Number of slices (voxels) along each axis.
+    #     max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
+    #     min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
 
-    # Determine threshold value
-    # This should be configurable
-    # Maybe further refine this?
-    x_thresh = step_x / 2
-    y_thresh = step_y / 2
-    z_thresh = step_z / 2
-    threshold = np.max([x_thresh, y_thresh, z_thresh], axis=0)
+    # Returns:
+    #     grid (bitarray): Binary representation of the point cloud.
+    #     num_of_ones (int): Number of intersections containing points.
+    #     min_bound_binary (np.ndarray): Binary representation of min bounds.
+    #     max_bound_binary (np.ndarray): Binary representation of max bounds.
+    # """
+    # # Calculate voxel size along each axis
+    # voxel_size = (max_bound - min_bound) / slices
 
-    # Initialize the grid as a 1D binary array
-    grid = bitarray((slices + 1) * (slices + 1) * (slices + 1))
-    grid.setall(0)  # Initialize all bits to 0
-    x_count = 0
-    y_count = 0
-    z_count = 0
-    num_of_ones = 0
+    # # Initialize a 1D binary array for the grid
+    # grid = bitarray((slices + 1) ** 3)
+    # grid.setall(0)  # Initialize all bits to 0
 
-    for i in range(len(grid)):
-        x_pos = min_bound[0] + step_x * x_count
-        y_pos = min_bound[1] + step_y * y_count
-        z_pos = min_bound[2] + step_z * z_count
+    # # Get the point cloud as a NumPy array
+    # points = np.asarray(pcd.points)
 
-        query_point = np.asarray([x_pos, y_pos, z_pos])
-        [k, _, _] = pcd_tree.search_radius_vector_3d(query_point, threshold)
+    # # Calculate voxel indices for each point
+    # voxel_indices = ((points - min_bound) / voxel_size).astype(int)
 
-        # Update specific x, y, and z counts
-        x_count = x_count + 1
-        if x_count == slices + 1:
-            x_count = 0
-            y_count = y_count + 1
-            if y_count == slices + 1:
-                y_count = 0
-                change = True
-                z_count = z_count + 1
+    # # Clip indices to stay within grid bounds
+    # voxel_indices = np.clip(voxel_indices, 0, slices)
 
-        if k > 0:
-            grid[i] = 1
-            num_of_ones = num_of_ones + 1
+    # # Convert 3D voxel indices to 1D grid indices
+    # grid_indices = (
+    #     voxel_indices[:, 0] * (slices + 1) ** 2 +
+    #     voxel_indices[:, 1] * (slices + 1) +
+    #     voxel_indices[:, 2]
+    # )
 
-    ## Export the min/max bounds as a bit sequence
-    min_bound_binary = np.array([float_to_binary32(min_bound[0]), float_to_binary32(min_bound[1]), float_to_binary32(min_bound[2])])
-    max_bound_binary = np.array([float_to_binary32(max_bound[0]), float_to_binary32(max_bound[1]), float_to_binary32(max_bound[2])])
+    # # Mark the corresponding grid cells as 1
+    # for idx in np.unique(grid_indices):
+    #     grid[idx] = 1
+
+    # # Count the number of ones in the grid
+    # num_of_ones = grid.count(1)
+
+    # # Export the min/max bounds as binary sequences
+    # min_bound_binary = np.array([float_to_binary32(v) for v in min_bound])
+    # max_bound_binary = np.array([float_to_binary32(v) for v in max_bound])
+
+    # return grid, num_of_ones, min_bound_binary, max_bound_binary
+    """
+    Converts a point cloud to a binary representation using voxelization,
+    while preserving the grid structure order.
+
+    Parameters:
+        pcd (open3d.geometry.PointCloud): Input point cloud.
+        slices (int): Number of slices (voxels) along each axis.
+        max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+
+    Returns:
+        grid (bitarray): Binary representation of the point cloud.
+        num_of_ones (int): Number of intersections containing points.
+        min_bound_binary (np.ndarray): Binary representation of min bounds.
+        max_bound_binary (np.ndarray): Binary representation of max bounds.
+    """
+    voxel_size = (max_bound - min_bound) / slices
+    grid = bitarray((slices + 1) ** 3)
+    grid.setall(0)
+    points = np.asarray(pcd.points)
+    voxel_indices = ((points - min_bound) / voxel_size).astype(int)
+    voxel_indices = np.clip(voxel_indices, 0, slices)
+
+    # Sort voxel indices by X-major order
+    traversal_order = np.lexsort((voxel_indices[:, 0], voxel_indices[:, 1], voxel_indices[:, 2]))
+    voxel_indices = voxel_indices[traversal_order]
+
+    # Convert to 1D indices in X-major order
+    grid_indices = (
+        voxel_indices[:, 2] * (slices + 1) ** 2 +  # X-major ordering
+        voxel_indices[:, 1] * (slices + 1) +
+        voxel_indices[:, 0]
+    )
+
+    for idx in np.unique(grid_indices):
+        grid[idx] = 1
+
+    # Count the number of 1s in the grid
+    num_of_ones = grid.count(1)
+
+    # Export the min/max bounds as binary sequences
+    min_bound_binary = np.array([float_to_binary32(v) for v in min_bound])
+    max_bound_binary = np.array([float_to_binary32(v) for v in max_bound])
 
     return grid, num_of_ones, min_bound_binary, max_bound_binary
 
-def rle_encode_variable_length(bitarr, min_bound, max_bound):
+def rle_encode_variable_length_test(bitarr, min_bound, max_bound):
     encoded = bitarray()
     max_run_length = 0
     run_lengths = []
@@ -134,7 +178,51 @@ def rle_encode_variable_length(bitarr, min_bound, max_bound):
 
     return encoded
 
-def rle_decode_variable_length(encoded_bitarr):
+def sc_encode_variable_length_with_bounds(bitarr, min_bound, max_bound):
+    # First, create the header with min_bound and max_bound
+    encoded = bitarray()
+
+    # Append min_bound (3 sets of 32-bit floats)
+    for val in min_bound:
+        encoded.extend(bitarray(val))  # Convert float to 32-bit binary
+
+    # Append max_bound (3 sets of 32-bit floats)
+    for val in max_bound:
+        encoded.extend(bitarray(val))  # Convert float to 32-bit binary
+
+    # Now, compress the bitarray using sc_encode
+    encoded.extend(bitarr)
+    encoded = sc_encode(encoded)
+    
+    
+    return encoded
+
+def sc_decode_variable_length_with_bounds(encoded_bitarr):
+    # Start by extracting the header (min_bound and max_bound)
+    index = 0
+    min_bound = []
+    max_bound = []
+
+    # Decode the compressed sparse bitarray
+    decoded_bitarr = sc_decode(encoded_bitarr)
+
+    for i in range(3):  # Decode the first 3 sets for min_bound (XYZ)
+        min_bound_bin = decoded_bitarr[index:index + 32].to01()
+        min_bound.append(binary32_to_float(min_bound_bin))
+        index += 32
+
+    for i in range(3):  # Decode the next 3 sets for max_bound (XYZ)
+        max_bound_bin = decoded_bitarr[index:index + 32].to01()
+        max_bound.append(binary32_to_float(max_bound_bin))
+        index += 32
+
+    # Remove the first 192 values from decoded_bitarr
+    decoded_bitarr = decoded_bitarr[index:]
+
+    return decoded_bitarr, np.array(min_bound), np.array(max_bound)
+
+
+def rle_decode_variable_length_test(encoded_bitarr):
     '''Returns:
         Decoded Bitarray 1D List bitarray(),
         np.array(min_bound),
@@ -179,7 +267,7 @@ def rle_decode_variable_length(encoded_bitarr):
     return decoded, np.array(min_bound), np.array(max_bound)
 
 
-def decode_binary(points, slices, size, min_bound):
+def decode_binary_test(points, slices, size, min_bound):
     # Reshape the binary vector into a 3D grid
     grid = points.reshape(((slices + 1), (slices + 1), (slices + 1)))
     # Calculate step sizes
@@ -217,50 +305,62 @@ def decode_binary(points, slices, size, min_bound):
 
     return grid_points
 
-if __name__ == '__main__':
-    ## Variables and Initial Object loading
-    slices = 64
-    mesh = o3d.io.read_triangle_mesh("data/sofa_0166.off")
-    print(np.shape(mesh.vertices))
 
-    points_normalized = normalize(np.asarray(mesh.vertices))
-    min_bound = np.min(points_normalized, axis=0)
-    max_bound = np.max(points_normalized, axis=0)
+# if __name__ == '__main__':
+#     ## Variables and Initial Object loading
+#     slices = 64
+#     mesh = o3d.io.read_triangle_mesh("/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off")
+#     print(np.shape(mesh.vertices))
 
-    size = max_bound - min_bound
-    mesh.vertices = o3d.utility.Vector3dVector(points_normalized)
+#     points_normalized = normalize(np.asarray(mesh.vertices))
+#     min_bound = np.min(points_normalized, axis=0)
+#     max_bound = np.max(points_normalized, axis=0)
 
-    # Lineset
-    grid_lines = visualize_grid(min_bound, max_bound, slices)
-    xyz_lines = create_xyz_line(min_bound, max_bound, slices)
+#     size = max_bound - min_bound
+#     mesh.vertices = o3d.utility.Vector3dVector(points_normalized)
+
+#     # Lineset
+#     grid_lines = visualize_grid(min_bound, max_bound, slices)
+#     xyz_lines = create_xyz_line(min_bound, max_bound, slices)
     
-    # Optionally visualize the normalized point cloud
-    point_cloud_normalized = o3d.geometry.PointCloud()
-    point_cloud_normalized.points = o3d.utility.Vector3dVector(mesh.vertices)
-    o3d.visualization.draw_geometries([point_cloud_normalized, xyz_lines])
+#     # Optionally visualize the normalized point cloud
+#     point_cloud_normalized = o3d.geometry.PointCloud()
+#     point_cloud_normalized.points = o3d.utility.Vector3dVector(mesh.vertices)
+#     o3d.visualization.draw_geometries([point_cloud_normalized, xyz_lines])
 
-    ba, _, min_bound_binary, max_bound_binary = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
-    # with open('data/bowl_0001_slice64.bin', 'rb') as f:
-    #     ba = bitarray()
-    #     ba.fromfile(f)
+#     ba, _, min_bound_binary, max_bound_binary = binary_your_pointcloud_test(point_cloud_normalized, slices, max_bound, min_bound)
+#     # with open('data/bowl_0001_slice64.bin', 'rb') as f:
+#     #     ba = bitarray()
+#     #     ba.fromfile(f)
 
-    ba = rle_encode_variable_length(ba, min_bound_binary, max_bound_binary)
-    with open('data/rle_encoded_sofa_0166.bin', 'wb') as f:
-        ba.tofile(f)
+#     ## RLE Encoding
+#     # ba = rle_encode_variable_length_test(ba, min_bound_binary, max_bound_binary)
+#     # with open('data/sc_encoded_sofa_test_0166.bin', 'wb') as f:
+#     #     ba.tofile(f)
+    
 
-    ba, min_bound, max_bound = rle_decode_variable_length(ba)
-    numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
+#     # ba, min_bound, max_bound = rle_decode_variable_length_test(ba)
+#     # print(f'Length of BA: {len(ba)}')
+#     # numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
 
-    # Decode it
-    grid_points = decode_binary(numpy_array_loaded, slices, size, min_bound)
+#     ba = sc_encode_variable_length_with_bounds(ba, min_bound_binary, max_bound_binary)
+#     with open('data/sc_encoded_sofa_test_0166.bin', 'wb') as f:
+#         f.write(ba)
+    
 
-    print(grid_points)
-    print(np.shape(grid_points))
+#     ba, min_bound, max_bound = sc_decode_variable_length_with_bounds(ba)
+#     print(f'Length of BA: {len(ba)}')
+#     numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
 
-    # Create a point cloud from the grid points
-    point_cloud_reconstructed = o3d.geometry.PointCloud()
-    point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
+#     # Decode it
+#     grid_points = decode_binary_test(numpy_array_loaded, slices, size, min_bound)
 
-    # Visualize the point cloud
-    o3d.visualization.draw_geometries([point_cloud_reconstructed, xyz_lines])
+#     print(grid_points)
+#     print(np.shape(grid_points))
 
+#     # Create a point cloud from the grid points
+#     point_cloud_reconstructed = o3d.geometry.PointCloud()
+#     point_cloud_reconstructed.points = o3d.utility.Vector3dVector(grid_points)
+
+#     # Visualize the point cloud
+#     o3d.visualization.draw_geometries([point_cloud_reconstructed, xyz_lines])
