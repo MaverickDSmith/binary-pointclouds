@@ -14,7 +14,7 @@ data:
   num_workers: 16  # Number of workers for data loading
 
 training:
-  max_epochs: 1  # Maximum number of epochs
+  max_epochs: 50  # Maximum number of epochs
   checkpoint_path: '/path/to/checkpoint.ckpt'  # Path to model checkpoint (if resuming training)
   checkpoint: false  # Set to true if you want to load a checkpoint
   log_dir: 'tb_logs'  # Directory for TensorBoard logs
