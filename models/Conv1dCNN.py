@@ -151,7 +151,6 @@ class CustomCNN(pl.LightningModule):
 
     def forward(self, x, embeddings=False):
         batch_size, num_slices, _, _ = x.size()
-
         # Reshape input to match the new channel size for Conv1D
         x = x.view(batch_size, num_slices, -1)  # Shape: (batch_size, num_slices, num_slices * num_slices)
         
