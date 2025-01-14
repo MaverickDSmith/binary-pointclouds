@@ -9,7 +9,7 @@ model:
   emb_dim: 512  # Embedding dimension (if applicable)
 
 data:
-  root_dir: '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle'  # Root directory for the dataset
+  root_dir: '/home/hi5lab/pointcloud_data/storage_test_two/slice64_og'  # Root directory for the dataset
   batch_size: 24  # Batch size for training
   num_workers: 16  # Number of workers for data loading
 

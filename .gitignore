@@ -43,3 +43,4 @@ TO:DO.md
 archive/train_binary_testing.py
 archive/train_decoded_cnn.py
 archive/
+__pycache__/binary_encoder.cpython-310.pyc

@@ -76,6 +76,7 @@ class BitArrayDataset(Dataset):
 
     def get_class_weights(self):
         return torch.tensor(self.class_weights, dtype=torch.float32)
+
     def __len__(self):
         return len(self.file_paths)
 
