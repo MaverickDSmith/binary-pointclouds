@@ -316,7 +316,7 @@ class CustomCNN(pl.LightningModule):
             # plt.tight_layout()
 
             # Save the figure
-            plt.savefig("tb_logs/og_vs_voxel_rle_vs_voxel_sc/version_" + str(self.logger.version) + "/" +  name + "_confusion_matrix.png")
+            plt.savefig("tb_logs/pointnet_test/version_" + str(self.logger.version) + "/" +  name + "_confusion_matrix.png")
             plt.close(fig)
 
             # Log the confusion matrix image to TensorBoard (uncomment if needed)

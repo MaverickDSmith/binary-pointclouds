@@ -23,7 +23,7 @@ __pycache__/binary_encoder.cpython-310.pyc
 __pycache__/
 
 
-venv/
+.venv/
 env/
 
 
@@ -39,3 +39,7 @@ build/
 
 .vscode/
 .idea/
+TO:DO.md
+archive/train_binary_testing.py
+archive/train_decoded_cnn.py
+archive/

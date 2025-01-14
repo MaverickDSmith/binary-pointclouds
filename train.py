@@ -7,6 +7,7 @@ from pytorch_lightning.strategies import DDPStrategy
 from pytorch_lightning.cli import LightningCLI
 from lightning.pytorch.profilers import AdvancedProfiler
 from models.Conv1dCNN import CustomCNN
+from models.PointNet import PointNet
 from dataloaders.BitArrayDataset import PointCloudDataModule
 
 def cli_main():
@@ -26,8 +27,10 @@ def train_main(config_path='config.yaml'):
     datamodule.setup()
 
     # Determine number of slices from the dataset
-    _, _, _, num_slices = next(iter(datamodule.train_dataloader()))
-    num_slices = num_slices[0].item()
+    # _, _, _, num_slices = next(iter(datamodule.train_dataloader()))
+    # _, _, num_slices = next(iter(datamodule.train_dataloader()))
+    # num_slices = num_slices[0].item()
+    num_slices = 65
 
     # Initialize Model
     if config['training']['checkpoint']:
@@ -57,9 +60,6 @@ def train_main(config_path='config.yaml'):
     )
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
- 
-    profiler = AdvancedProfiler(dirpath=".", filename="perf_logs")
-
     # Train the model with profiler
     trainer = Trainer(
         max_epochs=config['training']['max_epochs'],
@@ -68,8 +68,7 @@ def train_main(config_path='config.yaml'):
         accelerator='gpu' if config['gpu']['use_gpu'] else 'cpu',
         devices=config['gpu']['devices'],
         strategy=config['gpu']['strategy'],
-        num_nodes=config['gpu']['num_nodes'],
-        profiler=profiler
+        num_nodes=config['gpu']['num_nodes']
     )
     trainer.fit(model, datamodule)
 

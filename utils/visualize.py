@@ -84,16 +84,16 @@ def visualize_point_clouds(pcds, spacing=1.5, colors=None):
     o3d.visualization.draw_geometries(pcds)
 
 # File paths
-og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off"
-ba_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_0166.bin'
-vox_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_test_0166.bin'
-sc_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/sc_encoded_sofa_test_0166.bin'
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off"
+# ba_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_0166.bin'
+# vox_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_test_0166.bin'
+# sc_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/sc_encoded_sofa_test_0166.bin'
 
 
-# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
-# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
-# vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
-# sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
+og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
+ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
+vox_path = '/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_rle/dresser/dresser_0228_slice128_rle.bin'
+sc_path = '/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_sc/dresser/dresser_0228_slice128_sc.bin'
 
 
 slices = 64
@@ -151,7 +151,7 @@ print(f"Size: {size}")
 
 
 # Decode the binary array
-grid_points_test = decode_binary(numpy_array_loaded, 64, size, min_bound)
+grid_points_test = decode_binary(numpy_array_loaded, 128, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points
@@ -171,7 +171,7 @@ numpy_array_loaded = np.array(ba_sc_test.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
 # Decode the binary array
-grid_points_test_sc = decode_binary(numpy_array_loaded, 64, size, min_bound)
+grid_points_test_sc = decode_binary(numpy_array_loaded, 128, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points

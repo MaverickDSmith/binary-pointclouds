@@ -36,56 +36,6 @@ def binary32_to_float(binary_str):
     return float_value
 
 def binary_your_pointcloud_test(pcd, slices, max_bound, min_bound):
-    # """
-    # Converts a point cloud to a binary representation using voxelization.
-
-    # Parameters:
-    #     pcd (open3d.geometry.PointCloud): Input point cloud.
-    #     slices (int): Number of slices (voxels) along each axis.
-    #     max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
-    #     min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
-
-    # Returns:
-    #     grid (bitarray): Binary representation of the point cloud.
-    #     num_of_ones (int): Number of intersections containing points.
-    #     min_bound_binary (np.ndarray): Binary representation of min bounds.
-    #     max_bound_binary (np.ndarray): Binary representation of max bounds.
-    # """
-    # # Calculate voxel size along each axis
-    # voxel_size = (max_bound - min_bound) / slices
-
-    # # Initialize a 1D binary array for the grid
-    # grid = bitarray((slices + 1) ** 3)
-    # grid.setall(0)  # Initialize all bits to 0
-
-    # # Get the point cloud as a NumPy array
-    # points = np.asarray(pcd.points)
-
-    # # Calculate voxel indices for each point
-    # voxel_indices = ((points - min_bound) / voxel_size).astype(int)
-
-    # # Clip indices to stay within grid bounds
-    # voxel_indices = np.clip(voxel_indices, 0, slices)
-
-    # # Convert 3D voxel indices to 1D grid indices
-    # grid_indices = (
-    #     voxel_indices[:, 0] * (slices + 1) ** 2 +
-    #     voxel_indices[:, 1] * (slices + 1) +
-    #     voxel_indices[:, 2]
-    # )
-
-    # # Mark the corresponding grid cells as 1
-    # for idx in np.unique(grid_indices):
-    #     grid[idx] = 1
-
-    # # Count the number of ones in the grid
-    # num_of_ones = grid.count(1)
-
-    # # Export the min/max bounds as binary sequences
-    # min_bound_binary = np.array([float_to_binary32(v) for v in min_bound])
-    # max_bound_binary = np.array([float_to_binary32(v) for v in max_bound])
-
-    # return grid, num_of_ones, min_bound_binary, max_bound_binary
     """
     Converts a point cloud to a binary representation using voxelization,
     while preserving the grid structure order.
@@ -136,9 +86,6 @@ def rle_encode_variable_length_test(bitarr, min_bound, max_bound):
     encoded = bitarray()
     max_run_length = 0
     run_lengths = []
-
-    assert len(bitarr) == (64 + 1) ** 3, "Input bitarray size mismatch!"
-
 
     ### Header
     ## Min bound / Max Bound (24 Bytes, 6 sets of 32-bit strings)
@@ -257,36 +204,18 @@ def rle_decode_variable_length_test(encoded_bitarr):
 
     current_bit = 0  # We start decoding with 0s
 
-    # while index < len(encoded_bitarr):
-    #     run_length_bin = encoded_bitarr[index:index + bits_needed].to01()
-    #     run_length = int(run_length_bin, 2)
-    #     index += bits_needed
-        
-    #     # Append the decoded run length of 0s or 1s
-    #     decoded.extend(bitarray([current_bit]) * run_length)
-
-    #     # Toggle current bit for next run length
-    #     current_bit = 1 - current_bit
-
     while index + bits_needed <= len(encoded_bitarr):
         run_length_bin = encoded_bitarr[index:index + bits_needed].to01()
         run_length = int(run_length_bin, 2)
         index += bits_needed
         
-        # Debugging
-        # print(f"Run length binary: {run_length_bin}, Run length: {run_length}, Current bit: {current_bit}")
+
         
         # Append the decoded run length of 0s or 1s
         decoded.extend(bitarray([current_bit]) * run_length)
 
         # Toggle current bit for next run length
         current_bit = 1 - current_bit
-
-    # # Check if there are leftover bits
-    # if index < len(encoded_bitarr):
-    #     print(f"Warning: Unprocessed bits at the end of the bitarray! Index: {index}, Length: {len(encoded_bitarr)}")
-    #     # Optionally raise an error:
-    #     # raise ValueError("Unprocessed bits in the encoded bitarray!")
 
     return decoded, np.array(min_bound), np.array(max_bound)
 

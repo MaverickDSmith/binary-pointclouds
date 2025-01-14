@@ -5,8 +5,7 @@ import numpy as np
 from tqdm import tqdm
 
 from utils.utils import normalize
-from binary_encoder import binary_your_pointcloud, rle_encode_variable_length
-from binary_encoder_test import binary_your_pointcloud_test, rle_encode_variable_length_test, sc_encode_variable_length_with_bounds
+from binary_encoder import binary_your_pointcloud, rle_encode_variable_length, binary_your_pointcloud_voxels, rle_encode_variable_length_voxels, sc_encode_variable_length_with_bounds
 
 
 def setup_logger(log_file, to_console):
@@ -144,18 +143,18 @@ def process_off_file(off_file_path, kdtree_rle_flag, voxel_rle_flag, voxel_sc_fl
 
     # Binary Stuff
     if kdtree_rle_flag:
-        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_your_pointcloud(point_cloud_normalized, 64, max_bound, min_bound)
+        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_your_pointcloud(point_cloud_normalized, 128, max_bound, min_bound)
         kdtree_rle_data = rle_encode_variable_length(kdtree_rle_data, min_bin1_bound, max_bin1_bound)
         package[0] = kdtree_rle_data
 
     if voxel_rle_flag:
-        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_your_pointcloud_test(point_cloud_normalized, 64, max_bound, min_bound)
-        voxel_rle_data = rle_encode_variable_length_test(voxel_rle_data, min_bin2_bound, max_bin2_bound)
+        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_your_pointcloud_voxels(point_cloud_normalized, 128, max_bound, min_bound)
+        voxel_rle_data = rle_encode_variable_length_voxels(voxel_rle_data, min_bin2_bound, max_bin2_bound)
         package[1] = voxel_rle_data
 
 
     if voxel_sc_flag:
-        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_test(point_cloud_normalized, 64, max_bound, min_bound)
+        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_voxels(point_cloud_normalized, 128, max_bound, min_bound)
         voxel_sc_data = sc_encode_variable_length_with_bounds(voxel_sc_data, min_bin3_bound, max_bin3_bound)
         package[2] = voxel_sc_data
 
@@ -189,13 +188,13 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
     # Initialize output directories
     os.makedirs(output_dir, exist_ok=True)
     if kdflag:
-        kd_out = os.path.join(output_dir, "slice64")
+        kd_out = os.path.join(output_dir, "slice128")
         os.makedirs(kd_out, exist_ok=True)
     if voxel_rle_flag:
-        voxel_rle_out = os.path.join(output_dir, "slice_64_voxel_rle")
+        voxel_rle_out = os.path.join(output_dir, "slice_128_voxel_rle")
         os.makedirs(voxel_rle_out, exist_ok=True)
     if voxel_sc_flag:
-        voxel_sc_out = os.path.join(output_dir, "slice_64_voxel_sc")
+        voxel_sc_out = os.path.join(output_dir, "slice_128_voxel_sc")
         os.makedirs(voxel_sc_out, exist_ok=True)
 
     # Iterate over .off files with a progress bar
@@ -211,17 +210,17 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
             
             # Save slice64 data
             if kdflag:
-                suffix = "slice64"
+                suffix = "slice128"
                 save_bin_data(kd_out, label, object_name, data[0], suffix)
 
             # Save slice64_rle data
             if voxel_rle_flag:
-                suffix = "slice64_rle"
+                suffix = "slice128_rle"
                 save_bin_data(voxel_rle_out, label, object_name, data[1], suffix)
 
             # Save slice64_sc data
             if voxel_sc_flag:
-                suffix = "slice64_sc"
+                suffix = "slice128_sc"
                 save_bin_data(voxel_sc_out, label, object_name, data[2], suffix)
             pbar.update(1)
 
@@ -229,8 +228,8 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
 if __name__ == "__main__":
     # Variables
     root_dir    = "/home/hi5lab/pointcloud_data/ModelNet40"             # Root Directory of Data to compress
-    output_dir  = "/home/hi5lab/pointcloud_data/dataset"                # Root Output Directory for Compressed Data to go to
-    log_file    = "/home/hi5lab/pointcloud_data/storage_analysis.log"   # Output Log
+    output_dir  = "/home/hi5lab/pointcloud_data/dataset_128"                # Root Output Directory for Compressed Data to go to
+    log_file    = "/home/hi5lab/pointcloud_data/storage_analysis_128.log"   # Output Log
 
     kdtree      = False                                                 # If True, uses Open3D's KDTreeFlann method. Utilizes RLE by default.
     voxel_rle   = True                                                  # If True, uses modified Voxelization technique. Performs custom RLE on the bitarray.
@@ -241,6 +240,6 @@ if __name__ == "__main__":
     iterate_modelnet40(root_dir, output_dir, kdtree, voxel_rle, voxel_sc)
 
     # Performs storage analysis between two datasets. Recommended to only have two dataset directories in the first argument's file path.
-    # analyze_storage_sizes(output_dir, log_file)
+    analyze_storage_sizes(output_dir, log_file)
 
     

@@ -1,4 +1,4 @@
-from data_augmentation_experiments import reordering_bitarray
+from experiments.data_augmentation_experiments import reordering_bitarray
 from binary_encoder_test import rle_decode_variable_length, decode_binary
 
 from bitarray import bitarray

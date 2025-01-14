@@ -8,8 +8,10 @@ import random
 import bitarray
 import numpy as np
 
-from binary_encoder_test import rle_decode_variable_length_test, sc_decode_variable_length_with_bounds
+from binary_encoder_test import rle_decode_variable_length_test, sc_decode_variable_length_with_bounds, decode_binary_test
 from sklearn.utils.class_weight import compute_class_weight
+
+from torch.nn.utils.rnn import pad_sequence
 
 class BitArrayDataset(Dataset):
     def __init__(self, root_dir, split="train", split_ratios=(0.7, 0.2, 0.1), seed=42):
@@ -62,7 +64,6 @@ class BitArrayDataset(Dataset):
         # Load a sample to determine num_slices
         ba = bitarray.bitarray()
         with open(file_path, 'rb') as f:
-            # ba = bitarray.bitarray()
             ba.fromfile(f)
         ba, _, _ = rle_decode_variable_length_test(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
@@ -85,49 +86,23 @@ class BitArrayDataset(Dataset):
         anchor_path = self.file_paths[idx]
         anchor_label = self.labels[idx]
         anchor_tensor = self.load_bitarray(anchor_path)
-        anchor_class_name = self.index_to_label[anchor_label]
-
-        # Load a positive sample from the same class
-        positive_idx = self.get_positive_sample(anchor_label)
-        positive_tensor = self.load_bitarray(self.file_paths[positive_idx])
-
-        # Load a negative sample from a different class
-        negative_idx = self.get_negative_sample(anchor_label)
-        negative_tensor = self.load_bitarray(self.file_paths[negative_idx])
 
         # Convert to tensors and reshape
-        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.bfloat16)
+        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.float32)
         # print(anchor_path, len(anchor_tensor))
-        anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        positive_tensor = torch.tensor(positive_tensor, dtype=torch.bfloat16)
-        # print(self.file_paths[positive_idx], len(positive_tensor))
-        positive_tensor = positive_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        negative_tensor = torch.tensor(negative_tensor, dtype=torch.bfloat16)
-        negative_tensor = negative_tensor.view(self.num_slices, self.num_slices, self.num_slices)
 
-        return (anchor_tensor, anchor_label, anchor_class_name), \
-               (positive_tensor, self.labels[positive_idx]), \
-               (negative_tensor, self.labels[negative_idx]), \
-               self.num_slices
+        return anchor_tensor, anchor_label, self.num_slices
 
     def load_bitarray(self, file_path):
         ba = bitarray.bitarray()
-        # with open(file_path, 'rb') as f:
-        #     ba = f.read()
         with open(file_path, 'rb') as f:
-            # ba = bitarray.bitarray()
             ba.fromfile(f)
-        ba, _, _ = rle_decode_variable_length_test(ba)
+        ba, min_bound, max_bound = rle_decode_variable_length_test(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
-        return ba_unpacked
+        size = max_bound - min_bound
+        ba_output = decode_binary_test(ba_unpacked, self.num_slices - 1, size, min_bound)
+        return ba_output
 
-    def get_positive_sample(self, anchor_label):
-        positive_indices = [i for i, label in enumerate(self.labels) if label == anchor_label]
-        return random.choice(positive_indices)
-
-    def get_negative_sample(self, anchor_label):
-        negative_indices = [i for i, label in enumerate(self.labels) if label != anchor_label]
-        return random.choice(negative_indices)
 
 
 class PointCloudDataModule(pl.LightningDataModule):
@@ -144,11 +119,52 @@ class PointCloudDataModule(pl.LightningDataModule):
         self.val_dataset = BitArrayDataset(self.root_dir, split="val", split_ratios=self.split_ratios, seed=self.seed)
         self.test_dataset = BitArrayDataset(self.root_dir, split="test", split_ratios=self.split_ratios, seed=self.seed)
 
+    def collate_fn(self, batch):
+        # Separate anchor tensors, labels, and num_slices
+        anchors, labels, num_slices_list = zip(*batch)
+        
+        # Convert anchors to tensors if they aren't already and pad them
+        padded_anchors = pad_sequence(
+            [anchor.clone().detach() if isinstance(anchor, torch.Tensor) else torch.tensor(anchor).float() for anchor in anchors],
+            batch_first=True
+        )
+        
+        # Ensure num_slices is consistent across the batch
+        num_slices = num_slices_list[0]  # Assumes all num_slices are the same
+        
+        # Return padded tensors, labels, and num_slices
+        return padded_anchors, torch.tensor(labels), num_slices
+
+
     def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(
+            self.train_dataset,
+            batch_size=self.batch_size,
+            shuffle=True,
+            num_workers=self.num_workers,
+            pin_memory=True,
+            collate_fn=self.collate_fn,
+            drop_last=True
+        )
 
     def val_dataloader(self):
-        return DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(
+            self.val_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+            pin_memory=True,
+            collate_fn=self.collate_fn,
+            drop_last=True
+        )
 
     def test_dataloader(self):
-        return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(
+            self.test_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+            pin_memory=True,
+            collate_fn=self.collate_fn,
+            drop_last=True
+        )
