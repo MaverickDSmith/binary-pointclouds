@@ -30,8 +30,8 @@ callbacks:
 logging:
   logger_type: 'TensorBoardLogger'  # Logger type
   log_dir: 'tb_logs'  # Directory for logging
-  log_name: 'pointcloud_cnn'  # Name for logging
-
+  log_name: 'og_vs_voxel_rle_vs_voxel_sc'  # Name for logging
+  
 gpu:
   use_gpu: true  # Set to true to use GPU
   devices: 1  # Number of GPUs to use

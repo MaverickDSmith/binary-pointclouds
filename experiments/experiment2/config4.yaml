@@ -9,9 +9,9 @@ model:
   emb_dim: 512  # Embedding dimension (if applicable)
 
 data:
-  root_dir: '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle'  # Root directory for the dataset
-  batch_size: 24  # Batch size for training
-  num_workers: 16  # Number of workers for data loading
+  root_dir: '/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_rle'  # Root directory for the dataset
+  batch_size: 12  # Batch size for training
+  num_workers: 12  # Number of workers for data loading
 
 training:
   max_epochs: 50  # Maximum number of epochs
@@ -30,8 +30,8 @@ callbacks:
 logging:
   logger_type: 'TensorBoardLogger'  # Logger type
   log_dir: 'tb_logs'  # Directory for logging
-  log_name: 'pointcloud_cnn'  # Name for logging
-
+  log_name: 'og_vs_voxel_rle_vs_voxel_sc'  # Name for logging
+  
 gpu:
   use_gpu: true  # Set to true to use GPU
   devices: 1  # Number of GPUs to use
