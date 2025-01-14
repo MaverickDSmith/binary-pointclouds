@@ -8,7 +8,7 @@ import random
 import bitarray
 import numpy as np
 
-from binary_encoder_test import rle_decode_variable_length_test, sc_decode_variable_length_with_bounds
+from binary_encoder import rle_decode_variable_length, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
 from sklearn.utils.class_weight import compute_class_weight
 
 class BitArrayDataset(Dataset):
@@ -64,7 +64,7 @@ class BitArrayDataset(Dataset):
         with open(file_path, 'rb') as f:
             # ba = bitarray.bitarray()
             ba.fromfile(f)
-        ba, _, _ = rle_decode_variable_length_test(ba)
+        ba, _, _ = rle_decode_variable_length(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
         self.num_slices = round(math.pow(len(ba_unpacked), 1 / 3))
 
@@ -117,7 +117,7 @@ class BitArrayDataset(Dataset):
         with open(file_path, 'rb') as f:
             # ba = bitarray.bitarray()
             ba.fromfile(f)
-        ba, _, _ = rle_decode_variable_length_test(ba)
+        ba, _, _ = rle_decode_variable_length(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
         return ba_unpacked
 
