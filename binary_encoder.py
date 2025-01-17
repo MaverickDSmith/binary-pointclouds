@@ -35,6 +35,8 @@ def binary32_to_float(binary_str):
     [float_value] = struct.unpack('!f', struct.pack('!I', int_representation))
     return float_value
 
+## Try 2D Array Compression technique interpreting the grid as an image and the squashed input point cloud as a depth map
+
 
 ## Vector Quantization Functions (KDTreeFlann)
 
@@ -201,6 +203,7 @@ def binary_your_pointcloud_voxels(pcd, slices, max_bound, min_bound):
         min_bound_binary (np.ndarray): Binary representation of min bounds.
         max_bound_binary (np.ndarray): Binary representation of max bounds.
     """
+
     voxel_size = (max_bound - min_bound) / slices
     grid = bitarray((slices + 1) ** 3)
     grid.setall(0)

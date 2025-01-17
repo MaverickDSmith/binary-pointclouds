@@ -83,12 +83,6 @@ def visualize_point_clouds(pcds, spacing=1.5, colors=None):
     o3d.visualization.draw_geometries(pcds)
 
 # File paths
-<<<<<<< HEAD
-og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off"
-ba_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_0166.bin'
-vox_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_test_0166.bin'
-sc_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/sc_encoded_sofa_test_0166.bin'
-=======
 # og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off"
 # ba_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_0166.bin'
 # vox_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_test_0166.bin'
@@ -97,10 +91,9 @@ sc_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/dat
 
 og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
 ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
-vox_path = '/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_rle/dresser/dresser_0228_slice128_rle.bin'
-sc_path = '/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_sc/dresser/dresser_0228_slice128_sc.bin'
+vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
+sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
 
->>>>>>> master
 
 slices = 64
 
@@ -111,15 +104,9 @@ min_bound = np.min(points_normalized, axis=0)
 max_bound = np.max(points_normalized, axis=0)
 size = max_bound - min_bound
 mesh.vertices = o3d.utility.Vector3dVector(points_normalized)
-<<<<<<< HEAD
-print(f"Max Bound: {max_bound}")
-print(f"Min Bound: {min_bound}")
-print(f"Size: {size}")
-=======
 # print(f"Max Bound: {max_bound}")
 # print(f"Min Bound: {min_bound}")
 # print(f"Size: {size}")
->>>>>>> master
 
 # Create the original point cloud
 point_cloud_input = o3d.geometry.PointCloud()
@@ -133,11 +120,7 @@ ba = bitarray()
 with open(ba_path, 'rb') as f:
     ba.fromfile(f)
 
-<<<<<<< HEAD
 ba, min_bound, max_bound = rle_decode_variable_length(ba)
-=======
-ba, min_bound, max_bound = rle_decode_variable_length_test(ba)
->>>>>>> master
 numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
@@ -157,15 +140,7 @@ ba_test = bitarray()
 with open(vox_path, 'rb') as f:
     ba_test.fromfile(f)
 
-<<<<<<< HEAD
-ba_test, min_bound, max_bound = rle_decode_variable_length(ba_test)
-numpy_array_loaded = np.array(ba_test.tolist(), dtype=np.uint8)
-size = max_bound - min_bound
-
-# Decode the binary array
-grid_points_test = decode_binary(numpy_array_loaded, 64, size, min_bound)
-=======
-ba_test, min_bound, max_bound = rle_decode_variable_length_test(ba_test)
+ba_test, min_bound, max_bound = rle_decode_variable_length_voxels(ba_test)
 numpy_array_loaded = np.array(ba_test.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
@@ -175,8 +150,7 @@ print(f"Size: {size}")
 
 
 # Decode the binary array
-grid_points_test = decode_binary(numpy_array_loaded, 128, size, min_bound)
->>>>>>> master
+grid_points_test = decode_binary(numpy_array_loaded, 64, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points
@@ -196,11 +170,7 @@ numpy_array_loaded = np.array(ba_sc_test.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
 # Decode the binary array
-<<<<<<< HEAD
 grid_points_test_sc = decode_binary(numpy_array_loaded, 64, size, min_bound)
-=======
-grid_points_test_sc = decode_binary(numpy_array_loaded, 128, size, min_bound)
->>>>>>> master
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points

@@ -1,26 +1,19 @@
 /tb_logs/
 /data/
 /tmp/
-/__pycache__/
-__pycache__/
-dataloaders/__pycache__/
-models/__pycache__/
 final_model.ckpt
 uv.lock
 pyproject.toml
 .python-version
 processing_log.txt
 final_metrics.txt
-__pycache__/binary_encoder.cpython-310.pyc
 dataloaders/__pycache__/BitArrayDataset.cpython-310.pyc
 models/__pycache__/CustomCNN.cpython-310.pyc
-__pycache__/binary_encoder.cpython-310.pyc
-__pycache__/binary_encoder.cpython-310.pyc
 
 
 *.pyc
 *.pyo
-__pycache__/
+
 
 
 .venv/
@@ -43,4 +36,6 @@ TO:DO.md
 archive/train_binary_testing.py
 archive/train_decoded_cnn.py
 archive/
-__pycache__/binary_encoder.cpython-310.pyc
+
+__pycache__
+*/__pycache__

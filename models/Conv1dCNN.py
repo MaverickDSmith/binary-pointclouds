@@ -4,6 +4,8 @@ import torch.optim as optim
 import torch.nn.functional as F
 import pytorch_lightning as pl
 
+from torch.nn import CrossEntropyLoss
+
 import numpy as np
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
@@ -99,9 +101,8 @@ class FocalLoss(nn.Module):
         focal_loss = self.alpha * (1 - pt) ** self.gamma * BCE_loss
         return focal_loss.mean()
 
-# LightningModule that handles the model and training/validation loop
 class CustomCNN(pl.LightningModule):
-    def __init__(self, num_classes, num_slices, dataset, alpha, gamma, margin, emb_dim):
+    def __init__(self, num_classes, num_slices, dataset, alpha, gamma, margin, emb_dim, lr):
         super(CustomCNN, self).__init__()
         self.num_slices = num_slices
         self.num_classes = num_classes
@@ -114,27 +115,44 @@ class CustomCNN(pl.LightningModule):
         self.test_preds = []
         self.test_labels = []
         self.test_embeddings = []
-        self.class_weights = dataset.train_dataset.get_class_weights().to(self.device).to(torch.bfloat16)
+        # self.class_weights = dataset.train_dataset.get_class_weights().to(self.device).to(torch.bfloat16)
+        self.lr = lr
 
-        # # Updated Convolutional Layers with num_slices as input channels
+        # Existing convolutional layers
         self.conv1 = nn.Conv1d(in_channels=num_slices, out_channels=16, kernel_size=3, stride=1, padding=1)
         self.conv2 = nn.Conv1d(16, 32, kernel_size=5, stride=2, padding=2)
         self.conv3 = nn.Conv1d(32, 64, kernel_size=7, stride=2, padding=3)
         self.conv4 = nn.Conv1d(64, 128, kernel_size=7, stride=2, padding=3)
-        # self.conv4 = nn.Conv1d(num_slices * 4, num_slices * 8, kernel_size=5, stride=1, padding=2)
-        # self.conv5 = nn.Conv1d(num_slices * 16, num_slices * 32, kernel_size=4, stride=1, padding=2)
 
-        self.gn1 = nn.GroupNorm(2, 16, dtype=torch.bfloat16)
-        self.gn2 = nn.GroupNorm(4, 32, dtype=torch.bfloat16)
-        self.gn3 = nn.GroupNorm(8, 64, dtype=torch.bfloat16)
-        self.gn4 = nn.GroupNorm(16, 128, dtype=torch.bfloat16)
+        # Additional convolutional layers
+        # self.conv5 = nn.Conv1d(64, 128, kernel_size=5, stride=2, padding=2)
+        # self.conv6 = nn.Conv1d(128, 256, kernel_size=5, stride=2, padding=2)
+        # self.conv7 = nn.Conv1d(256, 512, kernel_size=3, stride=2, padding=1)
+        # self.conv8 = nn.Conv1d(512, 1024, kernel_size=3, stride=2, padding=1)
+
+        # BatchNorm layers
+        self.bn1 = nn.BatchNorm1d(16, dtype=torch.bfloat16)
+        self.bn2 = nn.BatchNorm1d(32, dtype=torch.bfloat16)
+        self.bn3 = nn.BatchNorm1d(64, dtype=torch.bfloat16)
+        self.bn4 = nn.BatchNorm1d(128, dtype=torch.bfloat16)
+        # self.bn5 = nn.BatchNorm1d(128, dtype=torch.bfloat16)
+        # self.bn6 = nn.BatchNorm1d(256, dtype=torch.bfloat16)
+        # self.bn7 = nn.BatchNorm1d(512, dtype=torch.bfloat16)
+        # self.bn8 = nn.BatchNorm1d(1024, dtype=torch.bfloat16)
 
         # Convert layers to bfloat16 for performance
-        self.conv1 = self.conv1.to(torch.bfloat16)
-        self.conv2 = self.conv2.to(torch.bfloat16)
-        self.conv3 = self.conv3.to(torch.bfloat16)
-        self.conv4 = self.conv4.to(torch.bfloat16)
-        # self.conv5 = self.conv5.to(torch.bfloat16)
+        for layer in [self.conv1, self.conv2, self.conv3, self.conv4]:
+            layer.to(torch.bfloat16)
+
+        # GroupNorm layers
+        # self.bn1 = nn.GroupNorm(2, 8, dtype=torch.bfloat16)
+        # self.bn2 = nn.GroupNorm(4, 16, dtype=torch.bfloat16)
+        # self.bn3 = nn.GroupNorm(8, 32, dtype=torch.bfloat16)
+        # self.bn4 = nn.GroupNorm(16, 64, dtype=torch.bfloat16)
+
+        # Convert layers to bfloat16 for performance
+        for layer in [self.conv1, self.conv2, self.conv3, self.conv4]:
+            layer.to(torch.bfloat16)
 
         # Global Average Pooling
         self.global_pool = nn.AdaptiveAvgPool1d(8)
@@ -142,28 +160,35 @@ class CustomCNN(pl.LightningModule):
         # Fully Connected Layers
         self.fc1 = nn.Linear(128 * 8, emb_dim, dtype=torch.bfloat16)
         self.fc2 = nn.Linear(emb_dim, num_classes, dtype=torch.bfloat16)
-        self.dropout = nn.Dropout(p=0.4)
+        self.dropout = nn.Dropout(p=0.7)
 
         # Losses
-        self.classification_loss = FocalLoss(alpha=alpha, gamma=gamma, weight=self.class_weights)
+        self.classification_loss = CrossEntropyLoss()
         self.triplet_loss = nn.TripletMarginLoss(margin=margin)
-
 
     def forward(self, x, embeddings=False):
         batch_size, num_slices, _, _ = x.size()
         # Reshape input to match the new channel size for Conv1D
         x = x.view(batch_size, num_slices, -1)  # Shape: (batch_size, num_slices, num_slices * num_slices)
-        
 
-        # Apply Conv1D layers
-        conv_output = F.leaky_relu(self.gn1(self.conv1(x)), negative_slope=0.01)
-        conv_output = F.leaky_relu(self.gn2(self.conv2(conv_output)), negative_slope=0.01)
-        conv_output = F.leaky_relu(self.gn3(self.conv3(conv_output)), negative_slope=0.01)
-        conv_output = F.leaky_relu(self.gn4(self.conv4(conv_output)), negative_slope=0.01)
-        # conv_output = F.leaky_relu(self.conv5(conv_output), negative_slope=0.01)
+        # ReLU
+        # x = torch.relu(self.bn1(self.conv1(x)))
+        # x = torch.relu(self.bn2(self.conv2(x)))
+        # x = torch.relu(self.bn3(self.conv3(x)))
+        # x = torch.relu(self.bn4(self.conv4(x)))
+
+        # Apply Conv1D layers with residual connections
+        x = F.leaky_relu(self.bn1(self.conv1(x)), negative_slope=0.01)
+        x = F.leaky_relu(self.bn2(self.conv2(x)), negative_slope=0.01)
+        x = F.leaky_relu(self.bn3(self.conv3(x)), negative_slope=0.01)
+        x = F.leaky_relu(self.bn4(self.conv4(x)), negative_slope=0.01)
+        # x = F.leaky_relu(self.bn5(self.conv5(x)), negative_slope=0.01)
+        # x = F.leaky_relu(self.bn6(self.conv6(x)), negative_slope=0.01)
+        # x = F.leaky_relu(self.bn7(self.conv7(x)), negative_slope=0.01)
+        # x = F.leaky_relu(self.bn8(self.conv8(x)), negative_slope=0.01)
 
         # Global Pooling
-        pooled_output = self.global_pool(conv_output)
+        pooled_output = self.global_pool(x)
 
         # Flatten the output
         flattened_output = pooled_output.view(batch_size, -1)
@@ -176,6 +201,9 @@ class CustomCNN(pl.LightningModule):
         output = self.fc2(dropout)
 
         return output, embedding
+
+
+
     
     
     def steps(self, anchor, positive, negative, type, batch_size):
@@ -192,7 +220,7 @@ class CustomCNN(pl.LightningModule):
         ## Loss Functions
         loss_classification = self.classification_loss(anchor_output, anchor_label)
         loss_triplet = self.triplet_loss(anchor_embedding, positive_embedding, negative_embedding)
-        loss = loss_classification + 0.5 * loss_triplet  # Weighting losses
+        loss = loss_classification + 0.4 * loss_triplet  # Weighting losses
 
         ## Accuracy
         preds = torch.argmax(anchor_output, dim=1)
@@ -316,7 +344,7 @@ class CustomCNN(pl.LightningModule):
             # plt.tight_layout()
 
             # Save the figure
-            plt.savefig("tb_logs/pointcloud_cnn/version_" + str(self.logger.version) + "/" +  name + "_confusion_matrix.png")
+            plt.savefig("tb_logs/uniform_sample_test/version_" + str(self.logger.version) + "/" +  name + "_confusion_matrix.png")
             plt.close(fig)
 
             # Log the confusion matrix image to TensorBoard (uncomment if needed)
@@ -329,6 +357,7 @@ class CustomCNN(pl.LightningModule):
         with torch.no_grad():
             # Convert numerical labels to string class names
             string_labels = [class_names[label.item()] for label in labels]
+            embeddings = embeddings.to(torch.float32)
             
             # Log the embeddings to TensorBoard with string labels
             self.logger.experiment.add_embedding(embeddings, metadata=string_labels, global_step=self.current_epoch)
@@ -343,8 +372,8 @@ class CustomCNN(pl.LightningModule):
         return image
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=1e-3)
+        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-3)
         # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=20, eta_min=5e-4)
         # return {'optimizer': optimizer, 'lr_scheduler': scheduler}
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=3, factor=0.3, cooldown=2, min_lr=1e-5)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=8, factor=0.9, cooldown=3, min_lr=1e-5, verbose=True)
         return {'optimizer': optimizer, 'lr_scheduler': scheduler, 'monitor': 'Loss/val_loss'}

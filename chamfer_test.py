@@ -1,4 +1,4 @@
-from metrics import chamfer_distance
+from metrics.metrics import chamfer_distance
 from binary_encoder import rle_decode_variable_length, decode_binary, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
 from utils.utils import normalize
 

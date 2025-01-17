@@ -1,45 +1,63 @@
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split
 import pytorch_lightning as pl
-
 import os
-import math
 import random
 import bitarray
 import numpy as np
-
-from binary_encoder import rle_decode_variable_length, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
 from sklearn.utils.class_weight import compute_class_weight
+import math
+# Assuming you have the existing decoder methods
+from binary_encoder import rle_decode_variable_length, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
 
 class BitArrayDataset(Dataset):
-    def __init__(self, root_dir, split="train", split_ratios=(0.7, 0.2, 0.1), seed=42):
+    def __init__(self, root_dir, split="train", split_ratios=(0.8, 0.2), seed=42):
         self.file_paths = []
         self.labels = []
         self.label_to_index = {}
         self.index_to_label = {}
         self.class_dict = {}
 
-        # Collect all file paths and their labels
+        # Iterate through each class in the root directory
         for label in os.listdir(root_dir):
             label_dir = os.path.join(root_dir, label)
             if os.path.isdir(label_dir):
+                # Map class labels to indices
                 if label not in self.label_to_index:
                     index = len(self.label_to_index)
                     self.label_to_index[label] = index
                     self.index_to_label[index] = label
-                for file_name in os.listdir(label_dir):
-                    if file_name.endswith('.bin'):
-                        file_path = os.path.join(label_dir, file_name)
-                        self.file_paths.append(file_path)
-                        self.labels.append(self.label_to_index[label])
 
-                        # Add to class_dict for triplet sampling
-                        label_index = self.label_to_index[label]
-                        if label_index not in self.class_dict:
-                            self.class_dict[label_index] = []
-                        self.class_dict[label_index].append(file_path)
+                # Handle train/test subdirectories for each class
+                if split == "train" or split == "val":
+                    split_name = "train"
+                else:
+                    split_name = "test"
+                split_dir = os.path.join(label_dir, split_name)
+                if os.path.isdir(split_dir):
+                    # Debugging: Check if we have files in this split
+                    found_files = False
+                    for file_name in os.listdir(split_dir):
+                        if file_name.endswith('.bin'):
+                            found_files = True
+                            file_path = os.path.join(split_dir, file_name)
+                            self.file_paths.append(file_path)
+                            self.labels.append(self.label_to_index[label])
 
-        # Split data into train/val/test
+                            # Add to class_dict for triplet sampling
+                            label_index = self.label_to_index[label]
+                            if label_index not in self.class_dict:
+                                self.class_dict[label_index] = []
+                            self.class_dict[label_index].append(file_path)
+
+                    if not found_files:
+                        print(f"Warning: No .bin files found in {split_dir} for class {label}")
+
+        # If no files were found, raise an error to notify that something went wrong
+        if len(self.file_paths) == 0:
+            raise ValueError(f"No .bin files found in the {split} splits for any class.")
+
+        # Shuffle and split into train/val (if not empty)
         random.seed(seed)
         combined = list(zip(self.file_paths, self.labels))
         random.shuffle(combined)
@@ -55,16 +73,10 @@ class BitArrayDataset(Dataset):
         elif split == "val":
             self.file_paths = self.file_paths[train_end:val_end]
             self.labels = self.labels[train_end:val_end]
-        elif split == "test":
-            self.file_paths = self.file_paths[val_end:]
-            self.labels = self.labels[val_end:]
 
         # Load a sample to determine num_slices
         ba = bitarray.bitarray()
-        # with open(file_path, 'rb') as f:
-        #     # ba = bitarray.bitarray()
-        #     ba.fromfile(f)
-        with open(file_path, 'rb') as f:
+        with open(self.file_paths[0], 'rb') as f:
             ba = f.read()
         ba, _, _ = sc_decode_variable_length_with_bounds(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
@@ -99,10 +111,8 @@ class BitArrayDataset(Dataset):
 
         # Convert to tensors and reshape
         anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.bfloat16)
-        # print(anchor_path, len(anchor_tensor))
         anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
         positive_tensor = torch.tensor(positive_tensor, dtype=torch.bfloat16)
-        # print(self.file_paths[positive_idx], len(positive_tensor))
         positive_tensor = positive_tensor.view(self.num_slices, self.num_slices, self.num_slices)
         negative_tensor = torch.tensor(negative_tensor, dtype=torch.bfloat16)
         negative_tensor = negative_tensor.view(self.num_slices, self.num_slices, self.num_slices)
@@ -116,9 +126,6 @@ class BitArrayDataset(Dataset):
         ba = bitarray.bitarray()
         with open(file_path, 'rb') as f:
             ba = f.read()
-        # with open(file_path, 'rb') as f:
-        #     # ba = bitarray.bitarray()
-        #     ba.fromfile(f)
         ba, _, _ = sc_decode_variable_length_with_bounds(ba)
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
         return ba_unpacked
@@ -132,8 +139,9 @@ class BitArrayDataset(Dataset):
         return random.choice(negative_indices)
 
 
+
 class PointCloudDataModule(pl.LightningDataModule):
-    def __init__(self, root_dir, batch_size=24, num_workers=16, split_ratios=(0.6, 0.2, 0.2), seed=42):
+    def __init__(self, root_dir, batch_size=24, num_workers=16, split_ratios=(0.8, 0.2), seed=42):
         super().__init__()
         self.root_dir = root_dir
         self.batch_size = batch_size
@@ -142,9 +150,12 @@ class PointCloudDataModule(pl.LightningDataModule):
         self.seed = seed
 
     def setup(self, stage=None):
+        # Setup for train/val datasets with a split for the Train folders
         self.train_dataset = BitArrayDataset(self.root_dir, split="train", split_ratios=self.split_ratios, seed=self.seed)
         self.val_dataset = BitArrayDataset(self.root_dir, split="val", split_ratios=self.split_ratios, seed=self.seed)
-        self.test_dataset = BitArrayDataset(self.root_dir, split="test", split_ratios=self.split_ratios, seed=self.seed)
+        
+        # Setup for test dataset (not split)
+        self.test_dataset = BitArrayDataset(self.root_dir, split="test", split_ratios=(1.0, 0.0), seed=self.seed)
 
     def train_dataloader(self):
         return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
@@ -154,3 +165,5 @@ class PointCloudDataModule(pl.LightningDataModule):
 
     def test_dataloader(self):
         return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
+
+
