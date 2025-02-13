@@ -20,6 +20,7 @@ def sample_and_normalize_mesh(mesh_file, num_points):
 
     # Convert to numpy array
     points = np.asarray(sampled_pcd.points)
+    print(np.shape(points))
 
     # Normalize into a unit sphere
     centroid = np.mean(points, axis=0)
@@ -72,8 +73,8 @@ def process_dataset(root_dir, output_dir, num_points=1024, split="train"):
 if __name__ == "__main__":
     # Update these paths
     input_root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
-    output_root_dir = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_1024"
-    num_points_to_sample = 1024
+    output_root_dir = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048_test"
+    num_points_to_sample = 2048
 
     for dataset_split in ["train", "test"]:
         process_dataset(input_root_dir, output_root_dir, num_points_to_sample, split=dataset_split)

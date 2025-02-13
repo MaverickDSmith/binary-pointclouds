@@ -281,13 +281,13 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
 
     # Initialize the flagged directories based on the flags
     if kdflag:
-        kd_out = os.path.join(output_dir, "slice128")
+        kd_out = os.path.join(output_dir, "slice" + str(slices))
         os.makedirs(kd_out, exist_ok=True)
     if voxel_rle_flag:
-        voxel_rle_out = os.path.join(output_dir, "slice_128_voxel_rle")
+        voxel_rle_out = os.path.join(output_dir, "slice_" + str(slices) + "_voxel_rle")
         os.makedirs(voxel_rle_out, exist_ok=True)
     if voxel_sc_flag:
-        voxel_sc_out = os.path.join(output_dir, "slice_128_voxel_sc")
+        voxel_sc_out = os.path.join(output_dir, "slice_" + str(slices) + "_voxel_sc")
         os.makedirs(voxel_sc_out, exist_ok=True)
 
     # Iterate over the files with progress bar
@@ -329,8 +329,8 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
 
 if __name__ == "__main__":
     # Variables
-    root_dir    = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_1024"             # Root Directory of Data to compress
-    output_dir  = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset"                # Root Output Directory for Compressed Data to go to
+    root_dir    = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048"             # Root Directory of Data to compress
+    output_dir  = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048"                # Root Output Directory for Compressed Data to go to
     log_file    = "/home/hi5lab/pointcloud_data/storage_analysis_64_pointcloud.log"   # Output Log
 
     kdtree      = False                                                 # If True, uses Open3D's KDTreeFlann method. Utilizes RLE by default.
@@ -338,7 +338,7 @@ if __name__ == "__main__":
     voxel_sc    = True                                                  # If True, uses modified Voxelization technique. Performs SC Encoding on the bitarray.
     to_console  = False                                                 # If True, prints storage analysis to the console.
     pc_file     = True                                                  # If True, processes point cloud files instead of mesh files.
-    slices      = 64                                                    # Number of slices in point cloud grid
+    slices      = 64                                                   # Number of slices in point cloud grid
 
     # Performs compression
     iterate_modelnet40(root_dir, output_dir, kdtree, voxel_rle, voxel_sc, pc_file, slices)

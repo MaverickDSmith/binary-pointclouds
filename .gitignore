@@ -39,3 +39,11 @@ archive/
 
 __pycache__
 */__pycache__
+final_metrics_chamfertest.txt
+final_metrics_mhd.txt
+final_metrics_three_rle.txt
+final_metrics_three.txt
+processing_log_chamfertest.txt
+processing_log_mhd.txt
+final_metrics_chamfertest.txt
+processing_log_chamfertest.txt

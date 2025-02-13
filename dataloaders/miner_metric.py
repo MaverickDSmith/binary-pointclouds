@@ -1,5 +1,5 @@
 import torch
-from torch.utils.data import Dataset, DataLoader, random_split
+from torch.utils.data import Dataset, DataLoader, random_split, WeightedRandomSampler
 import pytorch_lightning as pl
 import os
 import random
@@ -9,6 +9,9 @@ from sklearn.utils.class_weight import compute_class_weight
 import math
 # Assuming you have the existing decoder methods
 from binary_encoder import rle_decode_variable_length, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
+from experiments.data_augmentation_experiments import reordering_bitarray
+
+from collections import Counter
 
 class BitArrayDataset(Dataset):
     def __init__(self, root_dir, split="train", split_ratios=(0.8, 0.2), seed=42):
@@ -100,26 +103,19 @@ class BitArrayDataset(Dataset):
         anchor_label = self.labels[idx]
         anchor_tensor = self.load_bitarray(anchor_path)
         anchor_class_name = self.index_to_label[anchor_label]
-
-        # Load a positive sample from the same class
-        positive_idx = self.get_positive_sample(anchor_label)
-        positive_tensor = self.load_bitarray(self.file_paths[positive_idx])
-
-        # Load a negative sample from a different class
-        negative_idx = self.get_negative_sample(anchor_label)
-        negative_tensor = self.load_bitarray(self.file_paths[negative_idx])
-
         # Convert to tensors and reshape
-        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.bfloat16)
+        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.float32)
+
+        # Randomly decide whether to apply rotation
+        # if random.random() < 0.5:  # 50% chance to rotate
+        #     anchor_tensor = reordering_bitarray(anchor_tensor, self.num_slices)
+        # else:
+        # anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
+        # anchor_tensor = anchor_tensor.permute(2, 1, 0).contiguous()
+        # anchor_tensor = anchor_tensor.view(-1)
         anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        positive_tensor = torch.tensor(positive_tensor, dtype=torch.bfloat16)
-        positive_tensor = positive_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        negative_tensor = torch.tensor(negative_tensor, dtype=torch.bfloat16)
-        negative_tensor = negative_tensor.view(self.num_slices, self.num_slices, self.num_slices)
 
         return (anchor_tensor, anchor_label, anchor_class_name), \
-               (positive_tensor, self.labels[positive_idx]), \
-               (negative_tensor, self.labels[negative_idx]), \
                self.num_slices
 
     def load_bitarray(self, file_path):
@@ -130,13 +126,42 @@ class BitArrayDataset(Dataset):
         ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
         return ba_unpacked
 
-    def get_positive_sample(self, anchor_label):
-        positive_indices = [i for i, label in enumerate(self.labels) if label == anchor_label]
-        return random.choice(positive_indices)
+# class PointCloudDataModule(pl.LightningDataModule):
+#     def __init__(self, root_dir, batch_size=24, num_workers=16, split_ratios=(0.8, 0.2), seed=42):
+#         super().__init__()
+#         self.root_dir = root_dir
+#         self.batch_size = batch_size
+#         self.num_workers = num_workers
+#         self.split_ratios = split_ratios
+#         self.seed = seed
+#         self.weights = None
+#         self.sampler = None
 
-    def get_negative_sample(self, anchor_label):
-        negative_indices = [i for i, label in enumerate(self.labels) if label != anchor_label]
-        return random.choice(negative_indices)
+#     def setup(self, stage=None):
+#         # Setup for train/val datasets with a split for the Train folders
+#         self.train_dataset = BitArrayDataset(self.root_dir, split="train", split_ratios=self.split_ratios, seed=self.seed)
+#         self.val_dataset = BitArrayDataset(self.root_dir, split="val", split_ratios=self.split_ratios, seed=self.seed)
+#         # Setup for test dataset (not split)
+#         self.test_dataset = BitArrayDataset(self.root_dir, split="test", split_ratios=(1.0, 0.0), seed=self.seed)
+
+#         # Create class weights and sample weights
+#         self.class_weights = self.train_dataset.get_class_weights()
+#         sample_weights = [self.class_weights[label] for label in self.train_dataset.labels]
+        
+#         # Setup the WeightedRandomSampler
+#         self.sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(sample_weights), replacement=True)
+
+#     def train_dataloader(self):
+#         return DataLoader(self.train_dataset, batch_size=self.batch_size, sampler=self.sampler, 
+#                           num_workers=self.num_workers, pin_memory=True)
+
+#     def val_dataloader(self):
+#         return DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, 
+#                           num_workers=self.num_workers, pin_memory=True)
+
+#     def test_dataloader(self):
+#         return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, 
+#                           num_workers=self.num_workers, pin_memory=True)
 
 
 
@@ -149,22 +174,30 @@ class PointCloudDataModule(pl.LightningDataModule):
         self.split_ratios = split_ratios
         self.seed = seed
         self.weights = None
+        self.sampler = None
 
     def setup(self, stage=None):
         # Setup for train/val datasets with a split for the Train folders
         self.train_dataset = BitArrayDataset(self.root_dir, split="train", split_ratios=self.split_ratios, seed=self.seed)
         self.val_dataset = BitArrayDataset(self.root_dir, split="val", split_ratios=self.split_ratios, seed=self.seed)
-        
         # Setup for test dataset (not split)
         self.test_dataset = BitArrayDataset(self.root_dir, split="test", split_ratios=(1.0, 0.0), seed=self.seed)
 
+        # # Create class weights and sample weights
+        # self.class_weights = self.train_dataset.get_class_weights()
+        # sample_weights = [self.class_weights[label] for label in self.train_dataset.labels]
+        
+        # # Setup the WeightedRandomSampler
+        # self.sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(sample_weights), replacement=False)
+
     def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(self.train_dataset, batch_size=self.batch_size, sampler=self.sampler, 
+                          num_workers=self.num_workers, pin_memory=True, shuffle=True)
 
     def val_dataloader(self):
-        return DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, 
+                          num_workers=self.num_workers, pin_memory=True)
 
     def test_dataloader(self):
-        return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.num_workers, pin_memory=True)
-
-
+        return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=False, 
+                          num_workers=self.num_workers, pin_memory=True)

@@ -65,11 +65,13 @@ def reordering_bitarray(input_tensor, size):
     # Randomly permute axes
     transpose_axes = torch.randperm(3).tolist()  # Generates a random permutation of [0, 1, 2]
     reordered_3d = input_3d.permute(*transpose_axes)  # Rearranges axes based on the permutation
+    anchor_tensor = reordered_3d.permute(2, 1, 0).contiguous()
+    anchor_tensor = anchor_tensor.view(-1)
 
     # Flatten back to 1D
-    reshaped = reordered_3d.flatten()
+    # reshaped = reordered_3d.flatten()
 
-    return reshaped
+    return anchor_tensor
 
 
 # Version with distances for visualization

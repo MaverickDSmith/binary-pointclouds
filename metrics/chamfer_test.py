@@ -1,4 +1,4 @@
-from metrics import chamfer_distance
+from metrics.metrics import chamfer_distance
 from binary_encoder import rle_decode_variable_length, decode_binary, sc_decode_variable_length_with_bounds, rle_decode_variable_length_voxels
 from utils.utils import normalize
 
@@ -23,11 +23,30 @@ def process_off_file(off_file_path, slice64_rle_dir, slice64_sc_dir, slice128_rl
     label = os.path.basename(os.path.dirname(os.path.dirname(off_file_path)))
     object_name = os.path.splitext(os.path.basename(off_file_path))[0]
 
+    # slice_file = f"{file_base}_slice64.bin"
+    # slice_path = os.path.join(slice64_path, class_name, 'train', slice_file)
+    # if not os.path.exists(slice_path):
+    #     slice_path = os.path.join(slice64_path, class_name, 'test', slice_file)
+    #     if not os.path.exists(slice_path):
     # Construct the paths for the slice64 and slice128 files based on the label and object_name
-    slice64_rle_path = os.path.join(slice64_rle_dir, label, f"{object_name}_slice64_rle.bin")
-    slice64_sc_path = os.path.join(slice64_sc_dir, label, f"{object_name}_slice64_sc.bin")
-    slice128_rle_path = os.path.join(slice128_rle_dir, label, f"{object_name}_slice128_rle.bin")
-    slice128_sc_path = os.path.join(slice128_sc_dir, label, f"{object_name}_slice128_sc.bin")
+    slice64_rle_path = os.path.join(slice64_rle_dir, label, "train", f"{object_name}_voxel_rle.bin")
+    if not os.path.exists(slice64_rle_path):
+        slice64_rle_path = os.path.join(slice64_rle_dir, label, "test", f"{object_name}_voxel_rle.bin")
+
+    slice64_sc_path = os.path.join(slice64_sc_dir, label, "train", f"{object_name}_voxel_sc.bin")
+    if not os.path.exists(slice64_sc_path):
+        slice64_sc_path = os.path.join(slice64_sc_dir, label, "test", f"{object_name}_voxel_sc.bin")
+
+    slice128_rle_path = os.path.join(slice128_rle_dir, label, "train", f"{object_name}_voxel_rle.bin")
+    if not os.path.exists(slice128_rle_path):
+        slice128_rle_path = os.path.join(slice128_rle_dir, label, "test", f"{object_name}_voxel_rle.bin")
+
+    slice128_sc_path = os.path.join(slice128_sc_dir, label, "train", f"{object_name}_voxel_sc.bin")
+    if not os.path.exists(slice128_sc_path):
+        slice128_sc_path = os.path.join(slice128_sc_dir, label, "test", f"{object_name}_voxel_sc.bin")
+
+# /home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
+# /home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
 
     # Check if the slice64 and slice128 files exist
     slice64_rle_data, slice64_sc_data, slice128_rle_data, slice128_sc_data = None, None, None, None
@@ -99,6 +118,7 @@ def iterate_modelnet40(dataset_dir, slice64_rle_dir, slice64_sc_dir, slice128_rl
             # Process the .off file to generate voxelized and custom data
             slice64_rle_data, slice64_sc_data, slice128_rle_data, slice128_sc_data, input_pointcloud  = process_off_file(off_file_path, slice64_rle_dir, slice64_sc_dir, slice128_rle_dir, slice128_sc_dir)
             
+            # print(np.shape(slice64_rle_data))
             # Compute chamfer values
             cham_slice64_rle = chamfer_distance(input_pointcloud, slice64_rle_data)
             cham_slice64_sc = chamfer_distance(input_pointcloud, slice64_sc_data)
@@ -150,9 +170,9 @@ def iterate_modelnet40(dataset_dir, slice64_rle_dir, slice64_sc_dir, slice128_rl
 if __name__ == "__main__":
     # Define your dataset and output directories here
     root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
-    slice64_rle_dir = "/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle"
-    slice64_sc_dir = "/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc"
-    slice128_rle_dir = "/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_rle"
-    slice128_sc_dir = "/home/hi5lab/pointcloud_data/dataset_128/slice_128_voxel_sc"
+    slice64_rle_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle"
+    slice64_sc_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc"
+    slice128_rle_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_rle"
+    slice128_sc_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_sc"
 
     iterate_modelnet40(root_dir, slice64_rle_dir, slice64_sc_dir, slice128_rle_dir, slice128_sc_dir)

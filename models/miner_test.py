@@ -13,93 +13,14 @@ from sklearn.utils.class_weight import compute_class_weight
 import matplotlib.pyplot as plt
 
 from torch.nn.utils import weight_norm
+from pytorch_metric_learning.miners import TripletMarginMiner, BatchHardMiner
+from pytorch_metric_learning.losses import TripletMarginLoss, ContrastiveLoss
+# from pytorch_metric_learning.distances import LpDistance, CosineSimilarity
+from pytorch_metric_learning.reducers import ThresholdReducer
+from pytorch_metric_learning.distances import LpDistance
 
-
-# class FocalLoss(pl.LightningModule):
-#     def __init__(self, alpha=0.5, gamma=1.5, weight=None, reduction='mean'):
-#         """
-#         :param alpha: Weighting factor to balance the importance of positive/negative examples
-#         :param gamma: Focusing parameter to reduce the relative loss for well-classified examples
-#         :param weight: Class weights (e.g., computed from class distribution)
-#         :param reduction: 'mean' or 'sum' to reduce the loss to a scalar
-#         """
-#         super(FocalLoss, self).__init__()
-#         self.alpha = alpha
-#         self.gamma = gamma
-#         self.weight = weight
-#         self.reduction = reduction
-
-#     def forward(self, input, target):
-#         """
-#         :param input: Predictions, of shape (batch_size, num_classes)
-#         :param target: Ground truth labels, of shape (batch_size)
-#         :return: Focal loss
-#         """
-#         device = input.device  # Ensure all tensors are on the same device
-#         target = target.to(device)
-#         self.weight = self.weight.to(device)
-
-#         # Get log probabilities (log-softmax)
-#         log_pt = F.log_softmax(input, dim=-1).to(device)  # Move log probabilities to correct device
-#         pt = torch.exp(log_pt)  # Shape: (batch_size, num_classes)
-
-#         # Gather the log probabilities for the correct class labels
-#         log_pt = log_pt.gather(dim=-1, index=target.unsqueeze(-1).to(device))  # Shape: (batch_size, 1)
-#         log_pt = log_pt.squeeze(-1)  # Shape: (batch_size)
-
-#         # Compute the probabilities for the correct class
-#         pt = pt.gather(dim=-1, index=target.unsqueeze(-1).to(device))  # Shape: (batch_size, 1)
-#         pt = pt.squeeze(-1)  # Shape: (batch_size)
-
-#         # Compute the cross-entropy loss for the correct class
-#         cross_entropy_loss = -log_pt  # Shape: (batch_size)
-
-#         # Focal loss scaling factor
-#         alpha_t = self.alpha[target] if isinstance(self.alpha, torch.Tensor) else self.alpha
-#         # alpha_t = alpha_t.to(device)  # Move to the same device
-
-#         # Focal loss formula
-#         loss = alpha_t * ((1 - pt) ** self.gamma) * cross_entropy_loss  # Shape: (batch_size)
-#         loss = loss.to(device)
-
-#         # Apply class weights if provided
-#         if self.weight is not None:
-#             loss = loss * self.weight.gather(dim=0, index=target).to(device)  # Ensure weights and target are on the same device
-
-#         # Reduction (mean or sum)
-#         if self.reduction == 'mean':
-#             return loss.mean()
-#         elif self.reduction == 'sum':
-#             return loss.sum()
-#         else:
-#             return loss
-
-class SEBlock(nn.Module):
-    def __init__(self, channels):
-        super(SEBlock, self).__init__()
-        self.fc1 = nn.Linear(channels, channels // 16, bias=False)
-        self.fc2 = nn.Linear(channels // 16, channels, bias=False)
-
-    def forward(self, x):
-        scale = torch.sigmoid(self.fc2(F.relu(self.fc1(x.mean(-1)))))
-        return x * scale.unsqueeze(-1)
-
-class FocalLoss(nn.Module):
-    def __init__(self, alpha, gamma, weight=None):
-        super(FocalLoss, self).__init__()
-        self.alpha = alpha
-        self.gamma = gamma
-        self.weight = weight
-
-    def forward(self, inputs, targets):
-        device = inputs.device
-        targets = targets.to(device)
-        self.weight = self.weight.to(device)
-
-        BCE_loss = F.cross_entropy(inputs, targets, reduction='none', weight=self.weight).to(torch.bfloat16)
-        pt = torch.exp(-BCE_loss)
-        focal_loss = self.alpha * (1 - pt) ** self.gamma * BCE_loss
-        return focal_loss.mean()
+from torch.nn.functional import pairwise_distance
+from torch.nn import TransformerEncoder, TransformerEncoderLayer
 
 class CustomCNN(pl.LightningModule):
     def __init__(self, num_classes, num_slices, dataset, alpha, gamma, margin, emb_dim, lr):
@@ -117,118 +38,94 @@ class CustomCNN(pl.LightningModule):
         self.test_embeddings = []
         self.class_weights = dataset.train_dataset.get_class_weights().to(self.device).to(torch.bfloat16)
         self.lr = lr
+        # self.miner = TripletMarginMiner(margin=0.5, type_of_triplets="semihard")
+        self.miner = BatchHardMiner()
+        # self.miner = BatchEasyHardMiner(pos_strategy=BatchEasyHardMiner.EASY, neg_strategy=BatchEasyHardMiner.SEMIHARD, allowed_pos_range=None, allowed_neg_range=None)
+        # self.miner = UniformHistogramMiner()
+        # self.reducer = ThresholdReducer(low=0.001)
 
-        # Existing convolutional layers
-        self.conv1 = nn.Conv1d(in_channels=num_slices, out_channels=16, kernel_size=1)
-        self.conv2 = nn.Conv1d(16, 32, kernel_size=1)
-        self.conv3 = nn.Conv1d(32, 64, kernel_size=1)
-        self.conv4 = nn.Conv1d(64, 128, kernel_size=1)
 
 
-        # Additional convolutional layers
-        # self.conv5 = nn.Conv1d(128, 256, kernel_size=5, stride=2, padding=2)
-        # self.conv6 = nn.Conv1d(256, 512, kernel_size=5, stride=2, padding=2)
-        # self.conv7 = nn.Conv1d(512, 1024, kernel_size=3, stride=2, padding=1)
-        # self.conv8 = nn.Conv1d(1024, 2048, kernel_size=3, stride=2, padding=1)
+        # Conv2d 
+        self.conv1 = nn.Conv1d(in_channels=num_slices, out_channels=16, kernel_size=2)
+        self.conv2 = nn.Conv1d(16, 32, 2)
+        self.conv3 = nn.Conv1d(32, 64, 2)
+        self.conv4 = nn.Conv1d(64, 64, 2)
 
-        # BatchNorm layers
-        self.bn1 = nn.BatchNorm1d(16, dtype=torch.bfloat16)
-        self.bn2 = nn.BatchNorm1d(32, dtype=torch.bfloat16)
-        self.bn3 = nn.BatchNorm1d(64, dtype=torch.bfloat16)
-        self.bn4 = nn.BatchNorm1d(128, dtype=torch.bfloat16)
-        # self.bn5 = nn.BatchNorm1d(256, dtype=torch.bfloat16)
-        # self.bn6 = nn.BatchNorm1d(512, dtype=torch.bfloat16)
-        # self.bn7 = nn.BatchNorm1d(1024, dtype=torch.bfloat16)
-        # self.bn8 = nn.BatchNorm1d(2048, dtype=torch.bfloat16)
 
-        # self.embedding_bn = nn.BatchNorm1d(self.emb_dim, dtype=torch.bfloat16)
+        self.bn1 = nn.BatchNorm1d(16)
+        self.bn2 = nn.BatchNorm1d(32)
+        self.bn3 = nn.BatchNorm1d(64)
+        self.bn4 = nn.BatchNorm1d(64)
 
         # Convert layers to bfloat16 for performance
-        for layer in [self.conv1, self.conv2, self.conv3, self.conv4]:
-            layer.to(torch.bfloat16)
-
-        # GroupNorm layers
-        # self.bn1 = nn.GroupNorm(2, 8, dtype=torch.bfloat16)
-        # self.bn2 = nn.GroupNorm(4, 16, dtype=torch.bfloat16)
-        # self.bn3 = nn.GroupNorm(8, 32, dtype=torch.bfloat16)
-        # self.bn4 = nn.GroupNorm(16, 64, dtype=torch.bfloat16)
-
-        # Convert layers to bfloat16 for performance
-        # for layer in [self.conv1, self.conv2, self.conv3, self.conv4, self.conv5, self.conv6, self.conv7, self.conv8]:
+        # for layer in [self.conv1, self.conv2, self.conv3, self.conv4, self.conv5, self.conv6, self.conv7, self.conv8, self.conv_depth1, self.conv_depth2]:
         #     layer.to(torch.bfloat16)
 
-        for layer in [self.conv1, self.conv2, self.conv3, self.conv4]:
-            layer.to(torch.bfloat16)
+        # for layer in [self.conv1, self.conv2, self.conv5, self.conv8]:
+        #     layer.to(torch.bfloat16)
 
         # Global Average Pooling
-        self.global_pool = nn.AdaptiveMaxPool1d(1)
+        self.global_pool = nn.AdaptiveMaxPool1d(8)
 
-        # Fully Connected Layers
-        self.fc1 = nn.Linear(128, emb_dim, dtype=torch.bfloat16)
-        self.fc2 = nn.Linear(emb_dim, num_classes, dtype=torch.bfloat16)
-        self.dropout = nn.Dropout(p=0.8)
+        self.fc1 = nn.Linear(64 * 8, emb_dim)
+        self.fc2 = nn.Linear(emb_dim, num_classes)
+
+        self.dropout = nn.Dropout(p=0.2)
 
         # Losses
-        # self.classification_loss = FocalLoss(self.alpha, self.gamma, weight=self.class_weights)
         self.classification_loss = nn.CrossEntropyLoss()
-        self.triplet_loss = nn.TripletMarginLoss(margin=margin)
+        # self.triplet_loss = TripletMarginLoss(margin=2.0, triplets_per_anchor="all", reducer=self.reducer)
+        self.triplet_loss = ContrastiveLoss()
+        # self.triplet_loss = HistogramLoss()
 
     def forward(self, x, embeddings=False):
+
         batch_size, num_slices, _, _ = x.size()
-        # Reshape input to match the new channel size for Conv1D
-        x = x.view(batch_size, num_slices, -1)  # Shape: (batch_size, num_slices, num_slices * num_slices)
-
-        # ReLU
-        # x = torch.relu(self.bn1(self.conv1(x)))
-        # x = torch.relu(self.bn2(self.conv2(x)))
-        # x = torch.relu(self.bn3(self.conv3(x)))
-        # x = torch.relu(self.bn4(self.conv4(x)))
-
-        # Apply Conv1D layers with residual connections
+        # Reshape input to match the new channel size for Conv2D
+        x = x.view(batch_size, num_slices, -1)
+        # Apply Conv1D layers
         x = F.leaky_relu(self.bn1(self.conv1(x)), negative_slope=0.01)
+        # print(f"Conv1 {np.shape(x)}")
         x = F.leaky_relu(self.bn2(self.conv2(x)), negative_slope=0.01)
+        # print(f"Conv2 {np.shape(x)}")
         x = F.leaky_relu(self.bn3(self.conv3(x)), negative_slope=0.01)
+        # print(f"Conv3 {np.shape(x)}")
         x = F.leaky_relu(self.bn4(self.conv4(x)), negative_slope=0.01)
+        # print(f"Conv4 {np.shape(x)}")
         # x = F.leaky_relu(self.bn5(self.conv5(x)), negative_slope=0.01)
+        # # print(f"Conv5 {np.shape(x)}")
         # x = F.leaky_relu(self.bn6(self.conv6(x)), negative_slope=0.01)
+        # # print(f"Conv6 {np.shape(x)}")
         # x = F.leaky_relu(self.bn7(self.conv7(x)), negative_slope=0.01)
+        # # print(f"Conv7 {np.shape(x)}")
         # x = F.leaky_relu(self.bn8(self.conv8(x)), negative_slope=0.01)
-
-        # Global Pooling
-        pooled_output = self.global_pool(x)
-
-        # Flatten the output
-        flattened_output = pooled_output.view(batch_size, -1)
-
-
-        # Fully Connected layers with dropout
-        embedding = F.leaky_relu(self.fc1(flattened_output), negative_slope=0.01)
-        dropout = self.dropout(embedding)
-
-        # Output layer
-        output = self.fc2(dropout)
+        # # print(f"Conv8 {np.shape(x)}")
+        
+        # Global pooling and fully connected layers
+        x = self.global_pool(x)                             # Shape: (batch_size, channels)
+        flattened_output = x.view(batch_size, -1)
+        
+        embedding = F.relu(self.fc1(flattened_output))      # Embedding layer
+        output = self.dropout(self.fc2(embedding))          # Final output layer
 
         return output, embedding
 
-
-
     
-    
-    def steps(self, anchor, positive, negative, type, batch_size):
-        anchor_input, anchor_label, target = anchor
-        positive_input, _ = positive
-        negative_input, _= negative
+    def steps(self, anchor, type, batch_size):
+        anchor_input, anchor_label, _ = anchor
 
         ## Forward pass
         anchor_output, anchor_embedding = self(anchor_input)         # Anchor is the sample being trained on
-        _, positive_embedding = self(positive_input)     # Positive is a sample in the same class
-        _, negative_embedding = self(negative_input)     # Negative is a sample in a different class
-        
+
+        # Run the miner
+        hard_pairs = self.miner(anchor_embedding, anchor_label)
 
         ## Loss Functions
         loss_classification = self.classification_loss(anchor_output, anchor_label)
-        loss_triplet = self.triplet_loss(anchor_embedding, positive_embedding, negative_embedding)
-        loss = loss_classification + 0.5 * loss_triplet  # Weighting losses
+        loss_triplet = self.triplet_loss(anchor_embedding, anchor_label, hard_pairs)
+        loss = loss_classification + 0.5 * loss_triplet  
+        loss = loss_classification
 
         ## Accuracy
         preds = torch.argmax(anchor_output, dim=1)
@@ -250,6 +147,7 @@ class CustomCNN(pl.LightningModule):
 
         return loss
 
+
     def steps_log(self, loss, loss_classification, loss_triplet, acc, preds, type, batch_size):
         if type == "train":
             self.log(f'Loss/{type}_loss', loss, prog_bar=True, batch_size=batch_size)
@@ -263,22 +161,21 @@ class CustomCNN(pl.LightningModule):
             self.log(f'Acc/{type}_acc', acc, prog_bar=True, batch_size=batch_size, sync_dist=True)
 
 
-
     def training_step(self, batch, batch_idx):
-        anchor_tensor, positive_tensor, negative_tensor, _ = batch
-        loss = self.steps(anchor_tensor, positive_tensor, negative_tensor, "train", self.trainer.datamodule.batch_size)
+        anchor_tensor,  _ = batch
+        loss = self.steps(anchor_tensor, "train", self.trainer.datamodule.batch_size)
 
         return loss
 
     def validation_step(self, batch, batch_idx):
-        anchor_tensor, positive_tensor, negative_tensor, _ = batch
-        loss = self.steps(anchor_tensor, positive_tensor, negative_tensor, "val", self.trainer.datamodule.batch_size)
+        anchor_tensor, _ = batch
+        loss = self.steps(anchor_tensor, "val", self.trainer.datamodule.batch_size)
 
         return loss
     
     def test_step(self, batch, batch_idx):
-        anchor_tensor, positive_tensor, negative_tensor, _ = batch
-        loss = self.steps(anchor_tensor, positive_tensor, negative_tensor, "test", self.trainer.datamodule.batch_size)
+        anchor_tensor, _ = batch
+        loss = self.steps(anchor_tensor, "test", self.trainer.datamodule.batch_size)
 
         return loss
 
@@ -380,8 +277,6 @@ class CustomCNN(pl.LightningModule):
         return image
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-3)
-        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=20, eta_min=5e-4)
-        # return {'optimizer': optimizer, 'lr_scheduler': scheduler}
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=8, factor=0.9, cooldown=3, min_lr=1e-5, verbose=True)
+        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-4)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=8, factor=0.5, cooldown=3, min_lr=1e-5, verbose=True)
         return {'optimizer': optimizer, 'lr_scheduler': scheduler, 'monitor': 'Loss/val_loss'}

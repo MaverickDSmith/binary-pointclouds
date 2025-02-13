@@ -83,17 +83,35 @@ def visualize_point_clouds(pcds, spacing=1.5, colors=None):
     o3d.visualization.draw_geometries(pcds)
 
 # File paths
+# Sofa
 # og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off"
-# ba_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_0166.bin'
-# vox_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/rle_encoded_sofa_test_0166.bin'
-# sc_path = '/home/hi5lab/wsl_github/github_ander/Fall 2024/binary-pointclouds/data/sc_encoded_sofa_test_0166.bin'
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/sofa/test/sofa_0166_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/sofa/train/sofa_0166_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/sofa/train/sofa_0166_voxel_sc.bin'
 
+# Dresser
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
 
-og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
-ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
-vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
-sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
+# Airplane
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
 
+# # Plant
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/plant/train/plant_0228.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/plant/test/plant_0228_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/plant/train/plant_0228_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/plant/train/plant_0228_voxel_sc.bin'
+
+# Guitar
+og_path = "/home/hi5lab/pointcloud_data/ModelNet40/guitar/test/guitar_0228.off"
+ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/guitar/train/guitar_0228_slice64.bin'
+vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_rle/guitar/test/guitar_0228_voxel_rle.bin'
+sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_sc/guitar/test/guitar_0228_voxel_sc.bin'
 
 slices = 64
 
@@ -194,7 +212,7 @@ colors = [
 ]
 
 # Visualize all point clouds together
-visualize_point_clouds(point_clouds, spacing=0.5, colors=colors)
+visualize_point_clouds(point_clouds, spacing=1.0, colors=colors)
 
 # Add XYZ lines for context (optional)
 # o3d.visualization.draw_geometries([*point_clouds, xyz_lines])
