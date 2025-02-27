@@ -8,12 +8,12 @@ from pytorch_lightning.cli import LightningCLI
 from lightning.pytorch.profilers import AdvancedProfiler
 # from models.Conv1dCNN import CustomCNN
 from models.PointNet import PointNet
-# from models.miner_test import CustomCNN
-from models.xyz_test import CustomCNN
+from models.miner_test import CustomCNN
+# from models.xyz_test import CustomCNN
 # from dataloaders.BitArrayDataset import PointCloudDataModule
 # from dataloaders.BA_Dataset_split import PointCloudDataModule
-from dataloaders.xyz_dataloader import PointCloudDataModule
-# from dataloaders.miner_metric import PointCloudDataModule
+# from dataloaders.xyz_dataloader import PointCloudDataModule
+from dataloaders.miner_metric import PointCloudDataModule
 
 def cli_main():
     cli = LightningCLI(CustomCNN, PointCloudDataModule)

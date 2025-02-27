@@ -2,12 +2,12 @@
 
 model:
   name: CustomCNN
-  num_classes: 40  # Number of classes in your dataset
-  alpha: 0.7  # Focal loss parameter
-  gamma: 1.5  # Focal loss parameter
-  margin: 3.5  # Triplet margin (if applicable)
-  emb_dim: 2048  # Embedding dimension
-  learning_rate: 0.0001
+  num_classes: 40   # Number of classes in your dataset
+  alpha: 0.7        # Focal loss parameter
+  gamma: 1.5        # Focal loss parameter
+  margin: 3.5       # Triplet margin (if applicable)
+  emb_dim: 1024     # Embedding dimension
+  learning_rate: 0.001
 
 data:
   root_dir: '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_sc'  # Root directory for the dataset
@@ -31,7 +31,7 @@ callbacks:
 logging:
   logger_type: 'TensorBoardLogger'  # Logger type
   log_dir: 'tb_logs'  # Directory for logging
-  log_name: 'poster_tests_xyz'  # Name for logging
+  log_name: 'embeddings_and_others_xyz'  # Name for logging
 
 gpu:
   use_gpu: true  # Set to true to use GPU

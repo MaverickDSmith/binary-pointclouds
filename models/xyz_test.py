@@ -57,35 +57,6 @@ def harmonic_loss(predictions, targets):
     # Compute mean F1-score and return 1 - mean(F1) as loss
     return 1 - f1.mean()
 
-class ResidualBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, stride=1):
-        super().__init__()
-        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding=kernel_size//2)
-        self.bn = nn.BatchNorm2d(out_channels, dtype=torch.bfloat16)
-        self.shortcut = nn.Conv2d(in_channels, out_channels, kernel_size=1) if in_channels != out_channels else nn.Identity()
-
-        self.conv = self.conv.to(dtype=torch.bfloat16)
-        self.shortcut = self.shortcut.to(dtype=torch.bfloat16)
-
-
-    def forward(self, x):
-        return F.leaky_relu(self.bn(self.conv(x)) + self.shortcut(x), negative_slope=0.01)
-
-
-class SEBlock(nn.Module):
-    def __init__(self, in_channels, reduction=16):
-        super(SEBlock, self).__init__()
-        self.fc1 = nn.Linear(in_channels, in_channels // reduction, bias=False, dtype=torch.bfloat16)
-        self.fc2 = nn.Linear(in_channels // reduction, in_channels, bias=False, dtype=torch.bfloat16)
-
-    def forward(self, x):
-        batch_size, channels, length = x.size()
-        se = x.mean(-1).view(batch_size, channels)  # Global Average Pooling
-        se = F.relu(self.fc1(se))
-        se = torch.sigmoid(self.fc2(se))
-        se = se.view(batch_size, channels, 1)  # Reshape for broadcasting
-        return x * se
-
 class FocalLoss(nn.Module):
     def __init__(self, alpha, gamma, weight=None):
         super(FocalLoss, self).__init__()
@@ -102,15 +73,6 @@ class FocalLoss(nn.Module):
         pt = torch.exp(-BCE_loss)
         focal_loss = self.alpha * (1 - pt) ** self.gamma * BCE_loss
         return focal_loss.mean()
-
-class AttentionPooling(nn.Module):
-    def __init__(self, input_dim):
-        super().__init__()
-        self.attn = nn.Linear(input_dim, 1, dtype=torch.bfloat16)
-
-    def forward(self, x):
-        attn_weights = torch.softmax(self.attn(x), dim=1, dtype=torch.bfloat16)  # Compute attention scores
-        return (x * attn_weights).sum(dim=1)  # Weighted sum
 
 
 class CustomCNN(pl.LightningModule):
@@ -131,41 +93,31 @@ class CustomCNN(pl.LightningModule):
         self.lr = lr
         self.miner = BatchHardMiner()
 
-
         # # Existing convolutional layers
-        self.conv1 = nn.Conv1d(in_channels=3, out_channels=16, kernel_size=1)
-        self.conv2 = nn.Conv1d(16, out_channels=16, kernel_size=1)
-        self.conv3 = nn.Conv1d(16, 32, 1)
-        self.conv4 = nn.Conv1d(32, 64, 1)
-        self.conv5 = nn.Conv1d(64, 64, 1)
-        self.conv6 = nn.Conv1d(64, 128, 1)
-        self.conv7 = nn.Conv1d(128, 256, 1)
-
+        self.conv1 = nn.Conv1d(in_channels=3, out_channels=64, kernel_size=1)
+        self.conv2 = nn.Conv1d(64, out_channels=64, kernel_size=1)
+        self.conv3 = nn.Conv1d(64, 64, 1)
+        self.conv4 = nn.Conv1d(64, 128, 1)
+        self.conv5 = nn.Conv1d(128, self.emb_dim, 1)
 
         # BatchNorm layers
-        self.bn1 = nn.BatchNorm1d(16)
-        self.bn2 = nn.BatchNorm1d(16)
-        self.bn3 = nn.BatchNorm1d(32)
-        self.bn4 = nn.BatchNorm1d(64)
-        self.bn5 = nn.BatchNorm1d(64)
-        self.bn6 = nn.BatchNorm1d(128)
-        self.bn7 = nn.BatchNorm1d(256)
-
-        # Convert layers to bfloat16 for performance
-        # for layer in [self.conv1, self.conv2, self.conv3, self.conv4, self.conv5, self.conv6, self.conv7]:
-        #     layer.to(torch.bfloat16)
+        self.bn1 = nn.BatchNorm1d(64)
+        self.bn2 = nn.BatchNorm1d(64)
+        self.bn3 = nn.BatchNorm1d(64)
+        self.bn4 = nn.BatchNorm1d(128)
+        self.bn5 = nn.BatchNorm1d(self.emb_dim)
 
         # Global Average Pooling
-        self.global_pool = nn.AdaptiveMaxPool1d(16)
+        self.global_pool = nn.AdaptiveMaxPool1d(1)
 
-        self.fc1 = nn.Linear(256 * 16, 512)
+        self.fc1 = nn.Linear(self.emb_dim, 512)
         self.fc_bn1 = nn.BatchNorm1d(512)
-        self.fc2 = nn.Linear(512, self.emb_dim)
-        self.fc_bn2 = nn.BatchNorm1d(self.emb_dim)
-        self.fc3 = nn.Linear(self.emb_dim, self.num_classes)
+        self.fc2 = nn.Linear(512, 256)
+        self.fc_bn2 = nn.BatchNorm1d(256)
+        self.fc3 = nn.Linear(256, self.num_classes)
 
-        self.dropout1 = nn.Dropout(p=0.8)
-        self.dropout2 = nn.Dropout(p=0.8)
+        self.dropout1 = nn.Dropout(p=0.7)
+        self.dropout2 = nn.Dropout(p=0.7)
 
         # Loss (harmonic loss is implemented as a function)
         self.triplet_loss = ContrastiveLoss()
@@ -173,7 +125,6 @@ class CustomCNN(pl.LightningModule):
 
     def forward(self, x, embeddings=False):
         batch_size, _, _ = x.size()
-        # Reshape input to match the new channel size for Conv1D
 
         # Apply Conv1D layers
         x = F.relu(self.bn1(self.conv1(x)))
@@ -181,19 +132,17 @@ class CustomCNN(pl.LightningModule):
         x = F.relu(self.bn3(self.conv3(x)))
         x = F.relu(self.bn4(self.conv4(x)))
         x = F.relu(self.bn5(self.conv5(x)))
-        x = F.relu(self.bn6(self.conv6(x)))
-        x = F.relu(self.bn7(self.conv7(x)))
 
         # Global pooling and fully connected layers
-        pool = self.global_pool(x)  # Shape: (batch_size, channels)
-        flattened_output = pool.view(batch_size, -1)
+        embedding = self.global_pool(x).squeeze(-1)  # Shape: (batch_size, channels)
+        flattened_output = embedding.view(batch_size, -1)
         
         output = F.relu(self.fc_bn1(self.fc1(flattened_output)))
         output = self.dropout1(output)
 
-        embedding = F.relu(self.fc_bn2(self.fc2(output)))  # Embedding layer
+        output = F.relu(self.fc_bn2(self.fc2(output)))  # Embedding layer
 
-        output = self.dropout2(embedding)
+        output = self.dropout2(output)
         output = self.fc3(output)
         return output, embedding
 
@@ -363,6 +312,6 @@ class CustomCNN(pl.LightningModule):
         return image
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-2)
+        optimizer = optim.Adam(self.parameters(), lr=self.lr)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=8, factor=0.5, cooldown=3, min_lr=1e-5, verbose=True)
         return {'optimizer': optimizer, 'lr_scheduler': scheduler, 'monitor': 'Loss/val_loss'}

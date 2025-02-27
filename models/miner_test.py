@@ -22,6 +22,20 @@ from pytorch_metric_learning.distances import LpDistance
 from torch.nn.functional import pairwise_distance
 from torch.nn import TransformerEncoder, TransformerEncoderLayer
 
+
+class ProjectionHead(nn.Module):
+    def __init__(self, in_dim, proj_dim=128, hidden_dim=512):
+        super().__init__()
+        self.fc1 = nn.Linear(in_dim, hidden_dim)
+        self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, proj_dim)
+
+    def forward(self, x):
+        x = F.relu(self.bn1(self.fc1(x)))
+        x = self.fc2(x)  # No ReLU here to allow a wider range of representations
+        return x
+
+
 class CustomCNN(pl.LightningModule):
     def __init__(self, num_classes, num_slices, dataset, alpha, gamma, margin, emb_dim, lr):
         super(CustomCNN, self).__init__()
@@ -38,78 +52,51 @@ class CustomCNN(pl.LightningModule):
         self.test_embeddings = []
         self.class_weights = dataset.train_dataset.get_class_weights().to(self.device).to(torch.bfloat16)
         self.lr = lr
-        # self.miner = TripletMarginMiner(margin=0.5, type_of_triplets="semihard")
         self.miner = BatchHardMiner()
-        # self.miner = BatchEasyHardMiner(pos_strategy=BatchEasyHardMiner.EASY, neg_strategy=BatchEasyHardMiner.SEMIHARD, allowed_pos_range=None, allowed_neg_range=None)
-        # self.miner = UniformHistogramMiner()
-        # self.reducer = ThresholdReducer(low=0.001)
-
-
+        self.projection_head = ProjectionHead(in_dim=self.emb_dim, proj_dim=128)
 
         # Conv2d 
-        self.conv1 = nn.Conv1d(in_channels=num_slices, out_channels=16, kernel_size=2)
-        self.conv2 = nn.Conv1d(16, 32, 2)
-        self.conv3 = nn.Conv1d(32, 64, 2)
-        self.conv4 = nn.Conv1d(64, 64, 2)
+        self.conv1 = nn.Conv2d(in_channels=num_slices, out_channels=64, kernel_size=5, padding=1)
+        self.conv2 = nn.Conv2d(64, 128, 5, padding=1)
+        self.conv3 = nn.Conv2d(128, 256, 5, padding=1)
+        self.conv4 = nn.Conv2d(256, emb_dim, 1)
 
-
-        self.bn1 = nn.BatchNorm1d(16)
-        self.bn2 = nn.BatchNorm1d(32)
-        self.bn3 = nn.BatchNorm1d(64)
-        self.bn4 = nn.BatchNorm1d(64)
-
-        # Convert layers to bfloat16 for performance
-        # for layer in [self.conv1, self.conv2, self.conv3, self.conv4, self.conv5, self.conv6, self.conv7, self.conv8, self.conv_depth1, self.conv_depth2]:
-        #     layer.to(torch.bfloat16)
-
-        # for layer in [self.conv1, self.conv2, self.conv5, self.conv8]:
-        #     layer.to(torch.bfloat16)
+        self.bn1 = nn.BatchNorm2d(64)
+        self.bn2 = nn.BatchNorm2d(128)
+        self.bn3 = nn.BatchNorm2d(256)
+        self.bn4 = nn.BatchNorm2d(emb_dim)
 
         # Global Average Pooling
-        self.global_pool = nn.AdaptiveMaxPool1d(8)
+        self.global_pool = nn.AdaptiveMaxPool2d(1)
 
-        self.fc1 = nn.Linear(64 * 8, emb_dim)
-        self.fc2 = nn.Linear(emb_dim, num_classes)
+        self.fc1 = nn.Linear(self.emb_dim, 512)
+        self.fc2 = nn.Linear(512, num_classes)
 
-        self.dropout = nn.Dropout(p=0.2)
+        self.dropout = nn.Dropout(p=0.3)
 
         # Losses
         self.classification_loss = nn.CrossEntropyLoss()
-        # self.triplet_loss = TripletMarginLoss(margin=2.0, triplets_per_anchor="all", reducer=self.reducer)
         self.triplet_loss = ContrastiveLoss()
-        # self.triplet_loss = HistogramLoss()
 
     def forward(self, x, embeddings=False):
 
         batch_size, num_slices, _, _ = x.size()
-        # Reshape input to match the new channel size for Conv2D
-        x = x.view(batch_size, num_slices, -1)
-        # Apply Conv1D layers
+
+        # Apply Conv2D layers
         x = F.leaky_relu(self.bn1(self.conv1(x)), negative_slope=0.01)
-        # print(f"Conv1 {np.shape(x)}")
         x = F.leaky_relu(self.bn2(self.conv2(x)), negative_slope=0.01)
-        # print(f"Conv2 {np.shape(x)}")
         x = F.leaky_relu(self.bn3(self.conv3(x)), negative_slope=0.01)
-        # print(f"Conv3 {np.shape(x)}")
         x = F.leaky_relu(self.bn4(self.conv4(x)), negative_slope=0.01)
-        # print(f"Conv4 {np.shape(x)}")
-        # x = F.leaky_relu(self.bn5(self.conv5(x)), negative_slope=0.01)
-        # # print(f"Conv5 {np.shape(x)}")
-        # x = F.leaky_relu(self.bn6(self.conv6(x)), negative_slope=0.01)
-        # # print(f"Conv6 {np.shape(x)}")
-        # x = F.leaky_relu(self.bn7(self.conv7(x)), negative_slope=0.01)
-        # # print(f"Conv7 {np.shape(x)}")
-        # x = F.leaky_relu(self.bn8(self.conv8(x)), negative_slope=0.01)
-        # # print(f"Conv8 {np.shape(x)}")
         
         # Global pooling and fully connected layers
-        x = self.global_pool(x)                             # Shape: (batch_size, channels)
-        flattened_output = x.view(batch_size, -1)
+        x = self.global_pool(x).squeeze(-1)
+        x = x.view(batch_size, -1)
+        proj_embedding = self.projection_head(x)
         
-        embedding = F.relu(self.fc1(flattened_output))      # Embedding layer
-        output = self.dropout(self.fc2(embedding))          # Final output layer
+        output = F.relu(self.fc1(x))
+        output = self.dropout(self.fc2(output))
 
-        return output, embedding
+        return output, proj_embedding
 
     
     def steps(self, anchor, type, batch_size):
@@ -117,7 +104,6 @@ class CustomCNN(pl.LightningModule):
 
         ## Forward pass
         anchor_output, anchor_embedding = self(anchor_input)         # Anchor is the sample being trained on
-
         # Run the miner
         hard_pairs = self.miner(anchor_embedding, anchor_label)
 
@@ -125,7 +111,7 @@ class CustomCNN(pl.LightningModule):
         loss_classification = self.classification_loss(anchor_output, anchor_label)
         loss_triplet = self.triplet_loss(anchor_embedding, anchor_label, hard_pairs)
         loss = loss_classification + 0.5 * loss_triplet  
-        loss = loss_classification
+        # loss = loss_classification
 
         ## Accuracy
         preds = torch.argmax(anchor_output, dim=1)
