@@ -188,7 +188,7 @@ def process_off_file(off_file_path, kdtree_rle_flag, voxel_rle_flag, voxel_sc_fl
 
 
     if voxel_sc_flag:
-        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_voxels(point_cloud_normalized, 128, max_bound, min_bound)
+        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_voxels(point_cloud_normalized, slices, max_bound, min_bound)
         voxel_sc_data = sc_encode_variable_length_with_bounds(voxel_sc_data, min_bin3_bound, max_bin3_bound)
         package[2] = voxel_sc_data
 
@@ -273,7 +273,7 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
                 subset_path = os.path.join(class_path, subset)
                 if os.path.isdir(subset_path):
                     for file in os.listdir(subset_path):
-                        if file.endswith(".npy") or (pcd_flag and file.endswith(".off")):
+                        if file.endswith(".npy") or (file.endswith(".off")):
                             off_files.append(os.path.join(subset_path, file))
 
     # Initialize the main output directory
@@ -329,16 +329,16 @@ def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc
 
 if __name__ == "__main__":
     # Variables
-    root_dir    = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048"             # Root Directory of Data to compress
-    output_dir  = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048"                # Root Output Directory for Compressed Data to go to
-    log_file    = "/home/hi5lab/pointcloud_data/storage_analysis_64_pointcloud.log"   # Output Log
+    root_dir    = "/home/hi5lab/pointcloud_data/ModelNet40"             # Root Directory of Data to compress
+    output_dir  = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel_128"                # Root Output Directory for Compressed Data to go to
+    log_file    = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/storage_analysis_128.log"   # Output Log
 
     kdtree      = False                                                 # If True, uses Open3D's KDTreeFlann method. Utilizes RLE by default.
     voxel_rle   = True                                                  # If True, uses modified Voxelization technique. Performs custom RLE on the bitarray.
     voxel_sc    = True                                                  # If True, uses modified Voxelization technique. Performs SC Encoding on the bitarray.
     to_console  = False                                                 # If True, prints storage analysis to the console.
-    pc_file     = True                                                  # If True, processes point cloud files instead of mesh files.
-    slices      = 64                                                   # Number of slices in point cloud grid
+    pc_file     = False                                                 # If True, processes point cloud files instead of mesh files.
+    slices      = 128                                                   # Number of slices in point cloud grid
 
     # Performs compression
     iterate_modelnet40(root_dir, output_dir, kdtree, voxel_rle, voxel_sc, pc_file, slices)

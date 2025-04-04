@@ -53,26 +53,24 @@ class CustomCNN(pl.LightningModule):
         self.class_weights = dataset.train_dataset.get_class_weights().to(self.device).to(torch.bfloat16)
         self.lr = lr
         self.miner = BatchHardMiner()
-        self.projection_head = ProjectionHead(in_dim=self.emb_dim, proj_dim=128)
+        self.projection_head = ProjectionHead(in_dim=num_slices * 2 * 2 * 2, proj_dim=128)
 
         # Conv2d 
-        self.conv1 = nn.Conv2d(in_channels=num_slices, out_channels=64, kernel_size=5, padding=1)
-        self.conv2 = nn.Conv2d(64, 128, 5, padding=1)
-        self.conv3 = nn.Conv2d(128, 256, 5, padding=1)
-        self.conv4 = nn.Conv2d(256, emb_dim, 1)
+        # self.conv1 = nn.Conv2d(in_channels=num_slices, out_channels=64, kernel_size=5, padding=1)
+        self.conv1 = nn.Conv3d(num_slices, num_slices, 5, 2 )
+        self.conv2 = nn.Conv3d(num_slices, num_slices, 3, 1 )
 
-        self.bn1 = nn.BatchNorm2d(64)
-        self.bn2 = nn.BatchNorm2d(128)
-        self.bn3 = nn.BatchNorm2d(256)
-        self.bn4 = nn.BatchNorm2d(emb_dim)
+        self.bn1 = nn.BatchNorm3d(num_slices)
+        self.bn2 = nn.BatchNorm3d(num_slices)
+
 
         # Global Average Pooling
-        self.global_pool = nn.AdaptiveMaxPool2d(1)
+        self.global_pool = nn.AdaptiveMaxPool3d(2)
 
-        self.fc1 = nn.Linear(self.emb_dim, 512)
-        self.fc2 = nn.Linear(512, num_classes)
+        self.fc1 = nn.Linear(num_slices * 2 * 2 * 2, 128)
+        self.fc2 = nn.Linear(128, num_classes)
 
-        self.dropout = nn.Dropout(p=0.3)
+        # self.dropout = nn.Dropout(p=0.3)
 
         # Losses
         self.classification_loss = nn.CrossEntropyLoss()
@@ -85,8 +83,6 @@ class CustomCNN(pl.LightningModule):
         # Apply Conv2D layers
         x = F.leaky_relu(self.bn1(self.conv1(x)), negative_slope=0.01)
         x = F.leaky_relu(self.bn2(self.conv2(x)), negative_slope=0.01)
-        x = F.leaky_relu(self.bn3(self.conv3(x)), negative_slope=0.01)
-        x = F.leaky_relu(self.bn4(self.conv4(x)), negative_slope=0.01)
         
         # Global pooling and fully connected layers
         x = self.global_pool(x).squeeze(-1)
@@ -94,7 +90,8 @@ class CustomCNN(pl.LightningModule):
         proj_embedding = self.projection_head(x)
         
         output = F.relu(self.fc1(x))
-        output = self.dropout(self.fc2(output))
+        # output = self.dropout(self.fc2(output))
+        output = F.relu(self.fc2(output))
 
         return output, proj_embedding
 
@@ -263,6 +260,6 @@ class CustomCNN(pl.LightningModule):
         return image
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-3)
+        optimizer = optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-4)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=8, factor=0.5, cooldown=3, min_lr=1e-5, verbose=True)
         return {'optimizer': optimizer, 'lr_scheduler': scheduler, 'monitor': 'Loss/val_loss'}

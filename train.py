@@ -5,18 +5,26 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 from pytorch_lightning.strategies import DDPStrategy
 from pytorch_lightning.cli import LightningCLI
-from lightning.pytorch.profilers import AdvancedProfiler
+from lightning.pytorch.profilers import PyTorchProfiler
 # from models.Conv1dCNN import CustomCNN
 from models.PointNet import PointNet
 from models.miner_test import CustomCNN
+from models.t_net_test import CustomCNN
+# from models.voxnet_testing import CustomCNN
 # from models.xyz_test import CustomCNN
 # from dataloaders.BitArrayDataset import PointCloudDataModule
 # from dataloaders.BA_Dataset_split import PointCloudDataModule
 # from dataloaders.xyz_dataloader import PointCloudDataModule
-from dataloaders.miner_metric import PointCloudDataModule
+# from dataloaders.miner_metric import PointCloudDataModule
+from dataloaders.realtime_encoding import PointCloudDataModule
 
-def cli_main():
-    cli = LightningCLI(CustomCNN, PointCloudDataModule)
+
+# TODO:
+# 1.) Update base config template
+# 2.) Determine a profiler that I actually like
+# 3.) Add ability to load different model and dataloader types
+# 4.) Everything should be modifiable via config, either add it or make it clear what is hardcoded
+# 5.) Clean up imports (you should be able to do some stuff with the __init__.py files to make this cleaner)
 
 def train_main(config_path='config.yaml'):
     # Load the configuration file
@@ -32,9 +40,7 @@ def train_main(config_path='config.yaml'):
     datamodule.setup()
 
     # Determine number of slices from the dataset
-    # _, _, _, num_slices = next(iter(datamodule.train_dataloader()))
-    # _, _, num_slices = next(iter(datamodule.train_dataloader()))
-    # num_slices = num_slices[0].item()
+    # TODO: Determine if this should be set dynamically or via config
     num_slices = 65
 
     # Initialize Model
@@ -67,7 +73,9 @@ def train_main(config_path='config.yaml'):
     )
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
-    # Train the model with profiler
+    # Train the model
+    # TODO:
+    # Figure out what to do with log_every_n_steps
     trainer = Trainer(
         max_epochs=config['training']['max_epochs'],
         logger=logger,
@@ -89,34 +97,10 @@ def train_main(config_path='config.yaml'):
         trainer.save_checkpoint(model_path)
         print(f"Model saved at {model_path}")
 
-def test_main():
-    # Step 1: Load the previously saved model
-    model_path = "final_model.ckpt"  # Path to your saved model checkpoint
-    loaded_model = CustomCNN.load_from_checkpoint(model_path, num_classes=40, num_slices=65)
-
-    # Step 2: Set up the DataModule (same as before)
-    root_dir = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle'
-    datamodule = PointCloudDataModule(root_dir)
-    datamodule.setup()
-    logger = TensorBoardLogger("tb_logs", name="pointcloud_cnn_voxel_rle")
-
-    # Step 3: Create a Trainer instance without training
-    trainer = Trainer(
-        logger=logger,  # You can reuse the logger if needed
-        accelerator='gpu',  # Ensure you're using GPUs
-        devices=1,  # Set to the number of GPUs you want to use
-        strategy=DDPStrategy(find_unused_parameters=False),  # Enable DDP if using multiple GPUs
-        num_nodes=1  # This will be more than 1 when scaling to multiple GPUs
-    )
-
-    # Step 4: Run the test step
-    trainer.test(loaded_model, datamodule.test_dataloader())
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train a model with PyTorch Lightning.')
     parser.add_argument('--config', type=str, default='config.yaml', help='Path to the configuration file.')
 
     args = parser.parse_args()
     train_main(config_path=args.config)
-    # cli_main()  # Uncomment if you want to use CLI
-    # test_main()  # Uncomment if you want to run testing
+

@@ -114,10 +114,10 @@ def feature_aware_fps_sampling(mesh, num_samples=1024, alpha=0.5, beta=0.5, over
 
 # File paths
 # Sofa
-og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0225.off"
-ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/sofa/train/sofa_0225_slice64.bin'
-vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/sofa/train/sofa_0225_voxel_rle.bin'
-sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/sofa/train/sofa_0225_voxel_sc.bin'
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0225.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/sofa/train/sofa_0225_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/sofa/train/sofa_0225_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/sofa/train/sofa_0225_voxel_sc.bin'
 
 # Dresser
 # og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
@@ -126,16 +126,23 @@ sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/s
 # sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
 
 # Airplane
-# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/dresser/test/dresser_0228.off"
-# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/dresser/train/dresser_0228_slice64.bin'
-# vox_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_rle/dresser/dresser_0228_slice64_rle.bin'
-# sc_path = '/home/hi5lab/pointcloud_data/dataset/slice_64_voxel_sc/dresser/dresser_0228_slice64_sc.bin'
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/airplane/train/airplane_0227.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/airplane/train/airplane_0227_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_rle/airplane/train/airplane_0227_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_sc/airplane/train/airplane_0227_voxel_sc.bin'
 
-# # Plant
-# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/plant/train/plant_0228.off"
-# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/plant/test/plant_0228_slice64.bin'
-# vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/plant/train/plant_0228_voxel_rle.bin'
-# sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/plant/train/plant_0228_voxel_sc.bin'
+# Airplane OG 64
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/airplane/train/airplane_0227.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/airplane/train/airplane_0227_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_rle/airplane/train/airplane_0227_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_sc/airplane/train/airplane_0227_voxel_sc.bin'
+
+# Plant
+og_path = "/home/hi5lab/pointcloud_data/ModelNet40/plant/train/plant_0044.off"
+ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/plant/train/plant_0044_slice64.bin'
+vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/plant/train/plant_0044_voxel_rle.bin'
+sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc/plant/train/plant_0044_voxel_sc.bin'
+npy_path = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048/plant/train/plant_0044.npy"
 
 # Guitar
 # og_path = "/home/hi5lab/pointcloud_data/ModelNet40/guitar/test/guitar_0228.off"
@@ -143,10 +150,20 @@ sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/s
 # vox_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_rle/guitar/test/guitar_0228_voxel_rle.bin'
 # sc_path = '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset/slice_128_voxel_sc/guitar/test/guitar_0228_voxel_sc.bin'
 
+# Guitar OG
+# og_path = "/home/hi5lab/pointcloud_data/ModelNet40/guitar/test/guitar_0228.off"
+# ba_path = '/home/hi5lab/pointcloud_data/storage_test_two/slice64/guitar/train/guitar_0228_slice64.bin'
+# vox_path = '/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_rle/guitar/test/guitar_0228_voxel_rle.bin'
+# sc_path = '/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_sc/guitar/test/guitar_0228_voxel_sc.bin'
+
+
+
+
 slices = 64
 
 # Load and normalize the mesh
 mesh = o3d.io.read_triangle_mesh(og_path)
+o3d.visualization.draw_geometries([mesh])
 points_normalized = normalize(np.asarray(mesh.vertices))
 min_bound = np.min(points_normalized, axis=0)
 max_bound = np.max(points_normalized, axis=0)
@@ -171,7 +188,7 @@ numpy_array_loaded = np.array(ba.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
 # Decode the binary array
-grid_points = decode_binary(numpy_array_loaded, 64, size, min_bound)
+grid_points = decode_binary(numpy_array_loaded, slices, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points
@@ -196,7 +213,7 @@ print(f"Size: {size}")
 
 
 # Decode the binary array
-grid_points_test = decode_binary(numpy_array_loaded, 64, size, min_bound)
+grid_points_test = decode_binary(numpy_array_loaded, slices, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points
@@ -216,7 +233,7 @@ numpy_array_loaded = np.array(ba_sc_test.tolist(), dtype=np.uint8)
 size = max_bound - min_bound
 
 # Decode the binary array
-grid_points_test_sc = decode_binary(numpy_array_loaded, 64, size, min_bound)
+grid_points_test_sc = decode_binary(numpy_array_loaded, slices, size, min_bound)
 # xyz_lines = create_xyz_line(min_bound, max_bound, 64)
 
 # Create a reconstructed point cloud from the grid points
@@ -227,19 +244,23 @@ point_cloud_reconstructed_test_sc.points = o3d.utility.Vector3dVector(grid_point
 # point_cloud_voxel = o3d.io.read_point_cloud(vox_path)
 
 
-mesh = o3d.io.read_triangle_mesh("/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0225.off")
-sampled_pcd = feature_aware_fps_sampling(mesh, num_samples=2048)
+# mesh = o3d.io.read_triangle_mesh("/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0225.off")
+# sampled_pcd = feature_aware_fps_sampling(mesh, num_samples=2048)
 
 
 
 
+## NPY file
+# Load the numpy array
+numpy_array = np.load(npy_path)
 
-
+point_cloud_npy = o3d.geometry.PointCloud()
+point_cloud_npy.points = o3d.utility.Vector3dVector(numpy_array)
 
 
 
 # Prepare the point clouds for visualization
-point_clouds = [point_cloud_input, point_cloud_reconstructed, sampled_pcd, point_cloud_reconstructed_test, point_cloud_reconstructed_test_sc]
+point_clouds = [point_cloud_input, point_cloud_reconstructed, point_cloud_reconstructed_test, point_cloud_reconstructed_test_sc, point_cloud_npy]
 # Add voxelized point cloud to the list if available
 # point_clouds.append(point_cloud_voxel)
 
@@ -249,11 +270,11 @@ colors = [
     (0.0, 1.0, 0.0),   # Green for the reconstructed point cloud
     (0.0, 0.0, 1.0),   # Blue for the test rle point cloud
     (1.0, 0.0, 1.0),   # Purple for the test sc point cloud
-    (1.0, 1.0, 0.0)    # 
+    (1.0, 1.0, 0.0)
 ]
 
 # Visualize all point clouds together
-visualize_point_clouds(point_clouds, spacing=1.0, colors=colors)
+visualize_point_clouds(point_clouds, spacing=1.25, colors=colors)
 
 # Add XYZ lines for context (optional)
 # o3d.visualization.draw_geometries([*point_clouds, xyz_lines])

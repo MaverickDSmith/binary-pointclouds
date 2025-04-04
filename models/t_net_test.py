@@ -35,7 +35,6 @@ class ProjectionHead(nn.Module):
         x = self.fc2(x)  # No ReLU here to allow a wider range of representations
         return x
 
-
 class CustomCNN(pl.LightningModule):
     def __init__(self, num_classes, num_slices, dataset, alpha, gamma, margin, emb_dim, lr):
         super(CustomCNN, self).__init__()
@@ -55,7 +54,7 @@ class CustomCNN(pl.LightningModule):
         self.miner = BatchHardMiner()
         self.projection_head = ProjectionHead(in_dim=self.emb_dim, proj_dim=128)
 
-        # Conv2d 
+        # Conv2D 
         self.conv1 = nn.Conv2d(in_channels=num_slices, out_channels=64, kernel_size=5, padding=1)
         self.conv2 = nn.Conv2d(64, 128, 5, padding=1)
         self.conv3 = nn.Conv2d(128, 256, 5, padding=1)
@@ -65,6 +64,7 @@ class CustomCNN(pl.LightningModule):
         self.bn2 = nn.BatchNorm2d(128)
         self.bn3 = nn.BatchNorm2d(256)
         self.bn4 = nn.BatchNorm2d(emb_dim)
+
 
         # Global Average Pooling
         self.global_pool = nn.AdaptiveMaxPool2d(1)
@@ -79,10 +79,10 @@ class CustomCNN(pl.LightningModule):
         self.triplet_loss = ContrastiveLoss()
 
     def forward(self, x, embeddings=False):
-
         batch_size, num_slices, _, _ = x.size()
 
-        # Apply Conv2D layers
+
+        # --- Apply Conv2D layers ---
         x = F.leaky_relu(self.bn1(self.conv1(x)), negative_slope=0.01)
         x = F.leaky_relu(self.bn2(self.conv2(x)), negative_slope=0.01)
         x = F.leaky_relu(self.bn3(self.conv3(x)), negative_slope=0.01)
@@ -97,13 +97,12 @@ class CustomCNN(pl.LightningModule):
         output = self.dropout(self.fc2(output))
 
         return output, proj_embedding
-
     
     def steps(self, anchor, type, batch_size):
         anchor_input, anchor_label, _ = anchor
 
         ## Forward pass
-        anchor_output, anchor_embedding = self(anchor_input)         # Anchor is the sample being trained on
+        anchor_output, anchor_embedding = self(anchor_input)
         # Run the miner
         hard_pairs = self.miner(anchor_embedding, anchor_label)
 

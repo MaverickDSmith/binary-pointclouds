@@ -1,6 +1,10 @@
 import open3d as o3d
 import numpy as np
 
+# Feature aware sampling of the mesh to downsample point clouds
+# Not used in our project but included for potential future use
+# Seemingly already implemented on the ModelNet40 dataset from what we could tell
+
 def compute_curvature(mesh):
     """Estimate curvature using Laplacian smoothing."""
     mesh.compute_vertex_normals()

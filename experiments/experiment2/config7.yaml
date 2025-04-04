@@ -10,7 +10,7 @@ model:
   learning_rate: 0.001
 
 data:
-  root_dir: '/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc'  # Root directory for the dataset
+  root_dir: '/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048_test'  # Root directory for the dataset
   batch_size: 128  # Batch size for training
   num_workers: 16  # Number of workers for data loading
 
@@ -31,7 +31,7 @@ callbacks:
 logging:
   logger_type: 'TensorBoardLogger'  # Logger type
   log_dir: 'tb_logs'  # Directory for logging
-  log_name: 'embeddings_and_things_binary'  # Name for logging
+  log_name: 't_net_tests'  # Name for logging
 
 gpu:
   use_gpu: true  # Set to true to use GPU

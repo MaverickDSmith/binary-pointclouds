@@ -1,6 +1,7 @@
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split, WeightedRandomSampler
 import pytorch_lightning as pl
+import open3d as o3d
 import os
 import random
 import bitarray
@@ -12,15 +13,30 @@ from binary_encoder import rle_decode_variable_length, sc_decode_variable_length
 from experiments.data_augmentation_experiments import reordering_bitarray
 import torchvision.transforms.functional as TF
 
+from utils.utils import normalize
+from binary_encoder import binary_your_pointcloud_voxels
+
+
 from collections import Counter
 
-def random_rotate(x):
+def random_rotate_point_cloud(pcd):
+    # Generate a random angle between 0 and 360 degrees
     angle = random.uniform(0, 360)
-    return TF.rotate(x, angle)  # 2D slice-wise rotation
+    
+    # Convert the angle to radians for the rotation
+    R = pcd.get_rotation_matrix_from_axis_angle(np.array([0, 0, np.deg2rad(angle)]))  # Rotation around Z-axis
+    pcd.rotate(R, center=(0, 0, 0))  # Rotate around the origin
+    return pcd
 
-def add_noise(x, prob=0.02):
-    noise = torch.rand_like(x) < prob
-    return (x + noise).clamp(0, 1)  # Flip some bits
+def add_noise_to_point_cloud(pcd, noise_factor=0.02):
+    # Add random Gaussian noise to each point in the cloud
+    points = np.asarray(pcd.points)
+    noise = np.random.normal(scale=noise_factor, size=points.shape)
+    points += noise
+    
+    # Update the point cloud with the noisy points
+    pcd.points = o3d.utility.Vector3dVector(points)
+    return pcd
 
 class BitArrayDataset(Dataset):
     def __init__(self, root_dir, split="train", split_ratios=(0.8, 0.2), augmentation = False, seed=42):
@@ -51,7 +67,7 @@ class BitArrayDataset(Dataset):
                     # Debugging: Check if we have files in this split
                     found_files = False
                     for file_name in os.listdir(split_dir):
-                        if file_name.endswith('.bin'):
+                        if file_name.endswith('.npy'):
                             found_files = True
                             file_path = os.path.join(split_dir, file_name)
                             self.file_paths.append(file_path)
@@ -87,13 +103,7 @@ class BitArrayDataset(Dataset):
             self.file_paths = self.file_paths[train_end:val_end]
             self.labels = self.labels[train_end:val_end]
 
-        # Load a sample to determine num_slices
-        ba = bitarray.bitarray()
-        with open(self.file_paths[0], 'rb') as f:
-            ba = f.read()
-        ba, _, _ = sc_decode_variable_length_with_bounds(ba)
-        ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
-        self.num_slices = round(math.pow(len(ba_unpacked), 1 / 3))
+        self.num_slices = 65
 
         # Compute class weights
         labels_array = np.array(self.labels)
@@ -111,34 +121,29 @@ class BitArrayDataset(Dataset):
         # Load anchor
         anchor_path = self.file_paths[idx]
         anchor_label = self.labels[idx]
-        anchor_tensor = self.load_bitarray(anchor_path)
-        anchor_class_name = self.index_to_label[anchor_label]
-        # Convert to tensors and reshape
-        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.float32)
 
-        # Randomly decide whether to apply rotation
-        # if random.random() < 0.5:  # 50% chance to rotate
-        #     anchor_tensor = reordering_bitarray(anchor_tensor, self.num_slices)
-        # else:
-        # anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        # anchor_tensor = anchor_tensor.permute(2, 1, 0).contiguous()
-        # anchor_tensor = anchor_tensor.view(-1)
-        anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
-        # print(np.shape(anchor_tensor))
+        mesh = np.load(anchor_path)
+        points_normalized = normalize(mesh)
+        min_bound = np.min(points_normalized, axis=0)
+        max_bound = np.max(points_normalized, axis=0)
+
+        anchor_tensor = o3d.geometry.PointCloud()
+        anchor_tensor.points = o3d.utility.Vector3dVector(points_normalized)
+
+        anchor_class_name = self.index_to_label[anchor_label]
+
         if self.augmentation == True:
-            anchor_tensor = random_rotate(anchor_tensor)
-            anchor_tensor = add_noise(anchor_tensor)
+            anchor_tensor = random_rotate_point_cloud(anchor_tensor)
+            anchor_tensor = add_noise_to_point_cloud(anchor_tensor)
+
+        anchor_tensor, _, _, _ = binary_your_pointcloud_voxels(anchor_tensor, self.num_slices - 1, min_bound, max_bound, anchor_path)
+        anchor_tensor = torch.tensor(anchor_tensor, dtype=torch.float32)
+        anchor_tensor = anchor_tensor.view(self.num_slices, self.num_slices, self.num_slices)
 
         return (anchor_tensor, anchor_label, anchor_class_name), \
                self.num_slices
 
-    def load_bitarray(self, file_path):
-        ba = bitarray.bitarray()
-        with open(file_path, 'rb') as f:
-            ba = f.read()
-        ba, _, _ = sc_decode_variable_length_with_bounds(ba)
-        ba_unpacked = np.frombuffer(ba.unpack(zero=b'\x00', one=b'\x01'), dtype=np.uint8)
-        return ba_unpacked
+
 
 class PointCloudDataModule(pl.LightningDataModule):
     def __init__(self, root_dir, batch_size=24, num_workers=16, split_ratios=(0.8, 0.2), seed=42):

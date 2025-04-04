@@ -45,8 +45,8 @@ def process_off_file(off_file_path, slice64_rle_dir, slice64_sc_dir, slice128_rl
     if not os.path.exists(slice128_sc_path):
         slice128_sc_path = os.path.join(slice128_sc_dir, label, "test", f"{object_name}_voxel_sc.bin")
 
-# /home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
-# /home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
+# /home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
+# /home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_rle/glass_box/train/glass_box_0080_voxel_rle.bin
 
     # Check if the slice64 and slice128 files exist
     slice64_rle_data, slice64_sc_data, slice128_rle_data, slice128_sc_data = None, None, None, None
@@ -89,8 +89,8 @@ def process_off_file(off_file_path, slice64_rle_dir, slice64_sc_dir, slice128_rl
 
 def iterate_modelnet40(dataset_dir, slice64_rle_dir, slice64_sc_dir, slice128_rle_dir, slice128_sc_dir):
     # Initialize timers and log file
-    log_file_path = "processing_log_chamfertest.txt"
-    final_log_path = "final_metrics_chamfertest.txt"
+    log_file_path = "processing_log_chamfertest_binaryvoxel.txt"
+    final_log_path = "final_metrics_chamfertest_binaryvoxel.txt"
     total_cham_slice64_rle = {}
     total_cham_slice64_sc = {}
     total_cham_slice128_rle = {}
@@ -170,9 +170,9 @@ def iterate_modelnet40(dataset_dir, slice64_rle_dir, slice64_sc_dir, slice128_rl
 if __name__ == "__main__":
     # Define your dataset and output directories here
     root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
-    slice64_rle_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle"
-    slice64_sc_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_sc"
-    slice128_rle_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_rle"
-    slice128_sc_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_sc"
+    slice64_rle_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_rle"
+    slice64_sc_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_sc"
+    slice128_rle_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel_128/slice_128_voxel_rle"
+    slice128_sc_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel_128/slice_128_voxel_sc"
 
     iterate_modelnet40(root_dir, slice64_rle_dir, slice64_sc_dir, slice128_rle_dir, slice128_sc_dir)

@@ -27,7 +27,7 @@ def get_directory_stats(directory_path, slice64_path=None, slice128_path=None):
                         file_count += 1
                         class_file_count += 1
 
-                        file_base = file.replace("_voxel_rle.bin", "").replace("_slice64.bin", "").replace("_slice128.bin", "")
+                        file_base = file.replace("_voxel_rle.bin", "").replace("_slice64.bin", "").replace("_slice128.bin", "").replace("_voxel_sc.bin", "")
                         # print(f"File Path: {file_path},           {file_base}")
                         if 'slice_64' in directory_path and slice64_path:
                             slice_file = f"{file_base}_slice64.bin"
@@ -77,9 +77,9 @@ def get_directory_stats(directory_path, slice64_path=None, slice128_path=None):
 
 slice64_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice64"
 slice128_output_dir = "/home/hi5lab/pointcloud_data/storage_test_two/slice128"
-voxel64_output_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048/slice_64_voxel_rle"
-voxel128_output_dir = "/home/hi5lab/pointcloud_data/uniformsampled_ModelNet40_Dataset_2048_128_slices/slice_128_voxel_rle"
-final_log_path = "final_metrics_three_rle.txt"
+voxel64_output_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel/slice_64_voxel_sc"
+voxel128_output_dir = "/home/hi5lab/pointcloud_data/ModelNet40_binary_voxel_128/slice_128_voxel_sc"
+final_log_path = "final_metrics_four_sc.txt"
 
 slice64_stats = get_directory_stats(slice64_output_dir)
 slice128_stats = get_directory_stats(slice128_output_dir)

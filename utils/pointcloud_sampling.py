@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import open3d as o3d
+from utils import normalize
 from tqdm import tqdm
 
 
@@ -22,16 +23,18 @@ def sample_and_normalize_mesh(mesh_file, num_points):
     points = np.asarray(sampled_pcd.points)
     print(np.shape(points))
 
-    # Normalize into a unit sphere
-    centroid = np.mean(points, axis=0)
-    points -= centroid  # Translate to origin
-    max_distance = np.max(np.linalg.norm(points, axis=1))
-    points /= max_distance  # Scale to unit sphere
+    points_normalized = normalize(points)
+    min_bound = np.min(points_normalized, axis=0)
+    max_bound = np.max(points_normalized, axis=0)
 
-    return points
+    voxel_size = (max_bound - min_bound)
+    if voxel_size[0] == 0 or voxel_size[1] == 0 or voxel_size[2] == 0:
+        return None
+
+    return points_normalized
 
 
-def process_dataset(root_dir, output_dir, num_points=1024, split="train"):
+def process_dataset(root_dir, output_dir, num_points=1024, split="train", log_file=None):
     """
     Processes a dataset of meshes to generate point clouds.
 
@@ -58,6 +61,10 @@ def process_dataset(root_dir, output_dir, num_points=1024, split="train"):
                 mesh_path = os.path.join(class_dir, mesh_file)
                 try:
                     points = sample_and_normalize_mesh(mesh_path, num_points)
+                    if points is None:
+                        with open(log_file, "a") as f:
+                            f.write(f"Failed to process {mesh_path}: Invalid mesh\n")
+                        continue
                     output_file = os.path.join(output_class_dir, mesh_file.replace('.obj', '.npy')
                                                .replace('.off', '.npy')
                                                .replace('.ply', '.npy'))
@@ -74,7 +81,8 @@ if __name__ == "__main__":
     # Update these paths
     input_root_dir = "/home/hi5lab/pointcloud_data/ModelNet40"
     output_root_dir = "/home/hi5lab/pointcloud_data/ModelNet40_Pointclouds_2048_test"
+    log_file = "pointcloud_sampler.log"
     num_points_to_sample = 2048
 
     for dataset_split in ["train", "test"]:
-        process_dataset(input_root_dir, output_root_dir, num_points_to_sample, split=dataset_split)
+        process_dataset(input_root_dir, output_root_dir, num_points_to_sample, split=dataset_split, log_file=log_file)
