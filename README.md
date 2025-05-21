@@ -39,3 +39,49 @@ A full description of the Experiments ran can be found [here.](assets/docs/exper
 ## Results
 
 For further information on the results, please refer to the [extended results page.](assets/docs/results.md)
+
+## User Guide
+
+### General Info
+All data we've used during testing came from ModelNet40. We pulled only the point cloud's (x, y, z) information to encode. It's feasible that someone could further encode additional point cloud data into a binary format that leverages our method, but this has not been done in our implementation. 
+
+If you're interested in compressing point clouds, use the functions from binary_encoder.py
+
+If you want to batch compress a dataset, you can use the compress_directory.py script by altering the arguments in the main function. Our dataset format assumes data is in the ModelNet40's directory format and are in .off files for meshes, and .ply files for point clouds. ModelNet40's directory hierachy looks like this:
+
+```
+
+- root_folder
+- - class1
+- - - train
+- - - - obj1.off/.ply
+- - - - obj2.off/.ply
+- - - - ...
+- - - test
+- - - - obj3.off/.ply
+- - - - obj4.off/.ply
+- - - - ...
+- - class2
+- - ...
+
+```
+
+If you're interested in using our neural network architectures to confirm our machine learning tests, our train.py file has our pytorch-lightning setup, and there will be more info in the Machine Learning section further down the page on how to use everything.
+
+#### binary_encoder.py
+
+#### compress_directory.py
+
+#### utils/visualize.py
+
+#### utils/clean_modelnet40.py
+
+### Machine Learning Use
+
+#### "models" folder
+
+#### "dataloaders" folder
+
+#### "experiments" folder
+
+#### train.py

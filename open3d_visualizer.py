@@ -7,7 +7,7 @@ import numpy as np
 
 from binary_encoder import sc_decode_variable_length_with_bounds, decode_binary
 
-# WIP
+# WIP - Doesn't work yet
 # Intended to be a GUI for visualizing point clouds
 # Customizable to what we're concerned with
 # Should also be able to run structural similarity tests among other things we're looking at

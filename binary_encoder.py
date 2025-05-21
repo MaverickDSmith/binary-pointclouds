@@ -6,7 +6,6 @@ import struct
 
 import math
 
-from utils.utils import normalize, visualize_grid, create_xyz_line
 
 #### Contains functions needed to encode and decode point clouds into binary representations
 #### An example main function is added at the end to showcase how to use it
@@ -40,7 +39,22 @@ def binary32_to_float(binary_str):
 
 ## Vector Quantization Functions (KDTreeFlann)
 
-def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
+def binary_encoder_kdtree(pcd, slices, max_bound, min_bound):
+    """
+    Converts a point cloud to a binary representation using kd-tree and vector quantization for nearest neighbor search.
+
+    Parameters:
+        pcd (open3d.geometry.PointCloud): Input point cloud.
+        slices (int): Number of slices (voxels) along each axis.
+        max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+
+    Returns:
+        grid (bitarray): Binary representation of the point cloud in X-Major Order.
+        num_of_ones (int): Number of occupied points in the grid point cloud.
+        min_bound_binary (np.ndarray): Binary representation of min bounds.
+        max_bound_binary (np.ndarray): Binary representation of max bounds.
+    """
     pcd_tree = o3d.geometry.KDTreeFlann(pcd)
     change = False
 
@@ -50,7 +64,7 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
     step_y = size[1] / slices
     step_z = size[2] / slices
 
-    # Determine threshold value
+    # Determines threshold value
     # This should be configurable
     # Maybe further refine this?
     x_thresh = step_x / 2
@@ -74,7 +88,7 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
         query_point = np.asarray([x_pos, y_pos, z_pos])
         [k, _, _] = pcd_tree.search_radius_vector_3d(query_point, threshold)
 
-        # Update specific x, y, and z counts
+        # Updates specific x, y, and z counts
         x_count = x_count + 1
         if x_count == slices + 1:
             x_count = 0
@@ -94,7 +108,16 @@ def binary_your_pointcloud(pcd, slices, max_bound, min_bound):
 
     return grid, num_of_ones, min_bound_binary, max_bound_binary
 
-def rle_encode_variable_length(bitarr, min_bound, max_bound):
+def rle_kdtree(bitarr, min_bound, max_bound):
+    """
+    Encodes a bitarray using run-length encoding (RLE) with variable-lengths.
+    Parameters:
+        bitarr (bitarray): Input bitarray to be encoded.
+        min_bound (list): Minimum bounds of the point cloud (x, y, z).
+        max_bound (list): Maximum bounds of the point cloud (x, y, z).
+    Returns:
+        encoded (bitarray): Encoded bitarray using RLE.
+    """
     encoded = bitarray()
     max_run_length = 0
     run_lengths = []
@@ -140,12 +163,16 @@ def rle_encode_variable_length(bitarr, min_bound, max_bound):
 
     return encoded
 
-def rle_decode_variable_length(encoded_bitarr):
-    '''Returns:
-        Decoded Bitarray 1D List bitarray(),
-        np.array(min_bound),
-        np.array(max_bound)
-    '''
+def rle_kdtree_decode(encoded_bitarr):
+    """
+    Decodes a run-length encoded bitarray with variable-lengths.
+    Parameters:
+        encoded_bitarr (bitarray): Encoded bitarray to be decoded.
+    Returns:
+        decoded (bitarray): Decoded bitarray.
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+        max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
+    """
     decoded = bitarray()
 
     index = 0
@@ -154,12 +181,14 @@ def rle_decode_variable_length(encoded_bitarr):
     min_bound = []
     max_bound = []
 
-    for i in range(3):  # Decode the first 3 sets for min_bound (XYZ)
+    # Decode the first 3 sets for min_bound (XYZ)
+    for i in range(3):
         min_bound_bin = encoded_bitarr[index:index + 32].to01()
         min_bound.append(binary32_to_float(min_bound_bin))
         index += 32
 
-    for i in range(3):  # Decode the next 3 sets for max_bound (XYZ)
+    # Decode the next 3 sets for max_bound (XYZ)
+    for i in range(3):
         max_bound_bin = encoded_bitarr[index:index + 32].to01()
         max_bound.append(binary32_to_float(max_bound_bin))
         index += 32
@@ -169,7 +198,8 @@ def rle_decode_variable_length(encoded_bitarr):
     bits_needed = int(encoded_bitarr[index:index + 16].to01(), 2)
     index += 16
 
-    current_bit = 0  # We start decoding with 0s
+    # We start decoding with 0s
+    current_bit = 0
 
     while index < len(encoded_bitarr):
         run_length_bin = encoded_bitarr[index:index + bits_needed].to01()
@@ -186,7 +216,7 @@ def rle_decode_variable_length(encoded_bitarr):
 
 
 ## Binary Voxelization Functions (Modified Voxelization) with RLE
-def binary_your_pointcloud_voxels(pcd, slices, max_bound, min_bound, target):
+def binary_encoder(pcd, slices, max_bound, min_bound, target):
     """
     Converts a point cloud to a binary representation using voxelization,
     while preserving the grid structure order.
@@ -206,6 +236,7 @@ def binary_your_pointcloud_voxels(pcd, slices, max_bound, min_bound, target):
 
     np.seterr(invalid='raise', divide='raise')
 
+    # Checks for 2D Point Clouds, which breaks our implementation.
     try:
         voxel_size = (max_bound - min_bound) / slices
         # print(f"Voxel Size: {voxel_size}")  # Debugging print
@@ -216,7 +247,8 @@ def binary_your_pointcloud_voxels(pcd, slices, max_bound, min_bound, target):
 
         voxel_indices = ((points - min_bound) / voxel_size).astype(int)
         
-        # print(f"Voxel Indices (first 10): {voxel_indices[:10]}")  # Print first 10 indices for debugging
+        ## Print first 10 indices for debugging
+        # print(f"Voxel Indices (first 10): {voxel_indices[:10]}")
 
     except FloatingPointError as e:
         print("Error: Point Cloud encountered was 2D. Skipping, or crashing...")
@@ -244,7 +276,16 @@ def binary_your_pointcloud_voxels(pcd, slices, max_bound, min_bound, target):
     return grid, num_of_ones, min_bound_binary, max_bound_binary
 
 
-def rle_encode_variable_length_voxels(bitarr, min_bound, max_bound):
+def rle(bitarr, min_bound, max_bound):
+    """
+    Encodes a bitarray using run-length encoding (RLE) with variable-lengths.
+    Parameters:
+        bitarr (bitarray): Input bitarray to be encoded.
+        min_bound (list): Minimum bounds of the point cloud (x, y, z).
+        max_bound (list): Maximum bounds of the point cloud (x, y, z).
+    Returns:
+        encoded (bitarray): Encoded bitarray using RLE.
+    """
     encoded = bitarray()
     max_run_length = 0
     run_lengths = []
@@ -291,12 +332,16 @@ def rle_encode_variable_length_voxels(bitarr, min_bound, max_bound):
     return encoded
 
 
-def rle_decode_variable_length_voxels(encoded_bitarr):
-    '''Returns:
-        Decoded Bitarray 1D List bitarray(),
-        np.array(min_bound),
-        np.array(max_bound)
-    '''
+def rle_decoder(encoded_bitarr):
+    """
+    Decodes a run-length encoded bitarray with variable-lengths.
+    Parameters:
+        encoded_bitarr (bitarray): Encoded bitarray to be decoded.
+    Returns:
+        decoded (bitarray): Decoded bitarray.
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+        max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).    
+    """
     decoded = bitarray()
 
     index = 0
@@ -328,8 +373,6 @@ def rle_decode_variable_length_voxels(encoded_bitarr):
         run_length = int(run_length_bin, 2)
         index += bits_needed
         
-
-        
         # Append the decoded run length of 0s or 1s
         decoded.extend(bitarray([current_bit]) * run_length)
 
@@ -339,7 +382,16 @@ def rle_decode_variable_length_voxels(encoded_bitarr):
     return decoded, np.array(min_bound), np.array(max_bound)
 
 ## Binary Voxelization Functions (Modified Voxelization) with bitarray's SC encoding
-def sc_encode_variable_length_with_bounds(bitarr, min_bound, max_bound):
+def sc_encoder(bitarr, min_bound, max_bound):
+    """
+    Encodes a bitarray using sc_encode from the bitarray library.
+    Parameters:
+        bitarr (bitarray): Input bitarray to be encoded.
+        min_bound (list): Minimum bounds of the point cloud (x, y, z).
+        max_bound (list): Maximum bounds of the point cloud (x, y, z).
+    Returns:
+        encoded (bitarray): Encoded bitarray using sc_encode.
+    """
     # First, create the header with min_bound and max_bound
     encoded = bitarray()
 
@@ -358,7 +410,16 @@ def sc_encode_variable_length_with_bounds(bitarr, min_bound, max_bound):
     
     return encoded
 
-def sc_decode_variable_length_with_bounds(encoded_bitarr):
+def sc_decoder(encoded_bitarr):
+    """
+    Decodes a bitarray encoded with sc_encode from the bitarray library.
+    Parameters:
+        encoded_bitarr (bitarray): Encoded bitarray to be decoded.
+    Returns:
+        decoded (bitarray): Decoded bitarray.
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+        max_bound (np.ndarray): Maximum bounds of the point cloud (x, y, z).
+    """
     # Start by extracting the header (min_bound and max_bound)
     index = 0
     min_bound = []
@@ -384,7 +445,17 @@ def sc_decode_variable_length_with_bounds(encoded_bitarr):
 
 
 ## General Decode function (bits to points)
-def decode_binary(points, slices, size, min_bound):
+def binary_decoder(points, slices, size, min_bound):
+    """
+    Decodes a binary representation of a point cloud into 3D coordinates.
+    Parameters:
+        points (bitarray): Input bitarray representing the point cloud.
+        slices (int): Number of slices (voxels) along each axis.
+        size (np.ndarray): Size of the bounding box of the point cloud (x, y, z).
+        min_bound (np.ndarray): Minimum bounds of the point cloud (x, y, z).
+    Returns:
+        grid_points (np.ndarray): Array of 3D coordinates representing the point cloud.
+    """
     # Reshape the binary vector into a 3D grid
     grid = points.reshape(((slices + 1), (slices + 1), (slices + 1)))
     # Calculate step sizes
@@ -427,7 +498,7 @@ def decode_binary(points, slices, size, min_bound):
 # if __name__ == '__main__':
 #     ## Variables and Initial Object loading
 #     slices = 64
-#     mesh = o3d.io.read_triangle_mesh("/home/hi5lab/pointcloud_data/ModelNet40/sofa/train/sofa_0166.off")
+#     mesh = o3d.io.read_triangle_mesh("path/to/off/file.off")
 #     print(np.shape(mesh.vertices))
 
 #     points_normalized = normalize(np.asarray(mesh.vertices))

@@ -5,7 +5,7 @@ from bitarray import bitarray
 from tqdm import tqdm
 
 # Used to convert .off files to .pcd files in compressed format
-# Intended to compare file size of directories to our technique
+# Intended to compare file size of datasets to our technique
 
 def save_pcd(file_path):
     mesh = o3d.io.read_triangle_mesh(file_path)

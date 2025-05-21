@@ -54,3 +54,4 @@ final_metrics_four_rle.txt
 final_metrics_chamfertest_binaryvoxel.txt
 processing_log_binaryvoxel_mhd.txt
 processing_log_chamfertest_binaryvoxel.txt
+processing_log_chamfertest.txt

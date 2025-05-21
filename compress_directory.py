@@ -3,11 +3,9 @@ import logging
 import open3d as o3d
 import numpy as np
 from tqdm import tqdm
-from concurrent.futures import ProcessPoolExecutor
-from tqdm import tqdm 
 
 from utils.utils import normalize
-from binary_encoder import binary_your_pointcloud, rle_encode_variable_length, binary_your_pointcloud_voxels, rle_encode_variable_length_voxels, sc_encode_variable_length_with_bounds
+from binary_encoder import binary_encoder_kdtree, rle_kdtree, binary_encoder, rle, sc_encoder
 
 
 def setup_logger(log_file, to_console):
@@ -143,19 +141,19 @@ def process_pointcloud_file(off_file_path, kdtree_rle_flag, voxel_rle_flag, voxe
 
     # Binary Stuff
     if kdtree_rle_flag:
-        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
-        kdtree_rle_data = rle_encode_variable_length(kdtree_rle_data, min_bin1_bound, max_bin1_bound)
+        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_encoder_kdtree(point_cloud_normalized, slices, max_bound, min_bound)
+        kdtree_rle_data = rle_kdtree(kdtree_rle_data, min_bin1_bound, max_bin1_bound)
         package[0] = kdtree_rle_data
 
     if voxel_rle_flag:
-        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_your_pointcloud_voxels(point_cloud_normalized, slices, max_bound, min_bound)
-        voxel_rle_data = rle_encode_variable_length_voxels(voxel_rle_data, min_bin2_bound, max_bin2_bound)
+        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_encoder(point_cloud_normalized, slices, max_bound, min_bound)
+        voxel_rle_data = rle(voxel_rle_data, min_bin2_bound, max_bin2_bound)
         package[1] = voxel_rle_data
 
 
     if voxel_sc_flag:
-        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_voxels(point_cloud_normalized, slices, max_bound, min_bound)
-        voxel_sc_data = sc_encode_variable_length_with_bounds(voxel_sc_data, min_bin3_bound, max_bin3_bound)
+        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_encoder(point_cloud_normalized, slices, max_bound, min_bound)
+        voxel_sc_data = sc_encoder(voxel_sc_data, min_bin3_bound, max_bin3_bound)
         package[2] = voxel_sc_data
 
 
@@ -177,19 +175,19 @@ def process_off_file(off_file_path, kdtree_rle_flag, voxel_rle_flag, voxel_sc_fl
 
     # Binary Stuff
     if kdtree_rle_flag:
-        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_your_pointcloud(point_cloud_normalized, slices, max_bound, min_bound)
-        kdtree_rle_data = rle_encode_variable_length(kdtree_rle_data, min_bin1_bound, max_bin1_bound)
+        kdtree_rle_data, kdtree_rle_points_64, min_bin1_bound, max_bin1_bound = binary_encoder_kdtree(point_cloud_normalized, slices, max_bound, min_bound)
+        kdtree_rle_data = rle_kdtree(kdtree_rle_data, min_bin1_bound, max_bin1_bound)
         package[0] = kdtree_rle_data
 
     if voxel_rle_flag:
-        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_your_pointcloud_voxels(point_cloud_normalized, slices, max_bound, min_bound)
-        voxel_rle_data = rle_encode_variable_length_voxels(voxel_rle_data, min_bin2_bound, max_bin2_bound)
+        voxel_rle_data, voxel_rle_points_64, min_bin2_bound, max_bin2_bound = binary_encoder(point_cloud_normalized, slices, max_bound, min_bound)
+        voxel_rle_data = rle(voxel_rle_data, min_bin2_bound, max_bin2_bound)
         package[1] = voxel_rle_data
 
 
     if voxel_sc_flag:
-        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_your_pointcloud_voxels(point_cloud_normalized, slices, max_bound, min_bound)
-        voxel_sc_data = sc_encode_variable_length_with_bounds(voxel_sc_data, min_bin3_bound, max_bin3_bound)
+        voxel_sc_data, voxel_sc_points_64, min_bin3_bound, max_bin3_bound = binary_encoder(point_cloud_normalized, slices, max_bound, min_bound)
+        voxel_sc_data = sc_encoder(voxel_sc_data, min_bin3_bound, max_bin3_bound)
         package[2] = voxel_sc_data
 
 
@@ -212,56 +210,6 @@ def process_file(off_file_path, kdflag, voxel_rle_flag, voxel_sc_flag, pcd_flag,
         return process_pointcloud_file(off_file_path, kdflag, voxel_rle_flag, voxel_sc_flag, slices)
     else:
         return process_off_file(off_file_path, kdflag, voxel_rle_flag, voxel_sc_flag, slices)
-
-
-# def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc_flag, pcd_flag, slices):
-#     # Get a list of all .npy files under train and test directories for each class
-#     off_files = []
-#     for class_dir in os.listdir(dataset_dir):
-#         class_path = os.path.join(dataset_dir, class_dir)
-#         if os.path.isdir(class_path):  # Check for the class directory
-#             for subset in ['train', 'test']:  # Handle both 'train' and 'test' subdirectories
-#                 subset_path = os.path.join(class_path, subset)
-#                 if os.path.isdir(subset_path):
-#                     for file in os.listdir(subset_path):
-#                         if file.endswith(".npy") or (pcd_flag and file.endswith(".off")):
-#                             off_files.append(os.path.join(subset_path, file))
-
-#     # Initialize output directories
-#     os.makedirs(output_dir, exist_ok=True)
-#     if kdflag:
-#         kd_out = os.path.join(output_dir, "slice128")
-#         os.makedirs(kd_out, exist_ok=True)
-#     if voxel_rle_flag:
-#         voxel_rle_out = os.path.join(output_dir, "slice_128_voxel_rle")
-#         os.makedirs(voxel_rle_out, exist_ok=True)
-#     if voxel_sc_flag:
-#         voxel_sc_out = os.path.join(output_dir, "slice_128_voxel_sc")
-#         os.makedirs(voxel_sc_out, exist_ok=True)
-
-#     # Initialize parallel processing
-#     with ProcessPoolExecutor() as executor:
-#         futures = []
-#         for off_file_path in off_files:
-#             # Extract the label from the subdirectory structure
-#             label = os.path.basename(os.path.dirname(os.path.dirname(off_file_path)))  # Get the class name
-#             subset = os.path.basename(os.path.dirname(off_file_path))  # 'train' or 'test'
-#             object_name = os.path.splitext(os.path.basename(off_file_path))[0]
-            
-#             # Log file path for debugging
-#             print(f"Processing: {off_file_path} (Class: {label}, Subset: {subset})")
-            
-#             futures.append(executor.submit(process_file, off_file_path, kdflag, voxel_rle_flag, voxel_sc_flag, pcd_flag, slices))
-
-#         for future in tqdm(futures, desc="Processing files"):
-#             result = future.result()
-#             # Extract result and save the .bin data as appropriate
-#             for idx, data in enumerate(result):
-#                 if data is not None:
-#                     suffix = ["kd", "voxel_rle", "voxel_sc"][idx]
-#                     # Modify the save path to reflect both train/test and class names
-#                     save_bin_data(output_dir, f"{label}_{subset}", object_name, data, suffix)
-
 
 def iterate_modelnet40(dataset_dir, output_dir, kdflag, voxel_rle_flag, voxel_sc_flag, pcd_flag, slices):
     # Get a list of all .npy files under train and test directories for each class
